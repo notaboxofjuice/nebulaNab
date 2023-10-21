@@ -152,6 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0494dc86c7c799478cc2c8957fed2b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrollViewContent: {fileID: 2063338504}
+  roomDisplayTab: {fileID: 6528599232636008648, guid: 3c4a3faf38f911e429775045833bf049, type: 3}
 --- !u!4 &21634833
 Transform:
   m_ObjectHideFlags: 0
@@ -305,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -992,7 +994,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 712273405}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999694
+  m_Size: 0.9999311
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1141,7 +1143,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12, y: 3}
+  m_AnchoredPosition: {x: -24, y: -39}
   m_SizeDelta: {x: 531.6, y: 322.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1744078459
@@ -1372,7 +1374,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -121, y: 205}
+  m_AnchoredPosition: {x: -112, y: 167}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1787411329
@@ -1508,7 +1510,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 352, y: -218}
+  m_AnchoredPosition: {x: 335, y: -176}
   m_SizeDelta: {x: 117.1, y: 72.77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1941671092
@@ -1554,7 +1556,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1941671093}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 21634832}
+        m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
+        m_MethodName: CreateRoom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1941671093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1625,7 +1639,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00007252392}
+  m_AnchoredPosition: {x: 0, y: 0.000071007256}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1001 &7311039374145042491
@@ -1698,11 +1712,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3114206161541401020, guid: 3c4a3faf38f911e429775045833bf049, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -30
+      value: 627
       objectReference: {fileID: 0}
     - target: {fileID: 3114206161541401020, guid: 3c4a3faf38f911e429775045833bf049, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 90
+      value: 147
       objectReference: {fileID: 0}
     - target: {fileID: 3114206161541401020, guid: 3c4a3faf38f911e429775045833bf049, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1719,6 +1733,10 @@ PrefabInstance:
     - target: {fileID: 6528599232636008648, guid: 3c4a3faf38f911e429775045833bf049, type: 3}
       propertyPath: m_Name
       value: AvailableRooms
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528599232636008648, guid: 3c4a3faf38f911e429775045833bf049, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
