@@ -23,6 +23,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        PhotonNetwork.AutomaticallySyncScene = true;
+
+
         roomIDText.text = PhotonNetwork.CurrentRoom.Name;//displays room ID on title text
         PhotonNetwork.AutomaticallySyncScene = true;
     }

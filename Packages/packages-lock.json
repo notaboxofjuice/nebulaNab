@@ -136,10 +136,11 @@
       "url": "https://packages.unity.com"
     },
     "com.veriorpies.parrelsync": {
-      "version": "file:C:/Users/blaze/Desktop/unity/Addons/ParrelSync-master/ParrelSync-master/ParrelSync",
+      "version": "https://github.com/VeriorPies/ParrelSync.git?path=/ParrelSync",
       "depth": 0,
-      "source": "local",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "141b4e1e31966242a6fb7c495b52ac3d1221bc75"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
