@@ -19,6 +19,8 @@ public class ConnectionManager : MonoBehaviourPunCallbacks
     {
         base.OnConnectedToMaster();
         Debug.Log("Connected");
+
+        PhotonNetwork.JoinLobby();
         SceneManager.LoadScene(1);
     }
     

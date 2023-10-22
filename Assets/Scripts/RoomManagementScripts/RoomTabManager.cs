@@ -11,20 +11,31 @@ public class RoomTabManager : MonoBehaviourPunCallbacks
     public Button joinButton;
     public TMP_Text playerCountText;
 
-    public string roomId;
+    public string _roomId;
 
-    public int playersInRoom = 0;
+    public int _playersInRoom = 0;
+
+    public RoomInfo _roomInfo;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerCountText.text = "Players: " + playersInRoom;
+        
+    }
+
+    public void SetRoomInfo(RoomInfo info)
+    {
+        _roomInfo = info;
+
+        playerCountText.text = "Players: " + info.PlayerCount + "/4";
+
+        _roomId = info.Name.ToString();
     }
 
     public void JoinRoom()
     {
-        if (roomId != null || roomId != "")
-            PhotonNetwork.JoinRoom(roomId);
+        if (_roomId != null || _roomId != "")
+            PhotonNetwork.JoinRoom(_roomId);
         else
             Destroy(gameObject);
     }

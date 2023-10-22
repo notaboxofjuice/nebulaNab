@@ -467,7 +467,7 @@ MonoBehaviour:
       - m_Target: {fileID: -7971584918756007797}
         m_TargetAssemblyTypeName: RoomTabManager, Assembly-CSharp
         m_MethodName: JoinRoom
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -529,5 +529,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joinButton: {fileID: 6076691098589166557}
   playerCountText: {fileID: 4004835264449057583}
-  roomId: 
-  playersInRoom: 0
+  _roomId: 
+  _playersInRoom: 0

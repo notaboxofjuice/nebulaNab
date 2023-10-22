@@ -3,17 +3,14 @@ using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.EditorTools;
 using UnityEngine;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
     [Header("UI Refrences")]
     [SerializeField]
-    [Tooltip("Shows players the current room ID")]
     private TMP_Text roomIDText;
     [SerializeField]
-    [Tooltip("inactive until the the room has 4 players")]
     GameObject startButton;
 
     private int playerCount = 0;
