@@ -8,10 +8,6 @@ using TMPro;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
-   
-
- 
-
     [Header("Canvas Refrences")]
     [SerializeField]
     private GameObject optionsCanvas;
@@ -34,21 +30,25 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private TMP_InputField iDInputField;
 
+    [SerializeField]
+    private TMP_InputField playerName_Input;
+    string playerNickname;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerNickname = "Player" + Random.Range(0, 10000);
 
+        PhotonNetwork.NickName = playerNickname;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdatePlayerNickname()
     {
-       
+        if(playerName_Input.text != "")
+            playerNickname = playerName_Input.text;
+
+        PhotonNetwork.NickName = playerNickname;
     }
-
-
     public void CreateRoom()
     {
         string roomName = "Room:" + Random.Range(0, 10000);
@@ -93,16 +93,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     #region Overrride Functions
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
-    {
+    {//updates the room list for the search rooms tab
         base.OnRoomListUpdate(roomList);
         
-        Debug.Log(_currentListings.Count);
-        
-       
-
         foreach (RoomInfo roomInfo in roomList)
         {
-            if(roomInfo.RemovedFromList)
+            if(roomInfo.RemovedFromList)//if a room has been closed, delete from the display tab
             {
                 int index = _currentListings.FindIndex(x => x._roomInfo.Name == roomInfo.Name);
 
@@ -112,12 +108,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
                     _currentListings.RemoveAt(index);
                 }
             }
-            else
+            else//if no room has been removed it means that some changed has occured, either a new room has been created, or a player has left or joined a room
             {
                 int index = _currentListings.FindIndex(x => x._roomInfo.Name == roomInfo.Name);//returns -1 if no room of that name found
 
 
-                if(index == -1)//if no tab for room exists create a new one
+                if(index == -1)//if no tab for room exists create a new one//this means that a new room has been created
                 {
                     RoomTabManager room = Instantiate(roomDisplayTab, tabContainer);
 
@@ -127,7 +123,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
                         _currentListings.Add(room);
                     }
                 }
-                else if(index != -1)//if room tab does exist update its information displayed
+                else if(index != -1)//if room tab does exist update its information displayed//this mean a player has either joined or left a room
                 {
                     _currentListings[index].SetRoomInfo(roomInfo);
                 }
@@ -151,7 +147,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         base.OnJoinedRoom();
 
-        PhotonNetwork.LoadLevel(2);
+        SceneManager.LoadScene(2);
     }
 
     public override void OnCreatedRoom()
