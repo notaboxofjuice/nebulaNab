@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour
     }
     public void TryMovement(InputAction.CallbackContext context)
     {
-        Debug.Log(PhotonNetwork.NickName + " is trying movement.");
+        Debug.Log(PhotonNetwork.LocalPlayer.NickName + " is trying movement.");
         move = context.ReadValue<Vector2>();
     }
     private void DoMovement()
