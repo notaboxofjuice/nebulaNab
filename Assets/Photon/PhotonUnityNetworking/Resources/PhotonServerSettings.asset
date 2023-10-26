@@ -48,6 +48,10 @@ MonoBehaviour:
   - SubTeamCount
   - AssignTeamRPC
   - CheckIfCanStartRPC
+  - AddBlueTeam
+  - AddRedTeam
+  - SubBlueTeam
+  - SubRedTeam
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

@@ -7,26 +7,45 @@ using UnityEngine;
 public class GameManager : MonoBehaviourPunCallbacks
 {
     [SerializeField]
-    Transform blueSpawnPoint;
-    [SerializeField]
-    Transform redSpawnPoint;
+     List<Transform> blueSpawnPoint = new List<Transform>();
 
+    [SerializeField]
+    List<Transform> redSpawnPoint = new List<Transform>();
+   
+    [SerializeField]
+    Camera blueCam;
+    [SerializeField]
+    Camera redCam;
+   
 
 
     // Start is called before the first frame update
     void Start()
     {
         SpawnPlayers();
+
     }
 
     private void SpawnPlayers()
     {
-        if(PhotonNetwork.LocalPlayer.GetTeam() == "Blue")
+        if (PhotonNetwork.LocalPlayer.GetTeam() == "Blue")
         {
-            PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "Player"), blueSpawnPoint.position, blueSpawnPoint.rotation);
-        }else if (PhotonNetwork.LocalPlayer.GetTeam() == "Red")
+            Vector3 spawnPoint = blueSpawnPoint[0].position;
+            spawnPoint.x += Random.Range(-5, 5);
+
+            PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "Player"), spawnPoint, blueSpawnPoint[0].rotation);
+            blueCam.gameObject.SetActive(true);
+            
+
+        }
+        else if (PhotonNetwork.LocalPlayer.GetTeam() == "Red")
         {
-            PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "Player"), redSpawnPoint.position, redSpawnPoint.rotation);
+            Vector3 spawnPoint = redSpawnPoint[0].position;
+            spawnPoint.x += Random.Range(-5, 5);
+
+            PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "Player"), spawnPoint, redSpawnPoint[0].rotation);
+            redCam.gameObject.SetActive(true);
+
         }
     }
 
@@ -36,4 +55,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         
     }
+
+
+   
 }

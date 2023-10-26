@@ -39,6 +39,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
     PhotonTeamsManager teams;
 
     public int MaxPlayers = 4;
+    public int currentRedPlayers = 0;
+    public int currentBluePlayers = 0;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -65,10 +69,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
             joinedBlueTeam = true;
 
-            PhotonNetwork.LocalPlayer.JoinTeam(1);
+           
 
             PhotonNetwork.LocalPlayer.SetTeam("Blue");
-                 
+            view.RPC("AddBlueTeam", RpcTarget.AllBuffered);
         }
         else if (joinedRedTeam)
         {
@@ -79,9 +83,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
             joinedBlueTeam = true;
             joinedRedTeam = false;
 
-            PhotonNetwork.LocalPlayer.SwitchTeam(1);
+           
 
             PhotonNetwork.LocalPlayer.SetTeam("Blue");
+            view.RPC("AddBlueTeam", RpcTarget.AllBuffered);
+            view.RPC("SubRedTeam", RpcTarget.AllBuffered);
         }
         PlayerTracker();
 
@@ -99,9 +105,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
             localPlayer = player;
             joinedRedTeam = true;
 
-            PhotonNetwork.LocalPlayer.JoinTeam(2);
 
             PhotonNetwork.LocalPlayer.SetTeam("Red");
+            view.RPC("AddRedTeam", RpcTarget.AllBuffered);
         }
         else if (joinedBlueTeam)
         {
@@ -112,9 +118,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
             joinedRedTeam = true;
             joinedBlueTeam = false;
 
-            PhotonNetwork.LocalPlayer.SwitchTeam(2);
 
             PhotonNetwork.LocalPlayer.SetTeam("Red");
+            view.RPC("AddRedTeam", RpcTarget.AllBuffered);
+            view.RPC("SubBlueTeam", RpcTarget.AllBuffered);
         }
         PlayerTracker();
 
@@ -156,12 +163,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         if (playerCount == MaxPlayers)//when max players reached close room to prevent more players form joining
         {
-            if (teams.TryGetTeamMembers(1, out Player[] blueMembers) && teams.TryGetTeamMembers(2, out Player[] redMembers))
+            if (currentBluePlayers == MaxPlayers / 2 && currentRedPlayers == MaxPlayers / 2)
             {
-                if (blueMembers.Length == MaxPlayers/2 && redMembers.Length == MaxPlayers/2 && PhotonNetwork.IsMasterClient)
-                {
-                    startButton.SetActive(true);
-                }
+               
+               startButton.SetActive(true);
+                
             }
             PhotonNetwork.CurrentRoom.IsOpen = false;
         }
@@ -218,5 +224,27 @@ public class RoomManager : MonoBehaviourPunCallbacks
     void CheckIfCanStartRPC()
     {
         CheckIfCanStartGame();
+    }
+
+    [PunRPC]
+    void AddBlueTeam()
+    {
+        currentBluePlayers++;
+    }
+    [PunRPC]
+    void SubBlueTeam()
+    {
+        currentBluePlayers--;
+    }
+
+    [PunRPC]
+    void AddRedTeam()
+    {
+        currentRedPlayers++;
+    }
+    [PunRPC]
+    void SubRedTeam()
+    {
+        currentRedPlayers--;
     }
 }

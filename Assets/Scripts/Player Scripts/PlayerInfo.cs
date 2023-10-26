@@ -8,7 +8,7 @@ public class PlayerInfo : MonoBehaviour
 
     public static bool isRedTeam = false;
     public static bool isBlueTeam = false;
-
+    public static int playerIndex;
 
     private void Start()
     {

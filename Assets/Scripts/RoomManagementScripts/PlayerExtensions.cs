@@ -4,6 +4,7 @@ public static class PlayerExtensions
 {
 
     private const string TeamKey = "Team";
+ 
 
     public static void SetTeam(this Player player, string team)
     {

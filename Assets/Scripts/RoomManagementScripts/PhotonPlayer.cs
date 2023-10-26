@@ -11,9 +11,6 @@ public class PhotonPlayer : MonoBehaviour
 
     public static PhotonPlayer Instance;
 
-
-    public int teamID;
-
     public string team;
 
     PhotonView view;
