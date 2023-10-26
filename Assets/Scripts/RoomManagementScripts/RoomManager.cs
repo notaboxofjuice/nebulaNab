@@ -133,18 +133,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
         
         playerCount = PhotonNetwork.PlayerList.Length;
 
-        blueTeamPlayersText.text = "";
-        redTeamPlayersText.text = "";
-
         currentPlayersText.text = "";
 
         for (int x = 0; x < playerCount; x++)
         {
 
-           /* if ( PhotonNetwork.PlayerList[x].GetPhotonTeam())
+          /* if(PhotonNetwork.PlayerList[x].GetTeam() == "Blue")
             {
                 currentPlayersText.text += "<color=blue>"+ PhotonNetwork.PlayerList[x].NickName + "</color>" + "\n";
-            }else if (joinedRedTeam)
+            }else if (PhotonNetwork.PlayerList[x].GetTeam() == "Red")
             {
                 currentPlayersText.text += "<color=red>" + PhotonNetwork.PlayerList[x].NickName + "</color>" + "\n";
             }
@@ -191,8 +188,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         base.OnPlayerLeftRoom(otherPlayer);
-
-        Destroy(localPlayer);
 
         PlayerTracker();
     }
