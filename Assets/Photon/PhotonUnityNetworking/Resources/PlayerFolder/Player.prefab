@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5811077994048124100}
   - component: {fileID: 664993365285235479}
   - component: {fileID: 4272002864090318209}
-  - component: {fileID: 4305290883031885345}
   m_Layer: 0
   m_Name: playerBody
   m_TagString: Untagged
@@ -84,21 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4305290883031885345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 329900992340763789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9dbe115d1298dd4284f9060a2277a3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  daddy: {fileID: 0}
-  rayDistance: 2
-  activeCannon: {fileID: 0}
 --- !u!1 &4279835558309895457
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,10 +92,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2577553237254561123}
+  - component: {fileID: 4257263994738784385}
+  - component: {fileID: 2824608891667848003}
   - component: {fileID: 7614386331972914371}
   - component: {fileID: 8229163264210336516}
-  - component: {fileID: 6894817489868484000}
-  - component: {fileID: 4257263994738784385}
+  - component: {fileID: 1330242265356059792}
   - component: {fileID: 7322868796662050045}
   - component: {fileID: -7385013098956905981}
   - component: {fileID: 7035748954959434213}
@@ -139,6 +124,55 @@ Transform:
   - {fileID: 5811077994048124100}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &4257263994738784385
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4279835558309895457}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!143 &2824608891667848003
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4279835558309895457}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7614386331972914371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,7 +216,7 @@ MonoBehaviour:
     m_ActionName: Gameplay/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4305290883031885345}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Action, Assembly-CSharp
         m_MethodName: GameplayAction
         m_Mode: 1
@@ -198,7 +232,7 @@ MonoBehaviour:
     m_ActionName: Gameplay/Action[/Keyboard/e,/Keyboard/space,/XInputControllerWindows/buttonSouth,/XInputControllerWindows/buttonWest]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4305290883031885345}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Action, Assembly-CSharp
         m_MethodName: AimCannon
         m_Mode: 0
@@ -214,7 +248,7 @@ MonoBehaviour:
     m_ActionName: Cannon/Aim[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4305290883031885345}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Action, Assembly-CSharp
         m_MethodName: FireCannon
         m_Mode: 1
@@ -251,58 +285,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 5
   maxVelocityChange: 10
-  playerBody: {fileID: 329900992340763789}
-  rotationSpeed: 20
---- !u!54 &6894817489868484000
-Rigidbody:
+  bodyTransform: {fileID: 5811077994048124100}
+  rotationSpeed: 45
+--- !u!114 &1330242265356059792
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4279835558309895457}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!136 &4257263994738784385
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4279835558309895457}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9dbe115d1298dd4284f9060a2277a3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyTransform: {fileID: 5811077994048124100}
+  rayDistance: 2
+  activeCannon: {fileID: 0}
 --- !u!114 &7322868796662050045
 MonoBehaviour:
   m_ObjectHideFlags: 0

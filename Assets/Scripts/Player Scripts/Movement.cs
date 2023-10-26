@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
@@ -5,17 +6,16 @@ public class Movement : MonoBehaviour
     #region Variables
     [Header("Movement")]
     [SerializeField] float playerSpeed;
-    [SerializeField] float maxVelocityChange;
     [Header("Look Where Going")]
-    [SerializeField] GameObject playerBody;
+    [SerializeField] Transform bodyTransform;
     [SerializeField] float rotationSpeed;
-    private Rigidbody rb;
+    private CharacterController cc;
     private Vector2 move;
     #endregion
     #region Methods
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        cc = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
     }
     private void FixedUpdate()
@@ -32,26 +32,27 @@ public class Movement : MonoBehaviour
     }
     public void TryMovement(InputAction.CallbackContext context)
     {
+        Debug.Log(PhotonNetwork.NickName + " is trying movement.");
         move = context.ReadValue<Vector2>();
     }
     private void DoMovement()
     {
-        // calculate how fast we should be moving
-        Vector3 targetVelocity = new(move.x, 0, move.y);
-        // movement calculations
-        targetVelocity = transform.TransformDirection(targetVelocity) * playerSpeed;
-        // apply a force that attempts to reach our target velocity
-        Vector3 velocity = rb.velocity;
-        Vector3 velocityChange = (targetVelocity - velocity);
-        velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
-        velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-        velocityChange.y = 0;
-        rb.AddForce(velocityChange, ForceMode.VelocityChange); // add the velo
+        // calculate velocity relative to camera, ignoring camera's pitch
+        Vector3 forward = Camera.main.transform.forward;
+        forward.y = 0;
+        forward = forward.normalized;
+        Vector3 right = new Vector3(forward.z, 0, -forward.x);
+        // calculate target velocity based on input
+        Vector3 targetVelocity = (move.x * right + move.y * forward);
+        targetVelocity.Normalize();
+        targetVelocity.y = 0;
+        // move the cc
+        cc.Move(targetVelocity * Time.deltaTime * playerSpeed);
     }
     void LookWhereGoing()
     {
-        Quaternion newRotation = Quaternion.LookRotation(rb.velocity);
-        playerBody.transform.rotation = Quaternion.Slerp(playerBody.transform.rotation, newRotation, Time.deltaTime * rotationSpeed);
+        Quaternion newRotation = Quaternion.LookRotation(cc.velocity);
+        bodyTransform.rotation = Quaternion.Slerp(bodyTransform.transform.rotation, newRotation, Time.deltaTime * rotationSpeed);
     }
     #endregion
 }
