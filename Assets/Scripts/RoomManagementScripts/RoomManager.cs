@@ -205,9 +205,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public void LeaveRoom()
     {
         PhotonNetwork.LeaveRoom();
-        SceneManager.LoadScene(1);
+      
     }
- 
+
+    public override void OnLeftRoom()
+    {
+        base.OnLeftRoom();
+        SceneManager.LoadScene(0);
+    }
+
     [PunRPC]
     void CheckIfCanStartRPC()
     {
