@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     private Vector2 move;
     #endregion
     #region Methods
+    #region Unity Methods
     private void Start()
     {
         cc = GetComponent<CharacterController>();
@@ -30,9 +31,11 @@ public class Movement : MonoBehaviour
             transform.hasChanged = false;
         }
     }
+    #endregion
+    #region My Methods
     public void TryMovement(InputAction.CallbackContext context)
     {
-        Debug.Log(PhotonNetwork.LocalPlayer.NickName + " is trying movement.");
+        Debug.Log(PhotonNetwork.NickName + " is trying movement.");
         move = context.ReadValue<Vector2>();
     }
     private void DoMovement()
@@ -54,5 +57,6 @@ public class Movement : MonoBehaviour
         Quaternion newRotation = Quaternion.LookRotation(cc.velocity);
         bodyTransform.rotation = Quaternion.Slerp(bodyTransform.transform.rotation, newRotation, Time.deltaTime * rotationSpeed);
     }
+    #endregion
     #endregion
 }
