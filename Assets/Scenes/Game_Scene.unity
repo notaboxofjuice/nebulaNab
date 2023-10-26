@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 995815106}
   m_Layer: 0
   m_Name: RedCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 1386061997}
   m_Layer: 0
   m_Name: BlueCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

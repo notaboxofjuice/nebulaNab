@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9dbe115d1298dd4284f9060a2277a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  daddy: {fileID: 0}
+  bodyTransform: {fileID: 0}
   rayDistance: 2
   activeCannon: {fileID: 0}
 --- !u!1 &4279835558309895457
