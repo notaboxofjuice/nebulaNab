@@ -3,27 +3,7 @@ guid: 78e4fc219a7d5e4469d575157bb7bfad
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Accent
-    second: {fileID: 2100000, guid: 433704cdc7dc8fc438dd5e76b2512653, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: CannonBarrel
-    second: {fileID: 2100000, guid: 5fab9797ee5bd4e4591393b9999cb328, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: CannonBase
-    second: {fileID: 2100000, guid: 501e540a160b73644b99c25c378922a3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Sheild
-    second: {fileID: 2100000, guid: 24740a21b28d36043b1b545ebda26401, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
