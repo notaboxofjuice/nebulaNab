@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyTransform: {fileID: 5811077994048124100}
-  rayDistance: 2
+  rayDistance: 4
   activeCannon: {fileID: 0}
 --- !u!114 &7322868796662050045
 MonoBehaviour:

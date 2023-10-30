@@ -5,12 +5,13 @@ using UnityEngine;
 public class JuiceInventory : MonoBehaviour
 {
     public int juiceCount;
-    private void OnCollisionEnter(Collision collision) // for when assigned to player
+    private void OnTriggerEnter(Collider other) // for when assigned to juice obj
     {
-        if (collision.gameObject.CompareTag("Juice"))
+        if (other.gameObject.CompareTag("Player") && this.gameObject.CompareTag("Juice"))
         {
-            juiceCount++;
-            Destroy(collision.gameObject);
+            Debug.Log(other.gameObject.name + " is collecting " + juiceCount + " juice."); // debug log
+            other.gameObject.GetComponent<JuiceInventory>().juiceCount += juiceCount;
+            Destroy(gameObject);
         }
     }
 }
