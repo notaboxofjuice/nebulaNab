@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using System.IO;
 
 public class ObjectSpawner : MonoBehaviour
 {
@@ -76,14 +77,14 @@ public class ObjectSpawner : MonoBehaviour
                 objectNearby = Physics.CheckSphere(spawnCoords, spawnRadius);
             } while (objectNearby);
             int randID = Random.Range(0, juiceObjects.Length);
-            PhotonNetwork.Instantiate(juiceObjects[randID].name, spawnCoords, Quaternion.identity);
+            PhotonNetwork.Instantiate(Path.Combine("Spawn Objects", juiceObjects[randID].name), spawnCoords, Quaternion.identity);
             juiceObjectCount++;
         }
         if(obstacleCount < maxObstacles)
         {
             Vector3 spawnCoords = CoordGenerator();
             int randID = Random.Range(0, asteroids.Length);
-            PhotonNetwork.Instantiate(asteroids[randID].name, spawnCoords + (Vector3.up * asteroidYSpawnCoord), Quaternion.identity);
+            PhotonNetwork.Instantiate(Path.Combine("Spawn Objects", asteroids[randID].name), spawnCoords + (Vector3.up * asteroidYSpawnCoord), Quaternion.identity);
             obstacleCount++;
         }
         yield return new WaitForSeconds(spawnTime);
