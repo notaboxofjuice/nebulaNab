@@ -281,18 +281,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab2e14345d5f384380b5509865e06a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRangeX: 0
-  spawnRangeZ: 0
-  maxJuiceObjects: 0
-  maxObstacles: 0
-  maxSpawnTime: 0
-  minSpawnTime: 0
-  asteroidYSpawnCoord: 0
-  spawnRadius: 0
+  spawnRangeX: 30
+  spawnRangeZ: 30
+  maxJuiceObjects: 5
+  maxObstacles: 5
+  maxSpawnTime: 3
+  minSpawnTime: 0.25
+  asteroidYSpawnCoord: -5
+  spawnRadius: 2
   juiceObjectCount: 0
   obstacleCount: 0
-  juiceObjects: []
-  asteroids: []
+  juiceObjects:
+  - {fileID: 919132149155446097, guid: 01187ce811f0c0a4ab549527b848b2a5, type: 3}
+  asteroids:
+  - {fileID: 919132149155446097, guid: e1cd14d5e75aac04d9d99cdfed48d59d, type: 3}
 --- !u!1 &567310806
 GameObject:
   m_ObjectHideFlags: 0
