@@ -77,7 +77,7 @@ public class ObjectSpawner : MonoBehaviour
                 objectNearby = Physics.CheckSphere(spawnCoords, spawnRadius);
             } while (objectNearby);
             int randID = Random.Range(0, juiceObjects.Length);
-            PhotonNetwork.Instantiate(juiceObjects[randID].name, spawnCoords, Quaternion.identity);
+            PhotonNetwork.Instantiate(Path.Combine("Spawn Objects", juiceObjects[randID].name), spawnCoords, Quaternion.identity);
             juiceObjectCount++;
         }
         if(obstacleCount < maxObstacles)
