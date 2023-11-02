@@ -11,6 +11,7 @@ public class JuiceInventory : MonoBehaviour
         {
             Debug.Log(other.gameObject.name + " is collecting " + juiceCount + " juice."); // debug log
             other.gameObject.GetComponent<JuiceInventory>().juiceCount += juiceCount;
+
             Destroy(gameObject);
         }
     }
