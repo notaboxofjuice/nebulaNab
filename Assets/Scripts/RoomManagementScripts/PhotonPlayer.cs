@@ -30,13 +30,6 @@ public class PhotonPlayer : MonoBehaviour
         }
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     [PunRPC]
     void AssignTeamRPC()
     {

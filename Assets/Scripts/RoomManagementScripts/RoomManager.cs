@@ -31,14 +31,13 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     PhotonView view;
 
-    bool joinedBlueTeam = false;
-    bool joinedRedTeam = false;
+    private bool joinedBlueTeam = false;
+    private bool joinedRedTeam = false;
 
     GameObject localPlayer;
 
-    PhotonTeamsManager teams;
-
-    public int MaxPlayers = 4;
+    [SerializeField]
+    private int MaxPlayers = 4;
     public int currentRedPlayers = 0;
     public int currentBluePlayers = 0;
 
@@ -54,7 +53,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         PlayerTracker();
 
-        teams = GetComponent<PhotonTeamsManager>();
     }
 
 
@@ -72,6 +70,16 @@ public class RoomManager : MonoBehaviourPunCallbacks
            
 
             PhotonNetwork.LocalPlayer.SetTeam("Blue");
+            if(currentBluePlayers < 1)
+            {
+                PhotonNetwork.LocalPlayer.SetPlayerIndex(1);
+            }
+            else
+            {
+                PhotonNetwork.LocalPlayer.SetPlayerIndex(2);
+            }
+
+
             view.RPC("AddBlueTeam", RpcTarget.AllBuffered);
         }
         else if (joinedRedTeam)
@@ -86,11 +94,21 @@ public class RoomManager : MonoBehaviourPunCallbacks
            
 
             PhotonNetwork.LocalPlayer.SetTeam("Blue");
+            if (currentBluePlayers < 1)
+            {
+                PhotonNetwork.LocalPlayer.SetPlayerIndex(1);
+            }
+            else
+            {
+                PhotonNetwork.LocalPlayer.SetPlayerIndex(2);
+            }
+
             view.RPC("AddBlueTeam", RpcTarget.AllBuffered);
             view.RPC("SubRedTeam", RpcTarget.AllBuffered);
         }
         PlayerTracker();
 
+        Debug.Log(PhotonNetwork.LocalPlayer.GetPlayerIndex() + " Index");
         view.RPC("CheckIfCanStartRPC", RpcTarget.AllBuffered);
     }
 
@@ -107,6 +125,19 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
 
             PhotonNetwork.LocalPlayer.SetTeam("Red");
+            if (currentRedPlayers < 1)
+            {
+                PhotonNetwork.LocalPlayer.SetPlayerIndex(1);
+
+               
+            }
+            else
+            {
+                PhotonNetwork.LocalPlayer.SetPlayerIndex(2);
+
+               
+            }
+
             view.RPC("AddRedTeam", RpcTarget.AllBuffered);
         }
         else if (joinedBlueTeam)
@@ -120,11 +151,21 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
 
             PhotonNetwork.LocalPlayer.SetTeam("Red");
+            if (currentRedPlayers < 1)
+            {
+                PhotonNetwork.LocalPlayer.SetPlayerIndex(1);
+            }
+            else
+            {
+                PhotonNetwork.LocalPlayer.SetPlayerIndex(2);
+            }
+
             view.RPC("AddRedTeam", RpcTarget.AllBuffered);
             view.RPC("SubBlueTeam", RpcTarget.AllBuffered);
         }
         PlayerTracker();
 
+        Debug.Log(PhotonNetwork.LocalPlayer.GetPlayerIndex() + " Index");
         view.RPC("CheckIfCanStartRPC", RpcTarget.AllBuffered);
     }
 
