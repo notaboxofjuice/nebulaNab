@@ -423,7 +423,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 5
-  bodyTransform: {fileID: 4919882513279996037}
   rotationSpeed: 45
 --- !u!114 &905744189294288186
 MonoBehaviour:
@@ -437,7 +436,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9dbe115d1298dd4284f9060a2277a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodyTransform: {fileID: 4919882513279996037}
   rayDistance: 4
   activeCannon: {fileID: 0}
 --- !u!114 &8882276725536699735
