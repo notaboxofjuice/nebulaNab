@@ -1,7 +1,8 @@
 using UnityEngine;
 public class testCamera : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    [SerializeField]
+    public GameObject player;
     void Start()
     {
         player = GameObject.FindWithTag("Player");

@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -13,9 +14,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     List<Transform> redSpawnPoint = new List<Transform>();
    
     [SerializeField]
-    Camera blueCam;
+    testCamera blueCam;
     [SerializeField]
-    Camera redCam;
+    testCamera redCam;
    
 
 
@@ -33,16 +34,17 @@ public class GameManager : MonoBehaviourPunCallbacks
 
             if (PhotonNetwork.LocalPlayer.GetPlayerIndex() == 1)//player index assgined in room is used to decide which character they get
             {
-                PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "BluePlayerOne"), blueSpawnPoint[0].position, blueSpawnPoint[0].rotation);
-              
+                var player = PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "BluePlayerOne"), blueSpawnPoint[0].position, blueSpawnPoint[0].rotation);
+                blueCam.player = player;
             }
             else
             {
-                PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "BluePlayerTwo"), blueSpawnPoint[1].position, blueSpawnPoint[1].rotation);
-               
+                var player = PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "BluePlayerTwo"), blueSpawnPoint[1].position, blueSpawnPoint[1].rotation);
+                blueCam.player = player;
             }
             //enalble blue camera, disable red, incase it was enabled
             blueCam.gameObject.SetActive(true);
+
             redCam.gameObject.SetActive(false);
 
         }
@@ -51,13 +53,13 @@ public class GameManager : MonoBehaviourPunCallbacks
             
             if(PhotonNetwork.LocalPlayer.GetPlayerIndex() == 1)//player index assgined in room is used to decide which character they get
             {
-                PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "RedPlayerOne"), redSpawnPoint[0].position, redSpawnPoint[0].rotation);
-               
+                var player = PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "RedPlayerOne"), redSpawnPoint[0].position, redSpawnPoint[0].rotation);
+               redCam.player = player;
             }
             else
             {
-                PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "RedPlayerTwo"), redSpawnPoint[1].position, redSpawnPoint[1].rotation);
-               
+                var player = PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "RedPlayerTwo"), redSpawnPoint[1].position, redSpawnPoint[1].rotation);
+                redCam.player = player;
             }
             //enalble red camera, disable blue, incase it was enabled
             redCam.gameObject.SetActive(true);
