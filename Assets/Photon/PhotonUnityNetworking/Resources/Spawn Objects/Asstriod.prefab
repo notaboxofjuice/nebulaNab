@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3428704366942433949}
   - component: {fileID: 629237138135699364}
   - component: {fileID: 7259645393763982549}
+  - component: {fileID: 4833601972027890107}
+  - component: {fileID: 7124308312387729357}
   m_Layer: 0
   m_Name: Asstriod
   m_TagString: Untagged
@@ -90,6 +92,42 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!135 &4833601972027890107
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6282251575845107595}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0, y: -0.4, z: 0}
+--- !u!114 &7124308312387729357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6282251575845107595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a228931e1e61b942bcfd4873de160e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  travelSpeed: 5
+  maxSize: 0
+  killTime: 5
 --- !u!1001 &2761993078614188525
 PrefabInstance:
   m_ObjectHideFlags: 0
