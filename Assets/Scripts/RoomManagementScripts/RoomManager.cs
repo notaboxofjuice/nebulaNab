@@ -22,8 +22,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
     private TMP_Text redTeamPlayersText;
 
     private int playerCount = 0;
-    bool startingGame = false;
 
+    [Header("Object Refrences")]
     [SerializeField]
     private Transform blueSpawnPoint;
     [SerializeField]
@@ -46,12 +46,12 @@ public class RoomManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        PhotonNetwork.AutomaticallySyncScene = true;
+        PhotonNetwork.AutomaticallySyncScene = true;//all players stay on the smae scene
         roomIDText.text = PhotonNetwork.CurrentRoom.Name;//displays room ID on title text
 
         view = GetComponent<PhotonView>();
 
-        PlayerTracker();
+        PlayerTracker();//updates display//shows names of current players
 
     }
 
@@ -60,14 +60,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         if(!joinedBlueTeam && !joinedRedTeam)
         {
-            //view.RPC("UpdateBlueTeam", RpcTarget.AllBuffered, PhotonNetwork.LocalPlayer.NickName);
 
             var player = PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "GODCUBE"), blueSpawnPoint.position, blueSpawnPoint.rotation);
             localPlayer = player;
 
             joinedBlueTeam = true;
-
-           
 
             PhotonNetwork.LocalPlayer.SetTeam("Blue");
             if(currentBluePlayers < 1)
@@ -79,12 +76,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
                 PhotonNetwork.LocalPlayer.SetPlayerIndex(2);
             }
 
-
             view.RPC("AddBlueTeam", RpcTarget.AllBuffered);
         }
         else if (joinedRedTeam)
         {
-            //view.RPC("RemoveName", RpcTarget.AllBuffered, redTeamPlayersText.ToString(),PhotonNetwork.LocalPlayer.NickName);
+           
             if (localPlayer != null)
                 localPlayer.transform.position = blueSpawnPoint.position;
 
@@ -116,9 +112,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         if(!joinedRedTeam && !joinedBlueTeam)
         {
-            //view.RPC("UpdateRedTeam", RpcTarget.AllBuffered, PhotonNetwork.LocalPlayer.NickName);
+           
 
-           var player = PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "GODCUBE"), redSpawnPoint.position, redSpawnPoint.rotation);
+           var player = PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "GODCUBE"), redSpawnPoint.position, redSpawnPoint.rotation);//gives each player their own floaty cube
 
             localPlayer = player;
             joinedRedTeam = true;
@@ -198,16 +194,17 @@ public class RoomManager : MonoBehaviourPunCallbacks
     }
 
     void CheckIfCanStartGame()
-    {
-        if (playerCount == MaxPlayers)//when max players reached close room to prevent more players form joining
+    {//checks if the room has been filled, and players can start game
+        
+        if (playerCount == MaxPlayers)
         {
             if (currentBluePlayers == MaxPlayers / 2 && currentRedPlayers == MaxPlayers / 2)
             {
                
-               startButton.SetActive(true);
+               startButton.SetActive(true);//show start game button
                 
             }
-            PhotonNetwork.CurrentRoom.IsOpen = false;
+            PhotonNetwork.CurrentRoom.IsOpen = false;//close room, prevents other players from joining
         }
         else
         {
@@ -235,7 +232,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     public void StartGame()
     {
-        startingGame = true;
 
         if (!PhotonNetwork.IsMasterClient)
             return;

@@ -263,7 +263,7 @@ Transform:
   m_GameObject: {fileID: 472966755}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9956858, y: -0.030331612, z: 42.43624}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -294,6 +294,10 @@ MonoBehaviour:
   juiceObjects:
   - {fileID: 2668784925162411329, guid: cb854ab5650ca9747bf4c07e9a720cfe, type: 3}
   - {fileID: 7759869854109464947, guid: d615fee2387a3b44a92a87f77553862b, type: 3}
+  - {fileID: 740148306630946546, guid: a5636a8518de96e4cb0bff995d3d00c4, type: 3}
+  - {fileID: 4632437293466711249, guid: 6fa34240e955b2549b429b71ed173ec7, type: 3}
+  - {fileID: 18148210411326695, guid: 6ddfd2c2b35574144ba43c77cc0c510e, type: 3}
+  - {fileID: 5547775273547579256, guid: 10d20f7f750482f4dadca50c91d18ee9, type: 3}
   asteroids:
   - {fileID: 6282251575845107595, guid: 45a0d15c977a58549828ca1be1dd96dc, type: 3}
 --- !u!1 &567310806
