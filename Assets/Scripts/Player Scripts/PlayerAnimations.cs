@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Animation : MonoBehaviour
+public class PlayerAnimations : MonoBehaviour
 {
     [SerializeField]
     private Animator anime;
