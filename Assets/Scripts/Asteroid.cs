@@ -9,7 +9,12 @@ public class Asteroid : MonoBehaviour
     [SerializeField] float maxSize;
     [Tooltip("Maximum amount of time the object is allowed to persist before it destroys itself.")]
     [SerializeField] float killTime;
-    // Start is called before the first frame update
+    ObjectSpawner spawner;
+
+    private void Awake()
+    {
+        spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<ObjectSpawner>();
+    }
     void Start()
     {
         Destroy(gameObject, killTime);
@@ -22,5 +27,9 @@ public class Asteroid : MonoBehaviour
     void Move()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y + (travelSpeed * Time.deltaTime), transform.position.z);
+    }
+    private void OnDestroy()
+    {
+        spawner.obstacleCount--;
     }
 }
