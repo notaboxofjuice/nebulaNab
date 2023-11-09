@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 533404386057124777}
   - component: {fileID: 9169365836206311503}
   - component: {fileID: 794877835988584749}
+  - component: {fileID: 5440116677208647619}
   m_Layer: 0
   m_Name: BluePlayerTwo
   m_TagString: Player
@@ -424,6 +425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 5
   rotationSpeed: 45
+  isMoving: 0
 --- !u!114 &905744189294288186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,6 +523,20 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &5440116677208647619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2702483048035075211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 148515956ac20c44db5c49d79d4c9402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anime: {fileID: 1343976771468921599}
+  movementScript: {fileID: 7843016155939971758}
 --- !u!1 &2844596144833992232
 GameObject:
   m_ObjectHideFlags: 0

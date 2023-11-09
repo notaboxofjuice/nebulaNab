@@ -650,6 +650,7 @@ GameObject:
   - component: {fileID: 958317746532035145}
   - component: {fileID: 8461007210330282415}
   - component: {fileID: 84532314108926157}
+  - component: {fileID: 4432640229656312026}
   m_Layer: 0
   m_Name: RedPlayerTwo
   m_TagString: Player
@@ -847,6 +848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 5
   rotationSpeed: 45
+  isMoving: 0
 --- !u!114 &484824247641689306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -907,6 +909,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 84532314108926157}
+  - {fileID: 5076001235512656258}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -943,6 +946,20 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &4432640229656312026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3434714469690381675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 148515956ac20c44db5c49d79d4c9402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anime: {fileID: 2872422506130224971}
+  movementScript: {fileID: 7420900006231339854}
 --- !u!1 &4578798008494500972
 GameObject:
   m_ObjectHideFlags: 0

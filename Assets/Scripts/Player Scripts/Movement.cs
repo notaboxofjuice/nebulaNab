@@ -10,6 +10,9 @@ public class Movement : MonoBehaviour
     [SerializeField] float rotationSpeed;
     private CharacterController cc;
     private Vector2 move;
+
+    public float isMoving = 0;
+
     #endregion
     #region Methods
     #region Unity Methods
@@ -49,6 +52,8 @@ public class Movement : MonoBehaviour
     {
         Debug.Log(PhotonNetwork.NickName + " is trying movement.");
         move = context.ReadValue<Vector2>();
+
+        isMoving = move.magnitude;
     }
     #endregion
     #endregion
