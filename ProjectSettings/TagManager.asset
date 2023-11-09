@@ -9,6 +9,7 @@ TagManager:
   - CloningMachine
   - Cannon
   - Spawner
+  - Door
   layers:
   - Default
   - TransparentFX
