@@ -5,7 +5,6 @@ public class Action : MonoBehaviour
 {
     #region Variables
     [Header("Gameplay Vars")]
-    [SerializeField] Transform bodyTransform;
     [SerializeField] float rayDistance;
     [Header("Cannon Vars")]
     [SerializeField] Cannon activeCannon;
@@ -14,9 +13,9 @@ public class Action : MonoBehaviour
     public void GameplayAction() // called by input system
     { // raycast forward
         RaycastHit hit;
-        if (Physics.Raycast(bodyTransform.position, transform.forward, out hit, rayDistance))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, rayDistance))
         {
-            Debug.DrawLine(bodyTransform.transform.position, hit.point, Color.red);
+            Debug.DrawLine(transform.position, hit.point, Color.red);
             if (hit.collider.CompareTag("JuiceTank"))
             { // deposit juice
                 Debug.Log(PhotonNetwork.NickName + " is depositing juice.");
