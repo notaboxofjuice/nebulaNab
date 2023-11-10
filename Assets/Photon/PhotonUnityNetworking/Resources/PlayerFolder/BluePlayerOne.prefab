@@ -690,7 +690,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6824481260190681922}
-  - component: {fileID: 5072449024267234976}
   - component: {fileID: 6504082270591847778}
   - component: {fileID: 1502969214357166818}
   - component: {fileID: 1100003026396900645}
@@ -699,6 +698,8 @@ GameObject:
   - component: {fileID: 7274170166447944738}
   - component: {fileID: 2077323720382236612}
   - component: {fileID: 7535641897174304422}
+  - component: {fileID: -4048250080223235692}
+  - component: {fileID: -6450429978333704428}
   m_Layer: 0
   m_Name: BluePlayerOne
   m_TagString: Player
@@ -723,29 +724,6 @@ Transform:
   - {fileID: 9174288351023433071}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &5072449024267234976
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5049983569404562176}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 1
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &6504082270591847778
 CharacterController:
   m_ObjectHideFlags: 0
@@ -895,8 +873,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 5
-  bodyTransform: {fileID: 9174288351023433071}
   rotationSpeed: 45
+  isMoving: 0
 --- !u!114 &8000040856932111025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -909,7 +887,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9dbe115d1298dd4284f9060a2277a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodyTransform: {fileID: 9174288351023433071}
   rayDistance: 4
   activeCannon: {fileID: 0}
 --- !u!114 &1787978325811788508
@@ -958,6 +935,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 7535641897174304422}
+  - {fileID: 7563117356720710192}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -994,6 +972,47 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &-4048250080223235692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5049983569404562176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 148515956ac20c44db5c49d79d4c9402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anime: {fileID: 3004378626188402453}
+  movementScript: {fileID: 1100003026396900645}
+--- !u!54 &-6450429978333704428
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5049983569404562176}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 0
+  m_ImplicitTensor: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &5204578427556309232
 GameObject:
   m_ObjectHideFlags: 0

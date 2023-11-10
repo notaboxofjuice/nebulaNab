@@ -2,7 +2,7 @@ using UnityEngine;
 public class testCamera : MonoBehaviour
 {
     [SerializeField]
-    public GameObject player;
+    public GameObject player;//used by GameManager to assgin player upon instantiation
     void Start()
     {
         player = GameObject.FindWithTag("Player");

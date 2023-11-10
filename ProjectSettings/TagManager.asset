@@ -8,6 +8,8 @@ TagManager:
   - JuiceTank
   - CloningMachine
   - Cannon
+  - Spawner
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - PostProcessing
   - 
   - 
   - 

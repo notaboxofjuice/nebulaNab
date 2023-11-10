@@ -1587,7 +1587,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8032014959330638790}
-  - component: {fileID: 8621836936925339172}
   - component: {fileID: 7746537558287613414}
   - component: {fileID: 2673308630675368550}
   - component: {fileID: 4504127857081097633}
@@ -1596,6 +1595,8 @@ GameObject:
   - component: {fileID: 6138711652983424166}
   - component: {fileID: 3248850608712529728}
   - component: {fileID: 6436177001733649954}
+  - component: {fileID: 3633626969804154502}
+  - component: {fileID: 187371581862248886}
   m_Layer: 0
   m_Name: RedPlayerOne
   m_TagString: Player
@@ -1620,29 +1621,6 @@ Transform:
   - {fileID: 2073357244079369428}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &8621836936925339172
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8635436559469149060}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 1
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &7746537558287613414
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1793,6 +1771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 5
   rotationSpeed: 45
+  isMoving: 0
 --- !u!114 &6829643161677308469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1853,6 +1832,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 6436177001733649954}
+  - {fileID: 2346567973185346155}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1889,6 +1869,47 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &3633626969804154502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8635436559469149060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 148515956ac20c44db5c49d79d4c9402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anime: {fileID: 5343001684193359534}
+  movementScript: {fileID: 4504127857081097633}
+--- !u!54 &187371581862248886
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8635436559469149060}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 0
+  m_ImplicitTensor: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &8640406169298083527
 GameObject:
   m_ObjectHideFlags: 0
