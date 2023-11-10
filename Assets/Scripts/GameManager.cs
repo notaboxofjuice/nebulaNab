@@ -14,9 +14,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     List<Transform> redSpawnPoint = new List<Transform>();
    
     [SerializeField]
-    testCamera blueCam;
+    CameraOffset blueCam;
     [SerializeField]
-    testCamera redCam;
+    CameraOffset redCam;
    
 
 

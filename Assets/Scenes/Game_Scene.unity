@@ -158,7 +158,7 @@ MonoBehaviour:
   redSpawnPoint:
   - {fileID: 374613821}
   - {fileID: 385421894}
-  blueCam: {fileID: 1386061997}
+  blueCam: {fileID: 1386062002}
   redCam: {fileID: 995815106}
 --- !u!4 &65118262
 Transform:
@@ -658,10 +658,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 995815105}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04e25d1e07f91c64eba4300083975f88, type: 3}
+  m_Script: {fileID: 11500000, guid: be3b4e144f1f6fa45937985bb9c03069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  minFollowDist: 6
+  maxHeight: 32
+  minHeight: 8
+  smoothTime: 2
 --- !u!81 &995815107
 AudioListener:
   m_ObjectHideFlags: 0
@@ -965,11 +969,6 @@ PrefabInstance:
       addedObject: {fileID: 218116776}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
---- !u!1 &1089357260 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2752396937134319542, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
-  m_PrefabInstance: {fileID: 1089357259}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1089357261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8043539134408144565, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
@@ -1092,8 +1091,8 @@ GameObject:
   - component: {fileID: 1386062000}
   - component: {fileID: 1386061999}
   - component: {fileID: 1386061998}
-  - component: {fileID: 1386061997}
   - component: {fileID: 1386062001}
+  - component: {fileID: 1386062002}
   m_Layer: 0
   m_Name: BlueCamera
   m_TagString: MainCamera
@@ -1101,19 +1100,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1386061997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1386061996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04e25d1e07f91c64eba4300083975f88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1089357260}
 --- !u!81 &1386061998
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1248,6 +1234,23 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &1386062002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386061996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be3b4e144f1f6fa45937985bb9c03069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  minFollowDist: 6
+  maxHeight: 32
+  minHeight: 8
+  smoothTime: 2
 --- !u!1001 &1589321069
 PrefabInstance:
   m_ObjectHideFlags: 0
