@@ -19,7 +19,6 @@ public class CameraOffset : MonoBehaviour
         distance *= 0.5f; // Multiply the distance by 0.5
         Vector3 targetPos = player.transform.position + (Vector3.up * distance) - (Vector3.forward * minFollowDist);
         targetPos.y = Mathf.Clamp(targetPos.y, minHeight, maxHeight);
-        //targetPos.z = Mathf.Clamp(targetPos.z, minFollowDist, player.transform.position.z - minFollowDist);
         // move and rotate
         transform.SetPositionAndRotation(Vector3.SmoothDamp(transform.position, targetPos, ref velocity, smoothTime / 2), Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.transform.position - transform.position), smoothTime));
     }

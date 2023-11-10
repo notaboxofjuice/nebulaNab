@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 8229163264210336516}
   - component: {fileID: 1330242265356059792}
   - component: {fileID: 7322868796662050045}
+  - component: {fileID: 3235443610966934343}
   - component: {fileID: -7385013098956905981}
   - component: {fileID: 7035748954959434213}
   - component: {fileID: 1577342812875034759}
@@ -296,8 +297,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 5
-  bodyTransform: {fileID: 5811077994048124100}
   rotationSpeed: 45
+  isMoving: 0
 --- !u!114 &1330242265356059792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,7 +311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9dbe115d1298dd4284f9060a2277a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodyTransform: {fileID: 5811077994048124100}
   rayDistance: 4
   activeCannon: {fileID: 0}
 --- !u!114 &7322868796662050045
@@ -326,6 +326,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   juiceCount: 0
+--- !u!114 &3235443610966934343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4279835558309895457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90d00f1486ad3845b9eb0658f8e4e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunTime: 3
 --- !u!114 &-7385013098956905981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,7 +372,6 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1577342812875034759}
-  - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
