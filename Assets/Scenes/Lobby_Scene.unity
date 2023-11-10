@@ -1451,6 +1451,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4048250080223235692, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
+      propertyPath: movementScript
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2077323720382236612, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
       propertyPath: sceneViewId
       value: 1
@@ -1462,7 +1466,7 @@ PrefabInstance:
     - target: {fileID: 2077323720382236612, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
       propertyPath: ObservedComponents.Array.data[1]
       value: 
-      objectReference: {fileID: 1286534676}
+      objectReference: {fileID: 0}
     - target: {fileID: 5049983569404562176, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
       propertyPath: m_Name
       value: BluePlayerOne
@@ -1515,12 +1519,33 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7563117356720710192, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7563117356720710192, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7563117356720710192, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[7].Name
+      value: Recovered
+      objectReference: {fileID: 0}
+    - target: {fileID: 7563117356720710192, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[7].Type
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1502969214357166818, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
     - {fileID: 1100003026396900645, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
     - {fileID: 8000040856932111025, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
     - {fileID: 1787978325811788508, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
     - {fileID: 7274170166447944738, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
+    - {fileID: -4048250080223235692, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
+    - {fileID: 2077323720382236612, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
+    - {fileID: 7535641897174304422, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
+    - {fileID: -6450429978333704428, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
+    - {fileID: 7563117356720710192, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -2445,17 +2470,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230340226}
   m_CullTransparentMesh: 1
---- !u!114 &1286534676 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7563117356720710192, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
-  m_PrefabInstance: {fileID: 502544323}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1286534677 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3004378626188402453, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
