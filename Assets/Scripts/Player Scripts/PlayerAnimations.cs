@@ -30,21 +30,25 @@ public class PlayerAnimations : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Door"))
         {
-            if (!inSpace)
-            {
-                anime.SetBool("inSpace", true);
-                inSpace = true;
-            }
-            else
-            {
-                anime.SetBool("inSpace", false);
-                inSpace = false;
-            }
-                
+            
+          anime.SetBool("inSpace", true);
+          inSpace = true;
+            
+        }
+    }
+
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Door"))
+        {
+            anime.SetBool("inSpace", false);
+            inSpace = false;
+
         }
     }
 
