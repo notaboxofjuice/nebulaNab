@@ -420,28 +420,31 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: isRunning
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: inSpace
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: UsingCannon
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: UsingClone
   - Type: 9
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: Respawn
   - Type: 9
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: TetherCut
   - Type: 9
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: Dead
+  - Type: 9
+    SynchronizeType: 2
+    Name: Recovered
   m_SynchronizeLayers:
-  - SynchronizeType: 0
+  - SynchronizeType: 2
     LayerIndex: 0
 --- !u!1 &1743685314568436624
 GameObject:
