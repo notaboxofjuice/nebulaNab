@@ -353,6 +353,7 @@ MonoBehaviour:
   - {fileID: 5547775273547579256, guid: 10d20f7f750482f4dadca50c91d18ee9, type: 3}
   asteroids:
   - {fileID: 6282251575845107595, guid: 45a0d15c977a58549828ca1be1dd96dc, type: 3}
+  - {fileID: 6282251575845107595, guid: 55620da01e6392f4a9933bc71644b396, type: 3}
 --- !u!1 &567310806
 GameObject:
   m_ObjectHideFlags: 0
