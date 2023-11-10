@@ -10,6 +10,7 @@ TagManager:
   - Cannon
   - Spawner
   - Door
+  - Obstacle
   layers:
   - Default
   - TransparentFX
