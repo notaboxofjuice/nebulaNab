@@ -46,6 +46,10 @@ public class Movement : MonoBehaviour
         #endregion
         #endregion
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Door")) other.GetComponent<Tether>().Restore(); // entering ship, restore tether
+    }
     #endregion
     #region My Methods
     public void TryMovement(InputAction.CallbackContext context)

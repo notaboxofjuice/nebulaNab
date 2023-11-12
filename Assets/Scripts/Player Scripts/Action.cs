@@ -16,23 +16,29 @@ public class Action : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out hit, rayDistance))
         {
             Debug.DrawLine(transform.position, hit.point, Color.red);
-            if (hit.collider.CompareTag("JuiceTank"))
+            if (hit.collider.CompareTag("JuiceTank")) // deposit juice
             { // deposit juice
                 Debug.Log(PhotonNetwork.NickName + " is depositing juice.");
                 hit.collider.gameObject.GetComponent<JuiceInventory>().juiceCount += GetComponent<JuiceInventory>().juiceCount;
                 GetComponent<JuiceInventory>().juiceCount = 0;
             }
-            else if (hit.collider.CompareTag("CloningMachine"))
-            { // try cloning
+            else if (hit.collider.CompareTag("CloningMachine")) // try cloning
+            {
                 Debug.Log(PhotonNetwork.NickName + " is trying to clone.");
                 hit.collider.gameObject.GetComponent<CloneMachine>().TryClone();
             }
-            else if (hit.collider.CompareTag("Cannon"))
-            { // get cannon component and switch to cannon map
+            else if (hit.collider.CompareTag("Cannon")) // get cannon component and switch to cannon map
+            {
                 Debug.Log(PhotonNetwork.NickName + " is entering cannon.");
                 GetComponent<PlayerInput>().SwitchCurrentActionMap("Cannon");
                 activeCannon = hit.collider.gameObject.GetComponent<Cannon>();
             }
+            else if (hit.collider.CompareTag("Tether")) // cut tether
+            {
+                Debug.Log(PhotonNetwork.NickName + " is cutting tether.");
+                hit.collider.gameObject.GetComponent<Tether>().Cut();
+            }
+            else Debug.Log("Hit object with tag: " + hit.collider.tag);
         }
     }
     #endregion
