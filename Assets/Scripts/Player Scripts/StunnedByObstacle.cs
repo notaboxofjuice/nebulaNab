@@ -11,18 +11,22 @@ public class StunnedByObstacle : MonoBehaviour
     [SerializeField] float stunTime; // Time the player is stunned for
     private void Awake()
     {
-        playerInput = GetComponent<PlayerInput>(); // Get the playerInput script
+        playerInput = GetComponent<PlayerInput>(); // Get the PlayerInput
+        if (playerInput == null) Debug.LogError("PlayerInput not found");
     }
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Collision detected");
         if (collision.gameObject.CompareTag("Obstacle")) // If the player collides with an obstacle
         {
+            Debug.Log("Player is stunned");
             playerInput.enabled = false; // Disable playerInput
             Invoke(nameof(EnableMovement), stunTime); // Enable playerInput after stunTime seconds
         }
     }
     void EnableMovement()
     {
+        Debug.Log("Player is no longer stunned");
         playerInput.enabled = true; // Enable playerInput
     }
 }
