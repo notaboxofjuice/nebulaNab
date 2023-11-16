@@ -700,6 +700,7 @@ GameObject:
   - component: {fileID: 7535641897174304422}
   - component: {fileID: -4048250080223235692}
   - component: {fileID: -6450429978333704428}
+  - component: {fileID: -5212887082197400781}
   m_Layer: 0
   m_Name: BluePlayerOne
   m_TagString: Player
@@ -1013,6 +1014,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &-5212887082197400781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5049983569404562176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90d00f1486ad3845b9eb0658f8e4e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunTime: 4
 --- !u!1 &5204578427556309232
 GameObject:
   m_ObjectHideFlags: 0

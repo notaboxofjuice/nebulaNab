@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 794877835988584749}
   - component: {fileID: 5440116677208647619}
   - component: {fileID: -6283987920024337996}
+  - component: {fileID: -7154788472829210922}
   m_Layer: 0
   m_Name: BluePlayerTwo
   m_TagString: Player
@@ -541,6 +542,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &-7154788472829210922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2702483048035075211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90d00f1486ad3845b9eb0658f8e4e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunTime: 4
 --- !u!1 &2844596144833992232
 GameObject:
   m_ObjectHideFlags: 0

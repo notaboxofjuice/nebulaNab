@@ -14,6 +14,7 @@ public class StunnedByObstacle : MonoBehaviour
         playerInput = GetComponent<PlayerInput>(); // Get the PlayerInput
         if (playerInput == null) Debug.LogError("PlayerInput not found");
     }
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Collision detected");
@@ -24,17 +25,18 @@ public class StunnedByObstacle : MonoBehaviour
             Invoke(nameof(EnableMovement), stunTime); // Enable playerInput after stunTime seconds
         }
     }
-
-   /* private void OnTriggerEnter(Collider other)//trigger seemed to work without moving the player
+    */
+    private void OnTriggerEnter(Collider other)//trigger seemed to work without moving the player
     {
         Debug.Log("trigger detected");
         if (other.gameObject.CompareTag("Obstacle")) // If the player collides with an obstacle
         {
+            Destroy(other.gameObject); // destroy the obstacle
             Debug.Log("Player is stunned");
             playerInput.enabled = false; // Disable playerInput
             Invoke(nameof(EnableMovement), stunTime); // Enable playerInput after stunTime seconds
         }
-    }*/
+    }
 
     void EnableMovement()
     {

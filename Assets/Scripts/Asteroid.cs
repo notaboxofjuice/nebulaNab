@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Asteroid : MonoBehaviour
@@ -34,6 +35,7 @@ public class Asteroid : MonoBehaviour
     private void OnDestroy()
     {
         spawner.obstacleCount--;
+        // PLAY EXPLODEY ANIMATION YEFERSON PLEASE FOR THE LOVE OF GOD DO SOMETHING
     }
     IEnumerator Grow()
     {
