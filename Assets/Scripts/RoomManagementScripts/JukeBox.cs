@@ -13,7 +13,8 @@ public class JukeBox : MonoBehaviour
     void Start()
     {
         jukebox = GetComponent<AudioSource>();
-        index = Random.Range(0,soundtrack.Length -1);//will pick a random song to play at startup
+        //index = Random.Range(0,soundtrack.Length -1);//will pick a random song to play at startup
+        index = 0;
         readyToPlay = true;
     }
 

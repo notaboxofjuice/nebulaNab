@@ -11,8 +11,6 @@ public class PlayerAnimations : MonoBehaviour
     [SerializeField]
     private Movement movementScript;
 
-    bool inSpace = false;
-
     private void Start()
     {
         anime.SetBool("inSpace", false);
@@ -36,7 +34,7 @@ public class PlayerAnimations : MonoBehaviour
         {
             
           anime.SetBool("inSpace", true);
-          inSpace = true;
+          
             
         }
     }
@@ -47,7 +45,7 @@ public class PlayerAnimations : MonoBehaviour
         if (other.CompareTag("Door"))
         {
             anime.SetBool("inSpace", false);
-            inSpace = false;
+           
 
         }
     }

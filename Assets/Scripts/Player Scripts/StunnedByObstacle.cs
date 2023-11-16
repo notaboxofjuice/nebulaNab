@@ -24,6 +24,18 @@ public class StunnedByObstacle : MonoBehaviour
             Invoke(nameof(EnableMovement), stunTime); // Enable playerInput after stunTime seconds
         }
     }
+
+   /* private void OnTriggerEnter(Collider other)//trigger seemed to work without moving the player
+    {
+        Debug.Log("trigger detected");
+        if (other.gameObject.CompareTag("Obstacle")) // If the player collides with an obstacle
+        {
+            Debug.Log("Player is stunned");
+            playerInput.enabled = false; // Disable playerInput
+            Invoke(nameof(EnableMovement), stunTime); // Enable playerInput after stunTime seconds
+        }
+    }*/
+
     void EnableMovement()
     {
         Debug.Log("Player is no longer stunned");

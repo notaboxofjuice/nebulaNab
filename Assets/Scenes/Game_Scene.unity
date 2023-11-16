@@ -662,10 +662,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  minFollowDist: 6
+  minFollowDist: 15
   maxHeight: 32
   minHeight: 8
   smoothTime: 2
+  inverted: 1
 --- !u!81 &995815107
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1395,10 +1396,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  minFollowDist: 6
+  minFollowDist: 15
   maxHeight: 32
   minHeight: 8
   smoothTime: 2
+  inverted: 0
 --- !u!1001 &1589321069
 PrefabInstance:
   m_ObjectHideFlags: 0

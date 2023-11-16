@@ -48,13 +48,14 @@ public class Movement : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Door")) other.GetComponent<Tether>().Restore(); // entering ship, restore tether
+        //commented out for playtesting reasons//finding null
+        //if (other.CompareTag("Door")) other.GetComponent<Tether>().Restore(); // entering ship, restore tether
     }
     #endregion
     #region My Methods
     public void TryMovement(InputAction.CallbackContext context)
     {
-        Debug.Log(PhotonNetwork.NickName + " is trying movement.");
+        //Debug.Log(PhotonNetwork.NickName + " is trying movement.");
         move = context.ReadValue<Vector2>();
 
         isMoving = move.magnitude;

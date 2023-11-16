@@ -8,8 +8,12 @@ public class CameraOffset : MonoBehaviour
     [SerializeField] float minHeight; // Height of the camera
     [SerializeField] float smoothTime; // Time it takes for the camera to move to the player
     Vector3 velocity; // Velocity of the camera
+
+    [SerializeField] bool inverted = false;
+
     void Start()
     {
+        if (inverted) minFollowDist = -minFollowDist;//red team cam needs to face the oppiste direction
         startingPos = transform.position; // Set the starting position
         velocity = Vector3.zero; // Set the velocity to zero
     }
