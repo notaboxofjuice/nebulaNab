@@ -2634,6 +2634,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueShipCollection
       objectReference: {fileID: 0}
+    - target: {fileID: 7910936534774040608, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8043539134408144565, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.1

@@ -9,6 +9,10 @@ public class StunnedByObstacle : MonoBehaviour
 {
     PlayerInput playerInput; // Movement script
     [SerializeField] float stunTime; // Time the player is stunned for
+    [SerializeField]
+    PlayerAnimations playerAnimations;
+
+
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>(); // Get the PlayerInput
@@ -34,6 +38,9 @@ public class StunnedByObstacle : MonoBehaviour
             Destroy(other.gameObject); // destroy the obstacle
             Debug.Log("Player is stunned");
             playerInput.enabled = false; // Disable playerInput
+
+            playerAnimations.Stunned();
+
             Invoke(nameof(EnableMovement), stunTime); // Enable playerInput after stunTime seconds
         }
     }
@@ -42,5 +49,7 @@ public class StunnedByObstacle : MonoBehaviour
     {
         Debug.Log("Player is no longer stunned");
         playerInput.enabled = true; // Enable playerInput
+
+        playerAnimations.Recover();
     }
 }
