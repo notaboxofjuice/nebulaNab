@@ -48,11 +48,7 @@ public class Action : MonoBehaviour
     public void AimCannon(InputAction.CallbackContext context)
     {
         Debug.Log(PhotonNetwork.NickName + " is aiming cannon.");
-<<<<<<< Updated upstream
         activeCannon.moveInput = context.ReadValue<float>(); // read and send the input to the cannon
-=======
-        activeCannon.moveInput = context.ReadValue<float>(); // read and send the input to cannon
->>>>>>> Stashed changes
     }
     public void FireCannon()
     {

@@ -7,7 +7,6 @@ public class OxygenTank : MonoBehaviour
     [SerializeField] int oxygen;
     [SerializeField] GameObject cloneMachine;
     [SerializeField] bool isBroken;
-    [SerializeField] GameObject door;
     private void Awake()
     {
         #region Find friendly Cloning Machine
@@ -17,10 +16,10 @@ public class OxygenTank : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (door != null) return;
-        else if (other.CompareTag("Door")) ;
+        if (!other.gameObject.CompareTag("Door")) return; // if not colliding with door, do nothing
+        else Restore(); // restore oxygen
     }
-    public void BreakTank()
+    public void BreakTank() // called when another player actions this player
     {
         if (isBroken) return; // if already broken, do nothing
         isBroken = true; // set broken to true
@@ -34,7 +33,7 @@ public class OxygenTank : MonoBehaviour
         // TODO: check if both players are dead
         // else, move player to cloning machine
         transform.parent.position = cloneMachine.transform.position;
-        cloneMachine.GetComponent<CloneMachine>().CurrentPlayer = gameObject;
+        cloneMachine.GetComponent<CloneMachine>().currentPlayer = gameObject;
         // deactivate player object
         gameObject.SetActive(false);
     }
