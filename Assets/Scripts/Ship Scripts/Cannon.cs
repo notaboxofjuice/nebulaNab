@@ -20,6 +20,7 @@ public class Cannon : MonoBehaviour
     [SerializeField] float movementRange = 10f;
     [Tooltip("How fast the cannon moves as a float")]
     [SerializeField] float movementSpeed = 2f;
+    [SerializeField] bool blueTeam;
     public bool inUse;
     public float moveInput;
     JuiceInventory juiceInventory;
@@ -38,8 +39,7 @@ public class Cannon : MonoBehaviour
     }
     public void Move() // move cannon left and right based on input
     { // accepts moveInput as a float between -1 and 1
-        cannon.transform.Translate(Vector3.right * moveInput * movementSpeed * Time.deltaTime);
-        Mathf.Clamp(transform.position.x, -movementRange, movementRange);
+        cannon.transform.position = new Vector3(Mathf.Clamp(cannon.transform.position.x + (moveInput * movementSpeed * Time.deltaTime), -movementRange, movementRange), cannon.transform.position.y, cannon.transform.position.z);
     }
     public void Fire() // fire cannon, called by player input
     {
@@ -47,7 +47,16 @@ public class Cannon : MonoBehaviour
         if(juiceInventory.juiceCount >= fireCost)
         {
             Vector3 spawn = cannon.transform.position + Vector3.forward * spawnOffset;
-            PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", laser.name), spawn, Quaternion.identity);
+            Quaternion spawnRotation = Quaternion.identity;
+            if (blueTeam)
+            {
+                spawnRotation = Quaternion.Euler(90, 0, 0);
+            }
+            else
+            {
+                spawnRotation = Quaternion.Euler(-90, 0, 0);
+            }
+            PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", laser.name), spawn, spawnRotation);
             juiceInventory.juiceCount -= fireCost;
         }
     }
