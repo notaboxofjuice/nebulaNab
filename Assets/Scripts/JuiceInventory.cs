@@ -14,5 +14,13 @@ public class JuiceInventory : MonoBehaviour
             ObjectSpawner.Instance.juiceObjectCount--; // decrement the juice object count
             Destroy(gameObject); // destroy the juice object
         }
+        /*
+        if(other.gameObject.CompareTag("Player") && this.gameObject.CompareTag("JuiceTank"))
+        {
+            Debug.Log(other.gameObject.name + " is depositing " + other.gameObject.GetComponent<JuiceInventory>().juiceCount + " juice into tank.");
+            this.juiceCount += other.gameObject.GetComponent<JuiceInventory>().juiceCount; //add player juice to tank
+            other.gameObject.GetComponent<JuiceInventory>().juiceCount = 0; //empty player's inventory
+        }
+        */
     }
 }

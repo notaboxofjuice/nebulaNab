@@ -46,8 +46,7 @@ public class Action : MonoBehaviour
     public void AimCannon(InputAction.CallbackContext context)
     {
         Debug.Log(PhotonNetwork.NickName + " is aiming cannon.");
-        float moveInput = context.ReadValue<float>(); // read the button press
-        activeCannon.Move(moveInput); // send the input to the cannon
+        activeCannon.moveInput = context.ReadValue<float>(); // read and send the input to the cannon
     }
     public void FireCannon()
     {
