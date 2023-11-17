@@ -701,6 +701,7 @@ GameObject:
   - component: {fileID: -4048250080223235692}
   - component: {fileID: -6450429978333704428}
   - component: {fileID: -5212887082197400781}
+  - component: {fileID: -5996152046510840339}
   m_Layer: 0
   m_Name: BluePlayerOne
   m_TagString: Player
@@ -1027,6 +1028,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stunTime: 4
+--- !u!114 &-5996152046510840339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5049983569404562176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a837f1fb0ac70294c92dc04c4d9ed0d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oxygen: 0
+  player: {fileID: 0}
+  cloneMachine: {fileID: 0}
+  isBroken: 0
+  door: {fileID: 0}
 --- !u!1 &5204578427556309232
 GameObject:
   m_ObjectHideFlags: 0

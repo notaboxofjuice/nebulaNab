@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 5440116677208647619}
   - component: {fileID: -6283987920024337996}
   - component: {fileID: -7154788472829210922}
+  - component: {fileID: -5892086636853110221}
   m_Layer: 0
   m_Name: BluePlayerTwo
   m_TagString: Player
@@ -555,6 +556,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stunTime: 4
+--- !u!114 &-5892086636853110221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2702483048035075211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a837f1fb0ac70294c92dc04c4d9ed0d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oxygen: 0
+  player: {fileID: 0}
+  cloneMachine: {fileID: 0}
+  isBroken: 0
+  door: {fileID: 0}
 --- !u!1 &2844596144833992232
 GameObject:
   m_ObjectHideFlags: 0

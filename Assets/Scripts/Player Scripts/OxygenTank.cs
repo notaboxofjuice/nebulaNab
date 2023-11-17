@@ -1,30 +1,29 @@
 using UnityEngine;
 /// <summary>
-/// Assigned to tether object
+/// Assigned to player object
 /// </summary>
-public class Tether : MonoBehaviour
+public class OxygenTank : MonoBehaviour
 {
     [SerializeField] int oxygen;
-    [SerializeField] GameObject player;
     [SerializeField] GameObject cloneMachine;
-    [SerializeField] bool isCut;
+    [SerializeField] bool isBroken;
+    [SerializeField] GameObject door;
     private void Awake()
     {
-        #region Find Player
-        player = transform.parent.gameObject; // get player object
-        if (player == null) Debug.LogError("Player object not found");
-        #endregion
         #region Find friendly Cloning Machine
         cloneMachine = null; // TODO: find friendly cloning machine
         if (cloneMachine == null) Debug.LogError("Cloning Machine not found");
         #endregion
     }
-    public void Cut()
+    private void OnTriggerEnter(Collider other)
     {
-        if (isCut) return; // if already cut, do nothing
-        isCut = true; // set cut to true
-        // Deactivate mesh renderer
-        GetComponent<MeshRenderer>().enabled = false;
+        if (door != null) return;
+        else if (other.CompareTag("Door")) ;
+    }
+    public void BreakTank()
+    {
+        if (isBroken) return; // if already broken, do nothing
+        isBroken = true; // set broken to true
         // Start timer for asphyxiation
         Invoke(nameof(Asphyxiate), oxygen);
     }
@@ -32,19 +31,18 @@ public class Tether : MonoBehaviour
     {
         Debug.Log("Player asphyxiated");
         // if both players are dead, lose
-
+        // TODO: check if both players are dead
         // else, move player to cloning machine
         transform.parent.position = cloneMachine.transform.position;
+        cloneMachine.GetComponent<CloneMachine>().CurrentPlayer = gameObject;
         // deactivate player object
-        player.SetActive(false);
+        gameObject.SetActive(false);
     }
     public void Restore()
     {
-        if (!isCut) return; // if not cut, do nothing
-        isCut = false; // set cut to false
+        if (!isBroken) return; // if not cut, do nothing
+        isBroken = false; // set cut to false
         // Cancel asphyxiation timer
         CancelInvoke(nameof(Asphyxiate));
-        // Reactivate mesh renderer
-        GetComponent<MeshRenderer>().enabled = true;
     }
 }

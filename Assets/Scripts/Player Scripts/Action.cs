@@ -17,7 +17,7 @@ public class Action : MonoBehaviour
         {
             Debug.DrawLine(transform.position, hit.point, Color.red);
             if (hit.collider.CompareTag("JuiceTank")) // deposit juice
-            { // deposit juice
+            {
                 Debug.Log(PhotonNetwork.NickName + " is depositing juice.");
                 hit.collider.gameObject.GetComponent<JuiceInventory>().juiceCount += GetComponent<JuiceInventory>().juiceCount;
                 GetComponent<JuiceInventory>().juiceCount = 0;
@@ -30,13 +30,15 @@ public class Action : MonoBehaviour
             else if (hit.collider.CompareTag("Cannon")) // get cannon component and switch to cannon map
             {
                 Debug.Log(PhotonNetwork.NickName + " is entering cannon.");
-                GetComponent<PlayerInput>().SwitchCurrentActionMap("Cannon");
-                activeCannon = hit.collider.gameObject.GetComponent<Cannon>();
+                if (hit.collider.gameObject.GetComponent<Cannon>().inUse) return; // if cannon is in use, do nothing
+                GetComponent<PlayerInput>().SwitchCurrentActionMap("Cannon"); // switch to cannon map
+                activeCannon = hit.collider.gameObject.GetComponent<Cannon>(); // set active cannon
+                activeCannon.inUse = true; // set inUse to true
             }
-            else if (hit.collider.CompareTag("Tether")) // cut tether
+            else if (hit.collider.CompareTag("Player")) // break player's oxygen
             {
-                Debug.Log(PhotonNetwork.NickName + " is cutting tether.");
-                hit.collider.gameObject.GetComponent<Tether>().Cut();
+                Debug.Log(PhotonNetwork.NickName + " is breaking an oxygen tank.");
+                hit.collider.gameObject.GetComponent<OxygenTank>().BreakTank();
             }
             else Debug.Log("Hit object with tag: " + hit.collider.tag);
         }
@@ -46,7 +48,11 @@ public class Action : MonoBehaviour
     public void AimCannon(InputAction.CallbackContext context)
     {
         Debug.Log(PhotonNetwork.NickName + " is aiming cannon.");
+<<<<<<< Updated upstream
         activeCannon.moveInput = context.ReadValue<float>(); // read and send the input to the cannon
+=======
+        activeCannon.moveInput = context.ReadValue<float>(); // read and send the input to cannon
+>>>>>>> Stashed changes
     }
     public void FireCannon()
     {
@@ -57,6 +63,7 @@ public class Action : MonoBehaviour
     {
         // debug log the player's photon name
         Debug.Log(PhotonNetwork.NickName + " is exiting cannon.");
+        activeCannon.inUse = false; // set inUse to false
         activeCannon = null; // clear reference
         GetComponent<PlayerInput>().SwitchCurrentActionMap("Gameplay"); // switch back to gameplay
     }
