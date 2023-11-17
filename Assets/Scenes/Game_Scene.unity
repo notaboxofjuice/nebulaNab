@@ -424,7 +424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab2e14345d5f384380b5509865e06a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRangeX: 30
+  spawnRangeX: 15
   spawnRangeZ: 30
   maxJuiceObjects: 5
   maxObstacles: 5

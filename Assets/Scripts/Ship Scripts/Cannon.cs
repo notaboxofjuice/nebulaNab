@@ -32,6 +32,10 @@ public class Cannon : MonoBehaviour
     {
         juiceInventory = shipInventory.GetComponent<JuiceInventory>();
         movementRange = Mathf.Abs(movementRange);
+        if (!blueTeam)
+        {
+            movementSpeed *= -1;
+        }
     }
     private void FixedUpdate()
     {
