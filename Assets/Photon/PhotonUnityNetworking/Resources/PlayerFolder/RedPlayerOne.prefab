@@ -380,10 +380,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3393941188165365325}
-  - {fileID: 3974762564952178375}
   - {fileID: 7670636139628515523}
   - {fileID: 2420161535958391825}
   - {fileID: 1177938940815051772}
+  - {fileID: 3974762564952178375}
   m_Father: {fileID: 8032014959330638790}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5343001684193359534
@@ -2357,6 +2357,10 @@ PrefabInstance:
     - target: {fileID: 3875906231592745162, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: m_Name
       value: StunnedParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875906231592745162, guid: b276b79d48be9d24d859a408809f164b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7761340396488756878, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: m_LocalPosition.x

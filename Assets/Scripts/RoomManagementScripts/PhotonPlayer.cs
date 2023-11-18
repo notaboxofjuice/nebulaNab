@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PhotonPlayer : MonoBehaviour
+public class PhotonPlayer : MonoBehaviourPunCallbacks
 {
 
     public static PhotonPlayer Instance;

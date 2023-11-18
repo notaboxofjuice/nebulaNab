@@ -2166,6 +2166,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StunnedParticles
       objectReference: {fileID: 0}
+    - target: {fileID: 3875906231592745162, guid: b276b79d48be9d24d859a408809f164b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7761340396488756878, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.038000107
