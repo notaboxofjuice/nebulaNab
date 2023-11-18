@@ -7,7 +7,7 @@ public class Action : MonoBehaviourPunCallbacks
     [HideInInspector] public JuiceInventory shipJuice; // ship's juice inventory, assigned from JuiceInventory.cs
     [Header("Gameplay Vars")]
     [SerializeField] float rayDistance;
-    private OxygenTank targetTank;
+    public OxygenTank targetTank;
     [Header("Cannon Vars")]
     [SerializeField] Cannon activeCannon;
     #endregion
