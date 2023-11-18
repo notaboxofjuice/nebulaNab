@@ -27,6 +27,7 @@ public class PhotonPlayer : MonoBehaviour
 
             GetComponent<Movement>().enabled = true;
             GetComponent<PlayerInput>().enabled = true;
+            GetComponent<PlayerAnimations>().enabled = true;
         }
         
     }
