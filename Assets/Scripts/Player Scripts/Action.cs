@@ -75,7 +75,7 @@ public class Action : MonoBehaviourPunCallbacks
     {
         Debug.Log(PhotonNetwork.NickName + " is breaking an oxygen tank.");
         targetTank.BreakTank(); // please god work
-        targetTank = null; // CLEAR REFERENCE
+        targetTank = null; // clear reference
     }
     #endregion
 }
