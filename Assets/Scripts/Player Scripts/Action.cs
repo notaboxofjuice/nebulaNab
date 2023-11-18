@@ -1,7 +1,7 @@
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class Action : MonoBehaviour
+public class Action : MonoBehaviourPunCallbacks
 {
     #region Variables
     [HideInInspector] public JuiceInventory shipJuice; // ship's juice inventory, assigned from JuiceInventory.cs
