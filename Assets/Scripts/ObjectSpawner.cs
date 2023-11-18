@@ -45,6 +45,8 @@ public class ObjectSpawner : MonoBehaviour
     [Tooltip("Asteroid obstacle objects to spawn")]
     [SerializeField] GameObject[] asteroids;
 
+    [SerializeField] LayerMask spawnables;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,7 +76,9 @@ public class ObjectSpawner : MonoBehaviour
             do
             {
                 spawnCoords = CoordGenerator();
-                objectNearby = Physics.CheckSphere(spawnCoords, spawnRadius);
+                
+                objectNearby = Physics.CheckSphere(spawnCoords, spawnRadius, spawnables);
+            
             } while (objectNearby);
             int randID = Random.Range(0, juiceObjects.Length);
             PhotonNetwork.Instantiate(Path.Combine("Spawn Objects", juiceObjects[randID].name), spawnCoords, Quaternion.identity);
@@ -88,6 +92,7 @@ public class ObjectSpawner : MonoBehaviour
             obstacleCount++;
         }
         yield return new WaitForSeconds(spawnTime);
+        
         StartCoroutine(SpawnObjects());
     }
 }

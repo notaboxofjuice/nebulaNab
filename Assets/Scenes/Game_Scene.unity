@@ -446,6 +446,9 @@ MonoBehaviour:
   asteroids:
   - {fileID: 6282251575845107595, guid: 45a0d15c977a58549828ca1be1dd96dc, type: 3}
   - {fileID: 6282251575845107595, guid: 55620da01e6392f4a9933bc71644b396, type: 3}
+  spawnables:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &567310806
 GameObject:
   m_ObjectHideFlags: 0
