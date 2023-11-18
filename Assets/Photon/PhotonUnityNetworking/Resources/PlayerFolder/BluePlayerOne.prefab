@@ -2183,7 +2183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577698704085685524, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: TrailModule.mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6577698704085685524, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: ShapeModule.enabled
@@ -2207,39 +2207,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577698704085685524, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: TrailModule.widthOverTrail.scalar
-      value: 25
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6577698704085685524, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: TrailModule.colorOverTrail.maxColor.b
-      value: 0.040583827
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6577698704085685524, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: TrailModule.colorOverTrail.maxColor.g
-      value: 0.040583827
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6577698704085685524, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: TrailModule.colorOverTrail.maxColor.r
-      value: 0.4528302
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577698704085685524, guid: b276b79d48be9d24d859a408809f164b, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6577698704085685524, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: TrailModule.colorOverLifetime.maxGradient.atime1
-      value: 57632
+      value: 45296
       objectReference: {fileID: 0}
     - target: {fileID: 6577698704085685524, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: TrailModule.colorOverLifetime.maxGradient.m_ColorSpace
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7761340396488756878, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.1049
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7761340396488756878, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.1049
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7761340396488756878, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.1049
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7761340396488756878, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: m_LocalPosition.x
