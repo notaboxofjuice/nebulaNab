@@ -4,10 +4,13 @@ using UnityEngine.InputSystem;
 public class Action : MonoBehaviour
 {
     #region Variables
+    [HideInInspector] public JuiceInventory shipJuice; // ship's juice inventory, assigned from JuiceInventory.cs
     [Header("Gameplay Vars")]
     [SerializeField] float rayDistance;
     [Header("Cannon Vars")]
     [SerializeField] Cannon activeCannon;
+    #endregion
+    #region Unity Methods
     #endregion
     #region Gameplay Actions
     public void GameplayAction() // called by input system
@@ -19,7 +22,7 @@ public class Action : MonoBehaviour
             if (hit.collider.CompareTag("JuiceTank")) // deposit juice
             {
                 Debug.Log(PhotonNetwork.NickName + " is depositing juice.");
-                hit.collider.gameObject.GetComponent<JuiceInventory>().juiceCount += GetComponent<JuiceInventory>().juiceCount;
+                shipJuice.juiceCount += GetComponent<JuiceInventory>().juiceCount;
                 GetComponent<JuiceInventory>().juiceCount = 0;
             }
             else if (hit.collider.CompareTag("CloningMachine")) // try cloning

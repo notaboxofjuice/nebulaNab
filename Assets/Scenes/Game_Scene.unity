@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1011539296}
-  m_IndirectSpecularColor: {r: 0.03145402, g: 0.118093155, b: 0.056809913, a: 1}
+  m_IndirectSpecularColor: {r: 0.031453934, g: 0.1181007, b: 0.056809172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -193,7 +193,7 @@ GameObject:
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &68647841
 Transform:
   m_ObjectHideFlags: 0
@@ -222,6 +222,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   juiceCount: 0
+  isTank: 0
+  TankTeam: 
 --- !u!65 &68647843
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -592,6 +594,143 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1785342702}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &915262778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 915262782}
+  - component: {fileID: 915262781}
+  - component: {fileID: 915262780}
+  - component: {fileID: 915262779}
+  m_Layer: 0
+  m_Name: invisible ground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!64 &915262779
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915262778}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &915262780
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915262778}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &915262781
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915262778}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &915262782
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915262778}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 128, y: 1, z: 128}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &940556660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 940556661}
+  m_Layer: 0
+  m_Name: spawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &940556661
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940556660}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1089357260}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &995182712
 GameObject:
@@ -1067,9 +1206,41 @@ PrefabInstance:
       propertyPath: spawnOffset
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 667748513454087867, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: shipJuiceInventory
+      value: 
+      objectReference: {fileID: 1089357261}
+    - target: {fileID: 1602549492520779628, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: m_TagString
+      value: JuiceTank
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376772940260360339, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: m_TagString
+      value: JuiceTank
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461947841332057573, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: m_TagString
+      value: JuiceTank
+      objectReference: {fileID: 0}
     - target: {fileID: 2752396937134319542, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
       propertyPath: m_Name
       value: BlueShipCollection
+      objectReference: {fileID: 0}
+    - target: {fileID: 3185988439230646453, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: m_TagString
+      value: JuiceTank
+      objectReference: {fileID: 0}
+    - target: {fileID: 5535550200249144637, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: isTank
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5535550200249144637, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: TankTeam
+      value: Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652365036881518291, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: m_TagString
+      value: JuiceTank
       objectReference: {fileID: 0}
     - target: {fileID: 6918070925476452282, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
       propertyPath: m_Size.z
@@ -1079,9 +1250,17 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -9.669661
       objectReference: {fileID: 0}
+    - target: {fileID: 7401434650549623436, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: m_TagString
+      value: JuiceTank
+      objectReference: {fileID: 0}
     - target: {fileID: 7910936534774040608, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
       propertyPath: sceneViewId
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7911883733435447520, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: m_TagString
+      value: JuiceTank
       objectReference: {fileID: 0}
     - target: {fileID: 8043539134408144565, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1125,9 +1304,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7368123392011606767, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 940556661}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7731851455696928396, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1089357263}
   m_SourcePrefab: {fileID: 100100000, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+--- !u!4 &1089357260 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7368123392011606767, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+  m_PrefabInstance: {fileID: 1089357259}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1089357261 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5535550200249144637, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+  m_PrefabInstance: {fileID: 1089357259}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 148a41c89448a4d4a9439df7b596d410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1089357262 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7731851455696928396, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+  m_PrefabInstance: {fileID: 1089357259}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1089357263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089357262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd86edf8c673ee44eb5737cef27c1796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Team: Blue
+  shipJuice: {fileID: 1089357261}
+  cloneCost: 10
+  spawnPoint: {fileID: 940556661}
 --- !u!1 &1291311156
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,6 +1575,37 @@ MonoBehaviour:
   minHeight: 8
   smoothTime: 2
   inverted: 0
+--- !u!1 &1393154703
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1393154704}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1393154704
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393154703}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1589321076}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1404907158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1492,6 +1745,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedShipCollection
       objectReference: {fileID: 0}
+    - target: {fileID: 8022659815312573235, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
+      propertyPath: isTank
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022659815312573235, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
+      propertyPath: TankTeam
+      value: Red
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1504,10 +1765,16 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1279559509299672287, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 68647841}
+    - targetCorrespondingSourceObject: {fileID: 3942514263156670554, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1393154704}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3588002885910374223, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1589321073}
+    - targetCorrespondingSourceObject: {fileID: 3096940163615388983, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1589321077}
   m_SourcePrefab: {fileID: 100100000, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
 --- !u!4 &1589321070 stripped
 Transform:
@@ -1537,7 +1804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cannon: {fileID: 1589321072}
-  shipInventory: {fileID: 68647840}
+  shipJuiceInventory: {fileID: 1589321075}
   laser: {fileID: 8197713448798235328, guid: 124486a66b8b32746937e465d80c4136, type: 3}
   spawnOffset: 10
   fireCost: 5
@@ -1546,6 +1813,43 @@ MonoBehaviour:
   blueTeam: 0
   inUse: 0
   moveInput: 0
+--- !u!1 &1589321074 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3096940163615388983, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
+  m_PrefabInstance: {fileID: 1589321069}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1589321075 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8022659815312573235, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
+  m_PrefabInstance: {fileID: 1589321069}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 148a41c89448a4d4a9439df7b596d410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1589321076 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3942514263156670554, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
+  m_PrefabInstance: {fileID: 1589321069}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1589321077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589321074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd86edf8c673ee44eb5737cef27c1796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Team: Red
+  shipJuice: {fileID: 1589321075}
+  cloneCost: 10
+  spawnPoint: {fileID: 1393154704}
 --- !u!1 &1785342701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1927,10 +2231,11 @@ SceneRoots:
   - {fileID: 385421894}
   - {fileID: 65118262}
   - {fileID: 472966756}
-  - {fileID: 1089357259}
-  - {fileID: 1589321069}
   - {fileID: 1404907161}
   - {fileID: 2023666443}
   - {fileID: 1785342702}
   - {fileID: 1884286814}
   - {fileID: 1034423349}
+  - {fileID: 1589321069}
+  - {fileID: 1089357259}
+  - {fileID: 915262782}

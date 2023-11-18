@@ -1010,7 +1010,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 241, y: -46.549988}
+  m_AnchoredPosition: {x: 241, y: -46.549973}
   m_SizeDelta: {x: -534.45, y: -265.10004}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &603969266
@@ -1237,7 +1237,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedShipCollection
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8022659815312573235, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7557536707260506487, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1864,7 +1869,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -237, y: -34.862427}
+  m_AnchoredPosition: {x: -236.99997, y: -34.862427}
   m_SizeDelta: {x: -534.45, y: -253.6249}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &845062722
@@ -2630,9 +2635,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 667748513454087867, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2752396937134319542, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
       propertyPath: m_Name
       value: BlueShipCollection
+      objectReference: {fileID: 0}
+    - target: {fileID: 5535550200249144637, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6201273230810772985, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7910936534774040608, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
       propertyPath: sceneViewId
@@ -2678,7 +2695,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8547932038040719578, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4030318997445389151, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
