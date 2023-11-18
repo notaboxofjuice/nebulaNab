@@ -24,6 +24,7 @@ public class OxygenTank : MonoBehaviour
     public void BreakTank() // called when another player actions this player
     {
         if (isBroken) return; // if already broken, do nothing
+        Debug.Log("Breaking oxygen tank");
         isBroken = true; // set broken to true
         // Start timer for asphyxiation
         Invoke(nameof(Asphyxiate), oxygen);
@@ -38,6 +39,7 @@ public class OxygenTank : MonoBehaviour
     public void Restore()
     {
         if (!isBroken) return; // if not cut, do nothing
+        Debug.Log("Restoring oxygen");
         isBroken = false; // set cut to false
         CancelInvoke(nameof(Asphyxiate)); // Cancel asphyxiation timer
     }
