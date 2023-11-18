@@ -891,6 +891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9dbe115d1298dd4284f9060a2277a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipJuice: {fileID: 0}
   rayDistance: 4
   activeCannon: {fileID: 0}
 --- !u!114 &1787978325811788508
@@ -906,6 +907,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   juiceCount: 0
+  isTank: 0
+  TankTeam: 
 --- !u!114 &7274170166447944738
 MonoBehaviour:
   m_ObjectHideFlags: 0
