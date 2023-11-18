@@ -748,7 +748,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 3.47
-  m_Radius: 0.77
+  m_Radius: 1.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -891,6 +891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9dbe115d1298dd4284f9060a2277a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipJuice: {fileID: 0}
   rayDistance: 4
   activeCannon: {fileID: 0}
 --- !u!114 &1787978325811788508
@@ -906,6 +907,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   juiceCount: 0
+  isTank: 0
+  TankTeam: 
 --- !u!114 &7274170166447944738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -983,7 +986,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5049983569404562176}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 148515956ac20c44db5c49d79d4c9402, type: 3}
   m_Name: 
@@ -2178,6 +2181,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StunnedParticles
       objectReference: {fileID: 0}
+    - target: {fileID: 3875906231592745162, guid: b276b79d48be9d24d859a408809f164b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6577698704085685524, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: TrailModule.mode
       value: 0
@@ -2204,39 +2211,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577698704085685524, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: TrailModule.widthOverTrail.scalar
-      value: 25
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6577698704085685524, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: TrailModule.colorOverTrail.maxColor.b
-      value: 0.040583827
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6577698704085685524, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: TrailModule.colorOverTrail.maxColor.g
-      value: 0.040583827
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6577698704085685524, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: TrailModule.colorOverTrail.maxColor.r
-      value: 0.4528302
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577698704085685524, guid: b276b79d48be9d24d859a408809f164b, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6577698704085685524, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: TrailModule.colorOverLifetime.maxGradient.atime1
-      value: 57632
+      value: 45296
       objectReference: {fileID: 0}
     - target: {fileID: 6577698704085685524, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: TrailModule.colorOverLifetime.maxGradient.m_ColorSpace
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7761340396488756878, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.1049
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7761340396488756878, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.1049
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7761340396488756878, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.1049
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7761340396488756878, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: m_LocalPosition.x

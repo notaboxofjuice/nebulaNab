@@ -10,7 +10,7 @@ public class Cannon : MonoBehaviour
     [Tooltip("The Cannon Object this control panel Moves")]
     [SerializeField] GameObject cannon;
     [Tooltip("The Ship Juice Inventory this cannon is attached to.")]
-    [SerializeField] GameObject shipInventory;
+    [SerializeField] JuiceInventory shipJuiceInventory; // assigned in inspector -Leeman
     [Tooltip("The laser prefab to be instantiated when the cannon fires.")]
     [SerializeField] GameObject laser;
     [Tooltip("How far in front of the cannon to spawn the laser.")]
@@ -23,14 +23,12 @@ public class Cannon : MonoBehaviour
     [SerializeField] bool blueTeam;
     public bool inUse;
     public float moveInput;
-    JuiceInventory juiceInventory;
     private void Awake()
     {
         view = gameObject.GetComponent<PhotonView>();
     }
     private void Start()
     {
-        juiceInventory = shipInventory.GetComponent<JuiceInventory>();
         movementRange = Mathf.Abs(movementRange);
         if (!blueTeam)
         {
@@ -48,7 +46,7 @@ public class Cannon : MonoBehaviour
     public void Fire() // fire cannon, called by player input
     {
         // logic for firing cannon
-        if(juiceInventory.juiceCount >= fireCost)
+        if(shipJuiceInventory.juiceCount >= fireCost)
         {
             Vector3 spawn = cannon.transform.position + Vector3.forward * spawnOffset;
             Quaternion spawnRotation = Quaternion.identity;
@@ -61,7 +59,7 @@ public class Cannon : MonoBehaviour
                 spawnRotation = Quaternion.Euler(-90, 0, 0);
             }
             PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", laser.name), spawn, spawnRotation);
-            juiceInventory.juiceCount -= fireCost;
+            shipJuiceInventory.juiceCount -= fireCost;
         }
     }
 }

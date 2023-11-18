@@ -4,29 +4,45 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-
+/// <summary>
+/// Yeferson: Managing teams and spawning players
+/// Leeman: Managing game over states
+/// </summary>
 public class GameManager : MonoBehaviourPunCallbacks
-{//handles most basic game related stuff, like spawning in players, win/lose state. ect
+{
+    #region Variables
+    public static GameManager Instance { get; private set; } // allows referring to as GameManager.Instance
+    #region Player Vars
+    [Header("Spawn Points")]
     [SerializeField]
-     List<Transform> blueSpawnPoint = new List<Transform>();
+     List<Transform> blueSpawnPoint = new();
 
     [SerializeField]
-    List<Transform> redSpawnPoint = new List<Transform>();
-   
+    List<Transform> redSpawnPoint = new();
+    [Header("Cameras")]
     [SerializeField]
     CameraOffset blueCam;
     [SerializeField]
     CameraOffset redCam;
-   
+    #endregion
+    #region Win/Lose Vars
 
-
-    // Start is called before the first frame update
+    #endregion
+    #endregion
+    #region Methods
+    #region Unity Methods
+    private void Awake()
+    {
+        // Singleton pattern
+        if (Instance != null) Debug.LogError("More than one GameManager in scene");
+        else Instance = this;
+    }
     void Start()
     {
         SpawnPlayers();
-
     }
-
+    #endregion
+    #region Spawning Methods
     private void SpawnPlayers()
     {
         if (PhotonNetwork.LocalPlayer.GetTeam() == "Blue")
@@ -66,5 +82,25 @@ public class GameManager : MonoBehaviourPunCallbacks
             blueCam.gameObject.SetActive(false);
         }
     }
-   
+    #endregion
+    #region Win/Lose Methods
+    public void LoseGame(string LosingTeam) // called when a team loses
+    {
+        Debug.Log("Losing team: " + LosingTeam);
+        // Loop through players in lobby
+        foreach (Player player in PhotonNetwork.PlayerList)
+        {
+            // If player is on losing team
+            if (player.GetTeam() == LosingTeam)
+            {
+                // Show them the lose screen
+            }
+            else
+            {
+                // Show them the win screen
+            }
+        }
+    }
+    #endregion
+    #endregion
 }

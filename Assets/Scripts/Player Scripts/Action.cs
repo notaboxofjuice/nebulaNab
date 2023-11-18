@@ -1,13 +1,16 @@
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class Action : MonoBehaviour
+public class Action : MonoBehaviourPunCallbacks
 {
     #region Variables
+    [HideInInspector] public JuiceInventory shipJuice; // ship's juice inventory, assigned from JuiceInventory.cs
     [Header("Gameplay Vars")]
     [SerializeField] float rayDistance;
     [Header("Cannon Vars")]
     [SerializeField] Cannon activeCannon;
+    #endregion
+    #region Unity Methods
     #endregion
     #region Gameplay Actions
     public void GameplayAction() // called by input system
@@ -19,7 +22,7 @@ public class Action : MonoBehaviour
             if (hit.collider.CompareTag("JuiceTank")) // deposit juice
             {
                 Debug.Log(PhotonNetwork.NickName + " is depositing juice.");
-                hit.collider.gameObject.GetComponent<JuiceInventory>().juiceCount += GetComponent<JuiceInventory>().juiceCount;
+                shipJuice.juiceCount += GetComponent<JuiceInventory>().juiceCount;
                 GetComponent<JuiceInventory>().juiceCount = 0;
             }
             else if (hit.collider.CompareTag("CloningMachine")) // try cloning
@@ -38,7 +41,8 @@ public class Action : MonoBehaviour
             else if (hit.collider.CompareTag("Player")) // break player's oxygen
             {
                 Debug.Log(PhotonNetwork.NickName + " is breaking an oxygen tank.");
-                hit.collider.gameObject.GetComponent<OxygenTank>().BreakTank();
+                // break tank via RPC
+                hit.collider.gameObject.GetComponent<PhotonView>().RPC("BreakOtherTank", RpcTarget.All);
             }
             else Debug.Log("Hit object with tag: " + hit.collider.tag);
         }
@@ -62,6 +66,13 @@ public class Action : MonoBehaviour
         activeCannon.inUse = false; // set inUse to false
         activeCannon = null; // clear reference
         GetComponent<PlayerInput>().SwitchCurrentActionMap("Gameplay"); // switch back to gameplay
+    }
+    #endregion
+    #region I hate RPCs
+    [PunRPC]
+    public void BreakOtherTank()
+    {  
+        GetComponent<OxygenTank>().BreakTank(); // please god work
     }
     #endregion
 }
