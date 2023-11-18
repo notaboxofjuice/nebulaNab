@@ -43,7 +43,7 @@ public class Action : MonoBehaviourPunCallbacks
             {
                 // break tank via RPC
                 targetTank = hit.collider.gameObject.GetComponent<OxygenTank>();
-                hit.collider.gameObject.GetComponent<PhotonView>().RPC("BreakTank", RpcTarget.All);
+                hit.collider.gameObject.GetComponent<PhotonView>().RPC("BreakOtherTank", RpcTarget.All);
             }
             else Debug.Log("Hit object with tag: " + hit.collider.tag);
         }
@@ -71,7 +71,7 @@ public class Action : MonoBehaviourPunCallbacks
     #endregion
     #region I hate RPCs
     [PunRPC]
-    public void BreakTank()
+    public void BreakOtherTank()
     {
         Debug.Log(PhotonNetwork.NickName + " is breaking an oxygen tank.");
         targetTank.BreakTank(); // please god work
