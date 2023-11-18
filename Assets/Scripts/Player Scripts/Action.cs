@@ -7,7 +7,6 @@ public class Action : MonoBehaviourPunCallbacks
     [HideInInspector] public JuiceInventory shipJuice; // ship's juice inventory, assigned from JuiceInventory.cs
     [Header("Gameplay Vars")]
     [SerializeField] float rayDistance;
-    public OxygenTank targetTank;
     [Header("Cannon Vars")]
     [SerializeField] Cannon activeCannon;
     #endregion
@@ -41,8 +40,8 @@ public class Action : MonoBehaviourPunCallbacks
             }
             else if (hit.collider.CompareTag("Player")) // break player's oxygen
             {
+                Debug.Log(PhotonNetwork.NickName + " is breaking an oxygen tank.");
                 // break tank via RPC
-                targetTank = hit.collider.gameObject.GetComponent<OxygenTank>();
                 hit.collider.gameObject.GetComponent<PhotonView>().RPC("BreakOtherTank", RpcTarget.All);
             }
             else Debug.Log("Hit object with tag: " + hit.collider.tag);
@@ -72,10 +71,8 @@ public class Action : MonoBehaviourPunCallbacks
     #region I hate RPCs
     [PunRPC]
     public void BreakOtherTank()
-    {
-        Debug.Log(PhotonNetwork.NickName + " is breaking an oxygen tank.");
-        targetTank.BreakTank(); // please god work
-        targetTank = null; // clear reference
+    {  
+        GetComponent<OxygenTank>().BreakTank(); // please god work
     }
     #endregion
 }
