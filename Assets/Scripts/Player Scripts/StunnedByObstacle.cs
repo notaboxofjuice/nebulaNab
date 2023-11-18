@@ -9,8 +9,8 @@ public class StunnedByObstacle : MonoBehaviour
 {
     PlayerInput playerInput; // Movement script
     [SerializeField] float stunTime; // Time the player is stunned for
-    [SerializeField]
-    PlayerAnimations playerAnimations;
+
+    [SerializeField] PlayerAnimations playerAnimations;
 
 
     private void Awake()
@@ -18,6 +18,7 @@ public class StunnedByObstacle : MonoBehaviour
         playerInput = GetComponent<PlayerInput>(); // Get the PlayerInput
         if (playerInput == null) Debug.LogError("PlayerInput not found");
     }
+
     /*
     private void OnCollisionEnter(Collision collision)
     {
@@ -30,6 +31,7 @@ public class StunnedByObstacle : MonoBehaviour
         }
     }
     */
+
     private void OnTriggerEnter(Collider other)//trigger seemed to work without moving the player
     {
         Debug.Log("trigger detected");

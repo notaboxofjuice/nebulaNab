@@ -2180,7 +2180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577698704085685524, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: TrailModule.mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6577698704085685524, guid: b276b79d48be9d24d859a408809f164b, type: 3}
       propertyPath: ShapeModule.enabled
