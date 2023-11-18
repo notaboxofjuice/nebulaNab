@@ -7,6 +7,7 @@ public class Action : MonoBehaviour
     [HideInInspector] public JuiceInventory shipJuice; // ship's juice inventory, assigned from JuiceInventory.cs
     [Header("Gameplay Vars")]
     [SerializeField] float rayDistance;
+    private OxygenTank targetTank;
     [Header("Cannon Vars")]
     [SerializeField] Cannon activeCannon;
     #endregion
@@ -40,8 +41,9 @@ public class Action : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Player")) // break player's oxygen
             {
-                Debug.Log(PhotonNetwork.NickName + " is breaking an oxygen tank.");
-                hit.collider.gameObject.GetComponent<OxygenTank>().BreakTank();
+                // break tank via RPC
+                targetTank = hit.collider.gameObject.GetComponent<OxygenTank>();
+                hit.collider.gameObject.GetComponent<PhotonView>().RPC("BreakTank", RpcTarget.All);
             }
             else Debug.Log("Hit object with tag: " + hit.collider.tag);
         }
@@ -65,6 +67,15 @@ public class Action : MonoBehaviour
         activeCannon.inUse = false; // set inUse to false
         activeCannon = null; // clear reference
         GetComponent<PlayerInput>().SwitchCurrentActionMap("Gameplay"); // switch back to gameplay
+    }
+    #endregion
+    #region I hate RPCs
+    [PunRPC]
+    public void BreakTank()
+    {
+        Debug.Log(PhotonNetwork.NickName + " is breaking an oxygen tank.");
+        targetTank.BreakTank(); // please god work
+        targetTank = null; // CLEAR REFERENCE
     }
     #endregion
 }
