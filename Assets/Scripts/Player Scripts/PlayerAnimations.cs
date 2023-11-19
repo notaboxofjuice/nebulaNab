@@ -1,9 +1,12 @@
+using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerAnimations : MonoBehaviour
+public class PlayerAnimations : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     private Animator anime;
@@ -17,22 +20,30 @@ public class PlayerAnimations : MonoBehaviour
     private GameObject flameEmmiter;
     [SerializeField]
     private GameObject flameEmmiterTwo;
+   
     [SerializeField]
     private GameObject sparks;
 
     [Space(5)]
-    [Header("Audio")]
+    [Header("Audios")]
     [SerializeField]
     private AudioClip exitShip;
+    [SerializeField]
+    private AudioClip hitByAsteroid;
 
     AudioSource audioPlayer;
 
+    PhotonView view;
+
     private void Start()
     {
+        view = GetComponent<PhotonView>();
+
         anime.SetBool("inSpace", false);
         flameEmmiter.SetActive(false);
         flameEmmiterTwo.SetActive(false);
-        sparks.SetActive(false);
+        
+
 
         audioPlayer = GetComponent<AudioSource>();
     }
@@ -66,7 +77,7 @@ public class PlayerAnimations : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        audioPlayer.PlayOneShot(exitShip);
+        if (other.CompareTag("Door")) audioPlayer.PlayOneShot(exitShip);
     }
 
 
@@ -83,25 +94,40 @@ public class PlayerAnimations : MonoBehaviour
         }
     }
 
+    public void CallStunnedRPC()
+    {
+        view.RPC("Stunned", RpcTarget.All);
+    }
 
-    public void Stunned()
+    public void CallRecoveredRPC()
+    {
+        view.RPC("Recover", RpcTarget.All);
+    }
+
+
+
+    [PunRPC]
+    private void Stunned()
     {
         flameEmmiter.SetActive(false);
         flameEmmiterTwo.SetActive(false);
 
         sparks.SetActive(true);
 
-        anime.SetTrigger("Panic");
+        audioPlayer.PlayOneShot(hitByAsteroid);
+
+        anime.SetBool("isPanicing", true);
     }
 
-    public void Recover()
+    [PunRPC]
+    private void Recover()
     {
         flameEmmiter.SetActive(true);
         flameEmmiterTwo.SetActive(true);
 
         sparks.SetActive(false);
 
-        anime.SetTrigger("Recovered");
+        anime.SetBool("isPanicing", false);
     }
 
 }

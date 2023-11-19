@@ -41,7 +41,12 @@ public class StunnedByObstacle : MonoBehaviour
             Debug.Log("Player is stunned");
             playerInput.enabled = false; // Disable playerInput
 
-            playerAnimations.Stunned();
+            if (playerAnimations.photonView.IsMine)
+            {
+                playerAnimations.CallStunnedRPC();
+                Debug.Log("I Sghould only be one");
+            }
+                
 
             Invoke(nameof(EnableMovement), stunTime); // Enable playerInput after stunTime seconds
         }
@@ -52,6 +57,11 @@ public class StunnedByObstacle : MonoBehaviour
         Debug.Log("Player is no longer stunned");
         playerInput.enabled = true; // Enable playerInput
 
-        playerAnimations.Recover();
+        if (playerAnimations.photonView.IsMine)
+        {
+            playerAnimations.CallRecoveredRPC();
+            Debug.Log("Recovered");
+        }
+            
     }
 }
