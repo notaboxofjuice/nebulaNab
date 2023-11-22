@@ -27,7 +27,7 @@ public class PhotonPlayer : MonoBehaviourPunCallbacks
 
             GetComponent<Movement>().enabled = true;
             GetComponent<PlayerInput>().enabled = true;
-            GetComponent<PlayerAnimations>().enabled = true;
+            GetComponent<PlayerSpecialFX>().enabled = true;
         }
         
     }

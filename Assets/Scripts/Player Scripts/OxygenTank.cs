@@ -8,14 +8,18 @@ public class OxygenTank : MonoBehaviour
     [SerializeField] int oxygen = 10; // how long player can survive on broken tank
     [SerializeField] CloneMachine cloneMachine; 
     [SerializeField] bool isBroken;
+    
+    [SerializeField] PlayerSpecialFX playerFX;
+    public bool TankBroken { get { return isBroken; } }
     private void Start()
     {
+        playerFX = GetComponent<PlayerSpecialFX>();
         #region Find friendly Cloning Machine
         // loop through and grab the one with desired team
         foreach (CloneMachine cm in FindObjectsOfType<CloneMachine>()) if (cm.Team == PhotonNetwork.LocalPlayer.GetTeam()) cloneMachine = cm;
         if (cloneMachine == null) Debug.LogError("Failed to find " + PhotonNetwork.LocalPlayer.GetTeam() + " cloning machine");
         #endregion
-   }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag("Door")) return; // if not colliding with door, do nothing
@@ -28,6 +32,8 @@ public class OxygenTank : MonoBehaviour
         isBroken = true; // set broken to true
         // Start timer for asphyxiation
         Invoke(nameof(Asphyxiate), oxygen);
+
+        playerFX.PlayTankBrokenSFX();//play sound effect
     }
     private void Asphyxiate()
     {
@@ -35,6 +41,8 @@ public class OxygenTank : MonoBehaviour
         // Try to send player to cloning machine
         cloneMachine.TryAcceptCorpse(gameObject);
         // cloneMachine will handle the rest
+
+        playerFX.PlayDeathSFX();//play sound effect
     }
     public void Restore()
     {

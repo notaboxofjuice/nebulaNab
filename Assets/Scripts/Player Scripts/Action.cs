@@ -9,8 +9,16 @@ public class Action : MonoBehaviourPunCallbacks
     [SerializeField] float rayDistance;
     [Header("Cannon Vars")]
     [SerializeField] Cannon activeCannon;
+
+    [SerializeField] PlayerSpecialFX playerFX;
     #endregion
     #region Unity Methods
+    private void Start()
+    {
+        playerFX = GetComponent<PlayerSpecialFX>();
+    }
+
+
     #endregion
     #region Gameplay Actions
     public void GameplayAction() // called by input system
@@ -37,6 +45,8 @@ public class Action : MonoBehaviourPunCallbacks
                 GetComponent<PlayerInput>().SwitchCurrentActionMap("Cannon"); // switch to cannon map
                 activeCannon = hit.collider.gameObject.GetComponent<Cannon>(); // set active cannon
                 activeCannon.inUse = true; // set inUse to true
+
+                playerFX.PlayOperateCannon();
             }
             else if (hit.collider.CompareTag("Player")) // break player's oxygen
             {
@@ -66,6 +76,8 @@ public class Action : MonoBehaviourPunCallbacks
         activeCannon.inUse = false; // set inUse to false
         activeCannon = null; // clear reference
         GetComponent<PlayerInput>().SwitchCurrentActionMap("Gameplay"); // switch back to gameplay
+
+        playerFX.PlayLeaveCannon();
     }
     #endregion
     #region I hate RPCs

@@ -10,7 +10,7 @@ public class StunnedByObstacle : MonoBehaviour
     PlayerInput playerInput; // Movement script
     [SerializeField] float stunTime; // Time the player is stunned for
 
-    [SerializeField] PlayerAnimations playerAnimations;
+    [SerializeField] PlayerSpecialFX playerAnimations;
 
 
     private void Awake()

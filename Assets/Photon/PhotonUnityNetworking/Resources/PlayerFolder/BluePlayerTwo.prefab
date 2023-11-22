@@ -448,6 +448,7 @@ MonoBehaviour:
   shipJuice: {fileID: 0}
   rayDistance: 4
   activeCannon: {fileID: 0}
+  playerFX: {fileID: -4048250080223235692, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
 --- !u!114 &8882276725536699735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -542,7 +543,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2702483048035075211}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 148515956ac20c44db5c49d79d4c9402, type: 3}
+  m_Script: {fileID: 11500000, guid: c799b5a8a862e894182f1cf0b80af23f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   anime: {fileID: 1343976771468921599}
@@ -552,6 +553,12 @@ MonoBehaviour:
   sparks: {fileID: 5230005742504212014}
   exitShip: {fileID: 8300000, guid: f42083b7c583f4e5da2709e9c4203951, type: 3}
   hitByAsteroid: {fileID: 8300000, guid: 2b6e306f144fd2047ad36490140f8b85, type: 3}
+  collectJuice: {fileID: 8300000, guid: 5ab8fc664ca4d604f820e255005a664a, type: 3}
+  tankBroken: {fileID: 8300000, guid: c4fb8667d825cc74bb35426e4273e084, type: 3}
+  death: {fileID: 8300000, guid: bd8857660a16ba549b8cc522d93d9117, type: 3}
+  useCannon: {fileID: 8300000, guid: 64ba684f93e789a4b999c55c17ff5395, type: 3}
+  leaveCannon: {fileID: 8300000, guid: 1958df7b2bdfc514aa786ba53c4ff7bc, type: 3}
+  audioPlayer: {fileID: 0}
 --- !u!114 &-7154788472829210922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,6 +588,7 @@ MonoBehaviour:
   oxygen: 0
   cloneMachine: {fileID: 0}
   isBroken: 0
+  playerFX: {fileID: 0}
 --- !u!82 &6655070310839621719
 AudioSource:
   m_ObjectHideFlags: 0
@@ -593,7 +601,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0

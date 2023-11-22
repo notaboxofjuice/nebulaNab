@@ -6,13 +6,12 @@ using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerAnimations : MonoBehaviourPunCallbacks
+public class PlayerSpecialFX : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     private Animator anime;
-
     [SerializeField]
-    private Movement movementScript;
+    private Movement movementScript;//refrence to know when player is moving
 
     [Space(5)]
     [Header("Particles")]
@@ -22,22 +21,37 @@ public class PlayerAnimations : MonoBehaviourPunCallbacks
     private GameObject flameEmmiterTwo;
    
     [SerializeField]
-    private GameObject sparks;
+    private GameObject sparks;//will appear when stunned
 
     [Space(5)]
-    [Header("Audios")]
+    [Header("Audio Clips")]
     [SerializeField]
     private AudioClip exitShip;
     [SerializeField]
     private AudioClip hitByAsteroid;
+    [SerializeField]
+    private AudioClip collectJuice;
+    [SerializeField]
+    private AudioClip tankBroken;
+    [SerializeField]
+    private AudioClip death;
+    [SerializeField]
+    private AudioClip useCannon;
+    [SerializeField]
+    private AudioClip leaveCannon;
 
-    AudioSource audioPlayer;
+    public AudioSource audioPlayer;
 
-    PhotonView view;
+    private PhotonView view;
+    private void Awake()
+    {
+        audioPlayer = GetComponent<AudioSource>();
+        view = GetComponent<PhotonView>();
+    }
 
     private void Start()
     {
-        view = GetComponent<PhotonView>();
+        
 
         anime.SetBool("inSpace", false);
         flameEmmiter.SetActive(false);
@@ -45,7 +59,7 @@ public class PlayerAnimations : MonoBehaviourPunCallbacks
         
 
 
-        audioPlayer = GetComponent<AudioSource>();
+        
     }
 
     private void Update()
@@ -78,13 +92,14 @@ public class PlayerAnimations : MonoBehaviourPunCallbacks
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Door")) audioPlayer.PlayOneShot(exitShip);
+        if (other.CompareTag("Juice")) audioPlayer.PlayOneShot(collectJuice);
     }
 
 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Door"))
-        {
+        {//when the player is inside the ship
             anime.SetBool("inSpace", false);
 
             flameEmmiter.SetActive(false);
@@ -94,21 +109,46 @@ public class PlayerAnimations : MonoBehaviourPunCallbacks
         }
     }
 
-    public void CallStunnedRPC()
+    #region Methods Called By Others
+    public void PlayTankBrokenSFX()
     {
-        view.RPC("Stunned", RpcTarget.All);
+        audioPlayer.PlayOneShot(tankBroken);
+    }
+
+    public void PlayDeathSFX()
+    {
+        audioPlayer.PlayOneShot(death);
+    }
+
+    public void PlayOperateCannon()
+    {
+        audioPlayer.PlayOneShot(useCannon);
+    }
+
+    public void PlayLeaveCannon()
+    {
+        audioPlayer.PlayOneShot(leaveCannon);
+    }
+    #endregion
+
+    #region RPCs
+
+    public void CallStunnedRPC()
+    {//other methods can call this non RPC mehtod, to call a RPC method, this way only this one needs a photon view refrence
+        view.RPC("Stunned", RpcTarget.All);//Had to Rpc it, now all players see sparks on stunned player
     }
 
     public void CallRecoveredRPC()
     {
-        view.RPC("Recover", RpcTarget.All);
+        view.RPC("Recover", RpcTarget.All);//with RPC, sparks turn off for all players on now recovered player
     }
 
 
 
     [PunRPC]
     private void Stunned()
-    {
+    {//by RPCing it, all players will be able to see when a player is stunned
+        //disable booster fire and enbale sparks and play panic animation
         flameEmmiter.SetActive(false);
         flameEmmiterTwo.SetActive(false);
 
@@ -121,7 +161,7 @@ public class PlayerAnimations : MonoBehaviourPunCallbacks
 
     [PunRPC]
     private void Recover()
-    {
+    {//for when the player stunned finishes
         flameEmmiter.SetActive(true);
         flameEmmiterTwo.SetActive(true);
 
@@ -129,5 +169,5 @@ public class PlayerAnimations : MonoBehaviourPunCallbacks
 
         anime.SetBool("isPanicing", false);
     }
-
+    #endregion
 }

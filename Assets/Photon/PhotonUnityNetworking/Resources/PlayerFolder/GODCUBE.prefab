@@ -99,6 +99,7 @@ MonoBehaviour:
   shipJuice: {fileID: 0}
   rayDistance: 2
   activeCannon: {fileID: 0}
+  playerFX: {fileID: 0}
 --- !u!1 &4279835558309895457
 GameObject:
   m_ObjectHideFlags: 0
