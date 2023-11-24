@@ -32,11 +32,15 @@ public class Action : MonoBehaviourPunCallbacks
                 Debug.Log(PhotonNetwork.NickName + " is depositing juice.");
                 shipJuice.juiceCount += GetComponent<JuiceInventory>().juiceCount;
                 GetComponent<JuiceInventory>().juiceCount = 0;
+
+                playerFX.PlayDepositJuice();
             }
             else if (hit.collider.CompareTag("CloningMachine")) // try cloning
             {
                 Debug.Log(PhotonNetwork.NickName + " is trying to clone.");
                 hit.collider.gameObject.GetComponent<CloneMachine>().TryClone();
+
+                playerFX.PlayCloning();
             }
             else if (hit.collider.CompareTag("Cannon")) // get cannon component and switch to cannon map
             {
@@ -68,6 +72,7 @@ public class Action : MonoBehaviourPunCallbacks
     {
         Debug.Log(PhotonNetwork.NickName + " is firing cannon.");
         activeCannon.Fire();
+        playerFX.PlayFireCannon();
     }
     public void ExitCannon()
     {
