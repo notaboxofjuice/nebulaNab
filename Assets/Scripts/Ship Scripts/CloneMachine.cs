@@ -7,8 +7,8 @@ public class CloneMachine : MonoBehaviour
 {
     public string Team; // team of this clone machine
     [SerializeField] JuiceInventory shipJuice; // ship's juice inventory
-    [SerializeField] int cloneCost; // cost to clone player, assigned in inspector
-    private GameObject currentPlayer = null; // which player is going to be cloned
+    [SerializeField] public int cloneCost; // cost to clone player, assigned in inspector
+    public GameObject currentPlayer = null; // which player is going to be cloned
     [SerializeField] Transform spawnPoint; // where to spawn player
     public void TryClone() // Try to clone currentPlayer, called by player action
     {
@@ -37,5 +37,7 @@ public class CloneMachine : MonoBehaviour
         Debug.Log("Cloning player");
         shipJuice.juiceCount -= cloneCost; // subtract juice from ship
         currentPlayer.SetActive(true); // enable currentPlayer
+
+        currentPlayer = null;
     }
 }

@@ -15,7 +15,7 @@ public class Cannon : MonoBehaviour
     [SerializeField] GameObject laser;
     [Tooltip("How far in front of the cannon to spawn the laser.")]
     [SerializeField] float spawnOffset = 1f;
-    [SerializeField] int fireCost = 15;
+    [SerializeField] public int fireCost = 15;
     [Tooltip("How far left or right the cannon can move as a float. Negative values will be converted to positive.")]
     [SerializeField] float movementRange = 10f;
     [Tooltip("How fast the cannon moves as a float")]

@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Photon.Pun.Demo.PunBasics;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +13,9 @@ public class PlayerSpecialFX : MonoBehaviourPunCallbacks
     private Animator anime;
     [SerializeField]
     private Movement movementScript;//refrence to know when player is moving
+    
+    private GameManager gameManager;
+
 
     [Space(5)]
     [Header("Particles")]
@@ -19,7 +23,6 @@ public class PlayerSpecialFX : MonoBehaviourPunCallbacks
     private GameObject flameEmmiter;
     [SerializeField]
     private GameObject flameEmmiterTwo;
-   
     [SerializeField]
     private GameObject sparks;//will appear when stunned
 
@@ -57,15 +60,14 @@ public class PlayerSpecialFX : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 
         anime.SetBool("inSpace", false);
         flameEmmiter.SetActive(false);
         flameEmmiterTwo.SetActive(false);
-        
-
 
         
+
     }
 
     private void Update()
@@ -115,7 +117,30 @@ public class PlayerSpecialFX : MonoBehaviourPunCallbacks
         }
     }
 
-    #region Methods Called By Others
+    public void CheckJuiceAmount()
+    {
+        if (gameManager.myTeamJuiceInventory.juiceCount > gameManager.myCannon.fireCost)
+        {
+            view.RPC("CannonUsable", RpcTarget.All);
+        }
+        else
+        {
+            view.RPC("CannonNotUsable", RpcTarget.All);
+        }
+
+        if(gameManager.myTeamJuiceInventory.juiceCount > gameManager.myCloneMachine.cloneCost && gameManager.myCloneMachine.currentPlayer != null)
+        {
+            view.RPC("CloneMachineIsUsable", RpcTarget.All);
+        }
+        else
+        {
+            view.RPC("CloneManchineNotUsable", RpcTarget.All);
+        }
+
+
+    }
+
+    #region Sound effects called by Action
     public void PlayTankBrokenSFX()
     {
         audioPlayer.PlayOneShot(tankBroken);
@@ -171,6 +196,31 @@ public class PlayerSpecialFX : MonoBehaviourPunCallbacks
     private void Cloned()
     {
         audioPlayer.PlayOneShot(activateClone);
+
+       
+    }
+
+    [PunRPC]
+    private void CloneMachineIsUsable()
+    {
+        gameManager.myCloneShimmer.SetActive(true);
+    }
+    [PunRPC]
+    private void CloneManchineNotUsable()
+    {
+        gameManager.myCloneShimmer.SetActive(false);
+    }
+
+    [PunRPC]
+    private void CannonUsable()
+    {
+        gameManager.myCannonShimmer.SetActive(true);
+    }
+
+    [PunRPC]
+    private void CannonNotUsable()
+    {
+        gameManager.myCannonShimmer.SetActive(false);
     }
 
 

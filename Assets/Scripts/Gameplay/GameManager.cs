@@ -24,6 +24,41 @@ public class GameManager : MonoBehaviourPunCallbacks
     CameraOffset blueCam;
     [SerializeField]
     CameraOffset redCam;
+
+    [Space(5)]
+    [Header("Red Team Components")]
+    [SerializeField]
+    JuiceInventory redJuiceInventory;
+    [SerializeField]
+    private CloneMachine redCloneM;
+    [SerializeField]
+    private Cannon redCannon;
+    [SerializeField]
+    GameObject redCannonShimmerEffect;//lets players know that cannon is usable
+    [SerializeField]
+    GameObject redCloneShimmerEffect;//lets players know that clone is usable//only if a player is dead??
+
+    [Space(5)]
+    [Header("Blue Team Components")]
+    [SerializeField]
+    JuiceInventory blueJuiceInventory;
+    [SerializeField]
+    private Cannon blueCannon;
+    [SerializeField]
+    private CloneMachine blueCloneM;
+    [SerializeField]
+    GameObject blueCannonShimmerEffect;//lets players know that cannon is usable
+    [SerializeField]
+    GameObject blueCloneShimmerEffect;//lets players know that clone is usable//only if a player is dead??
+
+    [Space(5)]
+    [Header("Player Components- Assigned on Start Up")]
+    public Cannon myCannon;//quick access for other scripts
+    public JuiceInventory myTeamJuiceInventory;
+    public CloneMachine myCloneMachine;//quick access for other scripts
+    public GameObject myCannonShimmer;
+    public GameObject myCloneShimmer;
+
     #endregion
     #region Win/Lose Vars
 
@@ -40,6 +75,12 @@ public class GameManager : MonoBehaviourPunCallbacks
     void Start()
     {
         SpawnPlayers();
+
+        myTeamJuiceInventory = PhotonNetwork.LocalPlayer.GetTeam() == "Red" ? redJuiceInventory : blueJuiceInventory;
+        myCloneMachine = PhotonNetwork.LocalPlayer.GetTeam() == "Red" ? redCloneM : blueCloneM;
+        myCannon = PhotonNetwork.LocalPlayer.GetTeam() == "Red" ? redCannon : blueCannon;
+        myCloneShimmer = PhotonNetwork.LocalPlayer.GetTeam() == "Red" ? redCloneShimmerEffect : blueCloneShimmerEffect;
+        myCannonShimmer = PhotonNetwork.LocalPlayer.GetTeam() == "Red" ? redCannonShimmerEffect : blueCannonShimmerEffect;
     }
     #endregion
     #region Spawning Methods
@@ -52,6 +93,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
                 var player = PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "BluePlayerOne"), blueSpawnPoint[0].position, blueSpawnPoint[0].rotation);
                 blueCam.player = player;
+
             }
             else
             {
