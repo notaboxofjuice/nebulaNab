@@ -23,29 +23,7 @@ public class Movement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        #region Movement
-        // calculate velocity relative to camera, ignoring camera's pitch
-        Vector3 forward = Camera.main.transform.forward;
-        forward.y = 0;
-        forward = forward.normalized;
-        Vector3 right = new(forward.z, 0, -forward.x);
-        // calculate target velocity based on input
-        Vector3 targetVelocity = (move.x * right + move.y * forward);
-        targetVelocity.Normalize();
-        targetVelocity.y = 0;
-        // move the cc
-        //cc.Move(playerSpeed * Time.deltaTime * targetVelocity);
-        cc.SimpleMove(playerSpeed * targetVelocity); // use SimpleMove instead of Move so they go down
-        #region Look Where Going
-        if (transform.hasChanged)
-        {
-            // rotate the cc in the direction of the velocity
-            Quaternion targetRotation = Quaternion.LookRotation(targetVelocity);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-            transform.hasChanged = false;
-        }
-        #endregion
-        #endregion
+        DoMovement();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -57,8 +35,16 @@ public class Movement : MonoBehaviour
     {
         //Debug.Log(PhotonNetwork.NickName + " is trying movement.");
         move = context.ReadValue<Vector2>();
-
-        isMoving = move.magnitude;
+        isMoving = move.magnitude; // YEFERSON'S CODE DO NOT DELETE FOR THE LOVE OF gud
+    }
+    private void DoMovement()
+    {
+        // rotate in the direction of move
+        if (move == Vector2.zero) return; // not moving, return
+        float targetAngle = Mathf.Atan2(move.x, move.y) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+        // move in the direction of move
+        cc.SimpleMove(move.magnitude * playerSpeed * transform.forward);
     }
     #endregion
     #endregion
