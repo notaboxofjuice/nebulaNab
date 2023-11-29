@@ -11,7 +11,7 @@ public class JuiceInventory : MonoBehaviour
     public string TankTeam = null; // team of this tank
     private void OnTriggerEnter(Collider other) // for when assigned to juice obj
     {
-        if (other.gameObject.CompareTag("Player") && this.gameObject.CompareTag("Juice"))
+        if (other.gameObject.CompareTag("Player") && gameObject.CompareTag("Juice"))
         {
             Debug.Log(other.gameObject.name + " is collecting " + juiceCount + " juice."); // debug log
             other.gameObject.GetComponent<JuiceInventory>().juiceCount += juiceCount; // add juice to player
@@ -22,6 +22,6 @@ public class JuiceInventory : MonoBehaviour
     [PunRPC]
     public void AcceptJuice(int acceptThis) // for accepting juice over network
     {
-        juiceCount += acceptThis; // add juice to player
+        juiceCount += acceptThis; // add juice to local count
     }
 }

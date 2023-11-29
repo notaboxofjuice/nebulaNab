@@ -34,6 +34,7 @@ public class Action : MonoBehaviourPunCallbacks
                 // Logic
                 _hitPhotonView.RPC("AcceptJuice", RpcTarget.All, GetComponent<JuiceInventory>().juiceCount);
                 GetComponent<JuiceInventory>().juiceCount = 0;
+                Debug.Log(PhotonNetwork.NickName + " has " + GetComponent<JuiceInventory>().juiceCount + " juice");
                 // FX
                 playerFX.PlayDepositJuice();
                 playerFX.CheckJuiceAmount();
