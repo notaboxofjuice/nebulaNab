@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class Warhead : MonoBehaviour
 {
-    [SerializeField] float movementSpeed = 5f;
+    [SerializeField] float forceAcceleration = 5f;
+    Rigidbody body;
+    private void Start()
+    {
+        body = GetComponent<Rigidbody>();
+    }
     private void FixedUpdate()
     {
         Motor();
     }
     void Motor()
     {
-        transform.Translate(transform.forward * movementSpeed * Time.fixedDeltaTime);
+        body.AddForce(forceAcceleration * transform.forward, ForceMode.Acceleration);
     }
     private void OnCollisionEnter(Collision collision)
     {
