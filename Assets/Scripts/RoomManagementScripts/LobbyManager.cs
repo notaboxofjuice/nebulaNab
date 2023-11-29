@@ -49,6 +49,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private Sprite muteIcon;
 
+    [SerializeField]
+    private TMP_Text sfxMutedText;
+    private bool sfxMuted = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -120,6 +125,26 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             volumeIcon.sprite = speakerIcon;
         }
     }
+
+    public void SetSFXVolume()
+    {
+        if (!sfxMuted)
+        {
+            sfxMuted = true;
+            sfxMutedText.text = "SFX-Muted";
+
+            PhotonNetwork.LocalPlayer.SetSFXVolume(sfxMuted);
+        }
+        else
+        {
+            sfxMuted = false;
+            sfxMutedText.text = "SFX-ON";
+
+            PhotonNetwork.LocalPlayer.SetSFXVolume(sfxMuted);
+        }
+
+    }
+
     //photon override methods
     #region Overrride Functions
 

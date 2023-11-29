@@ -6,6 +6,7 @@ public static class PlayerExtensions
     private const string TeamKey = "Team";//used in get method to check player team assgined
     private const int PlayerIndex = 0;
     public const float SoundLevel = 0.05f;
+    public const bool muteSFX = false;
 
     public static void SetTeam(this Player player, string team)
     {
@@ -35,5 +36,15 @@ public static class PlayerExtensions
     public static float GetVolume(this Player player)
     {
         return player.CustomProperties.ContainsKey(SoundLevel) ? (float)player.CustomProperties[SoundLevel] : 0.0f;
+    }
+
+    public static void SetSFXVolume(this Player player, bool toggle)
+    {
+        player.CustomProperties[muteSFX] = toggle;
+    }
+
+    public static bool GetSFXVolume(this Player player)
+    {
+        return player.CustomProperties.ContainsKey(muteSFX) ? (bool)player.CustomProperties[muteSFX] : false;
     }
 }

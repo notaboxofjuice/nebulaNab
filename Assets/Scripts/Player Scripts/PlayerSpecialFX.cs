@@ -56,6 +56,9 @@ public class PlayerSpecialFX : MonoBehaviourPunCallbacks
     {
         audioPlayer = GetComponent<AudioSource>();
         view = GetComponent<PhotonView>();
+
+        audioPlayer.mute = PhotonNetwork.LocalPlayer.GetSFXVolume();//if player doesnt want sound, then they dont get sound, and thats that
+
     }
 
     private void Start()
