@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1011539296}
-  m_IndirectSpecularColor: {r: 0.031453934, g: 0.1181007, b: 0.056809172, a: 1}
+  m_IndirectSpecularColor: {r: 0.03145402, g: 0.118093155, b: 0.056809913, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -884,6 +884,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1800072387967509686, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2344933620641984562, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
       propertyPath: sceneViewId
       value: 5
@@ -952,10 +956,14 @@ PrefabInstance:
       propertyPath: anime
       value: 
       objectReference: {fileID: 1089357260}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1282616921647954050, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1800072387967509686, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1089357264}
   m_SourcePrefab: {fileID: 100100000, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
 --- !u!95 &1089357260 stripped
 Animator:
@@ -973,6 +981,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148a41c89448a4d4a9439df7b596d410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1089357262 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1800072387967509686, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+  m_PrefabInstance: {fileID: 1089357259}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1089357263 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8191445467368800232, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
@@ -984,6 +997,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd86edf8c673ee44eb5737cef27c1796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1089357264
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089357262}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10.096217, y: 3.2513876, z: 1.7437854}
+  m_Center: {x: 0, y: 0, z: 0.30338168}
 --- !u!1 &1225165945 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8101105360488573927, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
@@ -1291,16 +1325,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedShipCollection
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5080591737733821760, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5743780864414280052, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1589321072}
   m_SourcePrefab: {fileID: 100100000, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
 --- !u!95 &1589321070 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6941932692583782944, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
   m_PrefabInstance: {fileID: 1589321069}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1589321071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5743780864414280052, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
+  m_PrefabInstance: {fileID: 1589321069}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1589321072
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589321071}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10.096217, y: 3.2513876, z: 1.7437854}
+  m_Center: {x: 0, y: 0, z: 0.30338168}
 --- !u!114 &1589321073 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4267775279493696059, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}

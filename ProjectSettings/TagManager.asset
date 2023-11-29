@@ -11,6 +11,8 @@ TagManager:
   - Spawner
   - Door
   - Obstacle
+  - Ship
+  - Shield
   layers:
   - Default
   - TransparentFX
