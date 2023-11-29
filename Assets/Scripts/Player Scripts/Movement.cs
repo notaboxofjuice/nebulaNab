@@ -39,12 +39,13 @@ public class Movement : MonoBehaviour
     }
     private void DoMovement()
     {
-        // rotate in the direction of move
-        if (move == Vector2.zero) return; // not moving, return
-        float targetAngle = Mathf.Atan2(move.x, move.y) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+        // rotate in the direction of move, relative to Camera.main.transform
+        Vector3 _move = new Vector3(move.x, 0, move.y);
+        Vector3 _direction = Camera.main.transform.TransformDirection(_move);
+        _direction.y = 0;
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_direction), rotationSpeed * Time.deltaTime);
         // move in the direction of move
-        cc.SimpleMove(move.magnitude * playerSpeed * transform.forward);
+        cc.SimpleMove(playerSpeed * _direction);
     }
     #endregion
     #endregion
