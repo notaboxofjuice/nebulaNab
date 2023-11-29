@@ -25,6 +25,7 @@ public class OxygenTank : MonoBehaviour
         if (!other.gameObject.CompareTag("Door")) return; // if not colliding with door, do nothing
         else Restore(); // restore oxygen
     }
+    [PunRPC]
     public void BreakTank() // called when another player actions this player
     {
         if (isBroken) return; // if already broken, do nothing
@@ -39,9 +40,9 @@ public class OxygenTank : MonoBehaviour
     {
         Debug.Log("Player asphyxiated");
         // Try to send player to cloning machine
-        cloneMachine.TryAcceptCorpse(gameObject);
+        cloneMachine.GetComponent<PhotonView>().RPC("TryAcceptCorpse", RpcTarget.All, gameObject);
         // cloneMachine will handle the rest
-
+        // FX
         playerFX.PlayDeathSFX();//play sound effect
     }
     public void Restore()

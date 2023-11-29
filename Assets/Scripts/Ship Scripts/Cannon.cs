@@ -62,4 +62,11 @@ public class Cannon : MonoBehaviour
             shipJuiceInventory.juiceCount -= fireCost;
         }
     }
+    #region Pun RPCs
+    [PunRPC]
+    public void FlipOccupiedBool()
+    {
+        inUse = !inUse;
+    }
+    #endregion
 }

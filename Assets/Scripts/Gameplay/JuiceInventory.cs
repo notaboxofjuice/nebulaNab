@@ -19,10 +19,9 @@ public class JuiceInventory : MonoBehaviour
             Destroy(gameObject); // destroy the juice object
         }
     }
-/*    private void Start() // for when assigned to tank
+    [PunRPC]
+    public void AcceptJuice(int acceptThis) // for accepting juice over network
     {
-        if (!isTank || TankTeam == null) return; // if not a tank, do nothing
-        // loop through all players and assign this tank to the correct team
-        foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player")) if (PhotonNetwork.LocalPlayer.GetTeam() == TankTeam) player.GetComponent<Action>().shipJuice = this;
+        juiceCount += acceptThis; // add juice to player
     }
-*/}
+}

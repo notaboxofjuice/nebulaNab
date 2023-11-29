@@ -3,13 +3,14 @@ using UnityEngine;
 /// <summary>
 /// Assigned to clone machine object. Accepts dead players and respawns them
 /// </summary>
-public class CloneMachine : MonoBehaviour
+public class CloneMachine : MonoBehaviourPunCallbacks
 {
     public string Team; // team of this clone machine
     [SerializeField] JuiceInventory shipJuice; // ship's juice inventory
     [SerializeField] public int cloneCost; // cost to clone player, assigned in inspector
     public GameObject currentPlayer = null; // which player is going to be cloned
     [SerializeField] Transform spawnPoint; // where to spawn player
+    [PunRPC]
     public void TryClone() // Try to clone currentPlayer, called by player action
     {
         if (currentPlayer == null) return; // if no currentPlayer, do nothing
@@ -17,6 +18,7 @@ public class CloneMachine : MonoBehaviour
         if (shipJuice.juiceCount < cloneCost) Debug.Log("Not enough juice"); // if not enough juice, do nothing
         else DoClone(); // call DoClone
     }
+    [PunRPC]
     public void TryAcceptCorpse(GameObject Corpse) // Try to accept a new corpse
     {
         Debug.Log("Trying to accept corpse...");
@@ -37,7 +39,6 @@ public class CloneMachine : MonoBehaviour
         Debug.Log("Cloning player");
         shipJuice.juiceCount -= cloneCost; // subtract juice from ship
         currentPlayer.SetActive(true); // enable currentPlayer
-
-        currentPlayer = null;
+        currentPlayer = null; // clear reference to currentPlayer
     }
 }
