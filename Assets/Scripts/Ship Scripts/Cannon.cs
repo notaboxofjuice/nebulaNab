@@ -10,12 +10,12 @@ public class Cannon : MonoBehaviour
     [Tooltip("The Cannon Object this control panel Moves")]
     [SerializeField] GameObject cannon;
     [Tooltip("The Ship Juice Inventory this cannon is attached to.")]
-    [SerializeField] JuiceInventory shipJuiceInventory; // assigned in inspector -Leeman
+    [SerializeField] GameObject shipInventory;
     [Tooltip("The laser prefab to be instantiated when the cannon fires.")]
     [SerializeField] GameObject laser;
     [Tooltip("How far in front of the cannon to spawn the laser.")]
     [SerializeField] float spawnOffset = 1f;
-    [SerializeField] public int fireCost = 15;
+    [SerializeField] int fireCost = 15;
     [Tooltip("How far left or right the cannon can move as a float. Negative values will be converted to positive.")]
     [SerializeField] float movementRange = 10f;
     [Tooltip("How fast the cannon moves as a float")]
@@ -23,12 +23,14 @@ public class Cannon : MonoBehaviour
     [SerializeField] bool blueTeam;
     public bool inUse;
     public float moveInput;
+    JuiceInventory juiceInventory;
     private void Awake()
     {
         view = gameObject.GetComponent<PhotonView>();
     }
     private void Start()
     {
+        juiceInventory = shipInventory.GetComponent<JuiceInventory>();
         movementRange = Mathf.Abs(movementRange);
         if (!blueTeam)
         {
@@ -43,11 +45,10 @@ public class Cannon : MonoBehaviour
     { // accepts moveInput as a float between -1 and 1
         cannon.transform.position = new Vector3(Mathf.Clamp(cannon.transform.position.x + (moveInput * movementSpeed * Time.deltaTime), -movementRange, movementRange), cannon.transform.position.y, cannon.transform.position.z);
     }
-    [PunRPC]
     public void Fire() // fire cannon, called by player input
     {
         // logic for firing cannon
-        if(shipJuiceInventory.juiceCount >= fireCost)
+        if(juiceInventory.juiceCount >= fireCost)
         {
             Vector3 spawn = cannon.transform.position + Vector3.forward * spawnOffset;
             Quaternion spawnRotation = Quaternion.identity;
@@ -60,12 +61,7 @@ public class Cannon : MonoBehaviour
                 spawnRotation = Quaternion.Euler(-90, 0, 0);
             }
             PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", laser.name), spawn, spawnRotation);
-            shipJuiceInventory.juiceCount -= fireCost;
+            juiceInventory.juiceCount -= fireCost;
         }
-    }
-    [PunRPC]
-    public void FlipOccupiedBool()
-    {
-        inUse = !inUse;
     }
 }

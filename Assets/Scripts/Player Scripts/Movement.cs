@@ -34,8 +34,7 @@ public class Movement : MonoBehaviour
         targetVelocity.Normalize();
         targetVelocity.y = 0;
         // move the cc
-        //cc.Move(playerSpeed * Time.deltaTime * targetVelocity);
-        cc.SimpleMove(playerSpeed * targetVelocity); // use SimpleMove instead of Move so they go down
+        cc.Move(playerSpeed * Time.deltaTime * targetVelocity);
         #region Look Where Going
         if (transform.hasChanged)
         {
@@ -49,7 +48,8 @@ public class Movement : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Door")) GetComponent<OxygenTank>().Restore(); // entering door, restore tether
+        //commented out for playtesting reasons//finding null
+        //if (other.CompareTag("Door")) other.GetComponent<OxygenTank>().Restore(); // entering door, restore tether
     }
     #endregion
     #region My Methods

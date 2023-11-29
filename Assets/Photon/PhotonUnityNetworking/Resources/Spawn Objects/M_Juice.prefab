@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7463798029902107554}
   - component: {fileID: 583727661861402362}
   - component: {fileID: 7471714668059048386}
-  - component: {fileID: 7884447605506895033}
-  m_Layer: 8
+  - component: {fileID: 3315504547591598884}
+  m_Layer: 0
   m_Name: M_Juice
   m_TagString: Juice
   m_Icon: {fileID: 0}
@@ -105,10 +105,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   juiceCount: 1
-  isTank: 0
-  TankTeam: 
---- !u!135 &7884447605506895033
-SphereCollider:
+--- !u!65 &3315504547591598884
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -126,8 +124,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.4511003
-  m_Center: {x: 0, y: -0.20188475, z: 0}
+  m_Size: {x: 1, y: 8, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5849139382515003382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -179,10 +177,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 30f6d10a983973447b4baa977132a981, type: 3}
       propertyPath: m_Name
       value: M_Juice
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 30f6d10a983973447b4baa977132a981, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

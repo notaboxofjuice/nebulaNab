@@ -10,7 +10,7 @@ public class StunnedByObstacle : MonoBehaviour
     PlayerInput playerInput; // Movement script
     [SerializeField] float stunTime; // Time the player is stunned for
 
-    [SerializeField] PlayerSpecialFX playerAnimations;
+    [SerializeField] PlayerAnimations playerAnimations;
 
 
     private void Awake()
@@ -41,12 +41,7 @@ public class StunnedByObstacle : MonoBehaviour
             Debug.Log("Player is stunned");
             playerInput.enabled = false; // Disable playerInput
 
-            if (playerAnimations.photonView.IsMine)
-            {
-                playerAnimations.CallStunnedRPC();
-                Debug.Log("I Sghould only be one");
-            }
-                
+            playerAnimations.Stunned();
 
             Invoke(nameof(EnableMovement), stunTime); // Enable playerInput after stunTime seconds
         }
@@ -57,11 +52,6 @@ public class StunnedByObstacle : MonoBehaviour
         Debug.Log("Player is no longer stunned");
         playerInput.enabled = true; // Enable playerInput
 
-        if (playerAnimations.photonView.IsMine)
-        {
-            playerAnimations.CallRecoveredRPC();
-            Debug.Log("Recovered");
-        }
-            
+        playerAnimations.Recover();
     }
 }

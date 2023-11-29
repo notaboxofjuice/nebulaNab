@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7259645393763982549}
   - component: {fileID: 4833601972027890107}
   - component: {fileID: 7124308312387729357}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Asstriod
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -191,14 +191,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c523428c3c8d8574ebcf25df0c46ed69, type: 3}
       propertyPath: m_Name
       value: Astriod (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: c523428c3c8d8574ebcf25df0c46ed69, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8164078558771037576, guid: c523428c3c8d8574ebcf25df0c46ed69, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

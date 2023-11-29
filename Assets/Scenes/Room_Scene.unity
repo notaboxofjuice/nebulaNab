@@ -641,7 +641,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundtrack:
   - {fileID: 8300000, guid: 44a0d8d85e5ed83468708100ccae76dc, type: 3}
-  inLobby: 0
 --- !u!4 &311823786
 Transform:
   m_ObjectHideFlags: 0
@@ -1238,12 +1237,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedShipCollection
       objectReference: {fileID: 0}
-    - target: {fileID: 8022659815312573235, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7557536707260506487, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2636,21 +2630,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 667748513454087867, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2752396937134319542, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
       propertyPath: m_Name
       value: BlueShipCollection
-      objectReference: {fileID: 0}
-    - target: {fileID: 5535550200249144637, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6201273230810772985, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7910936534774040608, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
       propertyPath: sceneViewId
@@ -2696,12 +2678,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8547932038040719578, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4030318997445389151, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2960,7 +2937,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 15.362595, y: -60.17799, z: 16.536217, w: -85.26125}
+  m_margin: {x: 2.0373993, y: -63.684666, z: 10.925491, w: -92.27493}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

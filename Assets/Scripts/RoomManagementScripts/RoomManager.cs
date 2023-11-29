@@ -55,14 +55,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I) && Input.GetKey(KeyCode.H)) StartGame();
-
-        if(joinedBlueTeam && currentBluePlayers < 2) PhotonNetwork.LocalPlayer.SetPlayerIndex(1);
-        if (joinedRedTeam && currentRedPlayers < 2) PhotonNetwork.LocalPlayer.SetPlayerIndex(1);
-    }
-
 
     public void JoinBlueTeam()
     {

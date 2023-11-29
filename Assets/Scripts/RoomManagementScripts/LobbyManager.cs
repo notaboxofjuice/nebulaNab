@@ -5,16 +5,14 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
-    [Header("Canvas Refrences")]//stay on the same scene, show different options
+    [Header("Canvas Refrences")]
     [SerializeField]
     private GameObject optionsCanvas;
     [SerializeField]
     private GameObject searchRoomsCanvas;
-    
   
     [Space(5)]
     [Header("Display Rooms Refrences")]
@@ -22,10 +20,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private RoomTabManager roomDisplayTab;
     [SerializeField]
     private RectTransform tabContainer;
-    private List<RoomTabManager> _currentListings = new List<RoomTabManager>();//
+    private List<RoomTabManager> _currentListings = new List<RoomTabManager>();
 
 
-    [Space(5)]
+  [Space(5)]
     [Header("Input Room Refrences")]
     //RoomId Input
     private string inputedRoomID;
@@ -36,24 +34,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private TMP_InputField playerName_Input;
     string playerNickname;
 
-    [Space(5)]
-    [Header("Volume Manager")]
-    [SerializeField]
-    private Slider volumeSlider;
-    [SerializeField]
-    private AudioSource audioPlayer;
-    [SerializeField]
-    private Image volumeIcon;
-    [SerializeField]
-    private Sprite speakerIcon;
-    [SerializeField]
-    private Sprite muteIcon;
-
     // Start is called before the first frame update
     void Start()
     {
         playerNickname = "Player" + Random.Range(0, 10000);
-        SetVolume();
+
         PhotonNetwork.NickName = playerNickname;
     }
 
@@ -63,7 +48,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             playerNickname = playerName_Input.text;
 
         PhotonNetwork.NickName = playerNickname;
-        
     }
     public void CreateRoom()
     {
@@ -95,7 +79,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         if(inputedRoomID != "" || inputedRoomID != null)
         {
-            
             PhotonNetwork.JoinRoom("Room:" + inputedRoomID);
         }
         
@@ -106,24 +89,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         inputedRoomID = iDInputField.text;
     }
 
-    public void SetVolume()//player uses slider to adjust the volume
-    {
-        PhotonNetwork.LocalPlayer.SetVolume(volumeSlider.value);//what the player sets will carry over
-        audioPlayer.volume = volumeSlider.value;
 
-        if(audioPlayer.volume <= 0)//change icon if muted
-        {
-            volumeIcon.sprite = muteIcon;
-        }
-        else
-        {
-            volumeIcon.sprite = speakerIcon;
-        }
-    }
-    //photon override methods
     #region Overrride Functions
 
-    //when rooms open or close on network, the display tab will be updated
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {//updates the room list for the search rooms tab
         base.OnRoomListUpdate(roomList);
@@ -167,21 +135,21 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             
         }
     }
-    //when the player is trying to join a room and it fails join a random room
+
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         base.OnJoinRandomFailed(returnCode, message);
 
         CreateRoom();
     }
-    //when a player is able to join a room, load the room scene
+
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
 
         SceneManager.LoadScene(2);
     }
-    //when a player is able to create a room, load the room scene
+
     public override void OnCreatedRoom()
     {
         base.OnCreatedRoom();
