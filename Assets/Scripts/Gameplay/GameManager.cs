@@ -53,11 +53,11 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     [Space(5)]
     [Header("Player Components- Assigned on Start Up")]
-    public Cannon myCannon;//quick access for other scripts
-    public JuiceInventory myTeamJuiceInventory;
-    public CloneMachine myCloneMachine;//quick access for other scripts
-    public GameObject myCannonShimmer;
-    public GameObject myCloneShimmer;
+    [SerializeField] public Cannon myCannon;//quick access for other scripts
+    [SerializeField] public JuiceInventory myTeamJuiceInventory;
+    [SerializeField] public CloneMachine myCloneMachine;//quick access for other scripts
+    [SerializeField] public GameObject myCannonShimmer;
+    [SerializeField] public GameObject myCloneShimmer;
 
     #endregion
     #region Win/Lose Vars
