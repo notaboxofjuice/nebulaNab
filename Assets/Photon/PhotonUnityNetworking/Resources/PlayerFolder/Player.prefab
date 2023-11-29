@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 7322868796662050045}
   - component: {fileID: 3235443610966934343}
   - component: {fileID: -7385013098956905981}
+  - component: {fileID: 2275306837105383252}
   - component: {fileID: 7035748954959434213}
   - component: {fileID: 1577342812875034759}
   m_Layer: 0
@@ -311,6 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9dbe115d1298dd4284f9060a2277a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipJuice: {fileID: 0}
   rayDistance: 4
   activeCannon: {fileID: 0}
 --- !u!114 &7322868796662050045
@@ -326,6 +328,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   juiceCount: 0
+  isTank: 0
+  TankTeam: 
 --- !u!114 &3235443610966934343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stunTime: 3
+  playerAnimations: {fileID: 0}
 --- !u!114 &-7385013098956905981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +357,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 
+--- !u!114 &2275306837105383252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4279835558309895457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a837f1fb0ac70294c92dc04c4d9ed0d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oxygen: 0
+  cloneMachine: {fileID: 0}
+  isBroken: 0
 --- !u!114 &7035748954959434213
 MonoBehaviour:
   m_ObjectHideFlags: 0

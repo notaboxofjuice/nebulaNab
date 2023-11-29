@@ -52,6 +52,21 @@ MonoBehaviour:
   - AddRedTeam
   - SubBlueTeam
   - SubRedTeam
+  - BreakTank
+  - BreakOtherTank
+  - Recover
+  - Stunned
+  - Cloned
+  - CannonNotUsable
+  - CannonUsable
+  - CloneMachineIsUsable
+  - CloneManchineNotUsable
+  - AcceptJuice
+  - FlipOccupiedBool
+  - TryAcceptCorpse
+  - TryClone
+  - GoToCloneMachine
+  - Respawn
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

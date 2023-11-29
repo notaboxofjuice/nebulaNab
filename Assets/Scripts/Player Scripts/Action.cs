@@ -1,44 +1,82 @@
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class Action : MonoBehaviour
+public class Action : MonoBehaviourPunCallbacks
 {
     #region Variables
+    [HideInInspector] public JuiceInventory shipJuice; // ship's juice inventory, assigned from JuiceInventory.cs
     [Header("Gameplay Vars")]
     [SerializeField] float rayDistance;
     [Header("Cannon Vars")]
     [SerializeField] Cannon activeCannon;
+    [Header("FX")]
+    [SerializeField] PlayerSpecialFX playerFX;
+    #endregion
+    #region Unity Methods
+    private void Start()
+    {
+
+        playerFX = GetComponent<PlayerSpecialFX>();
+    }
+    private void Update()
+    {
+        //Dev Cheat Codes
+        if (Input.GetKey(KeyCode.P) && Input.GetKey(KeyCode.I))
+        {
+            GetComponent<JuiceInventory>().juiceCount = 999;
+            Debug.Log("Juicy Boy");
+        }
+    }
     #endregion
     #region Gameplay Actions
     public void GameplayAction() // called by input system
     { // raycast forward
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, rayDistance))
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, rayDistance))
         {
             Debug.DrawLine(transform.position, hit.point, Color.red);
-            if (hit.collider.CompareTag("JuiceTank")) // deposit juice
+
+            GameObject _hitObject = hit.collider.gameObject;
+            PhotonView _hitPhotonView = _hitObject.GetComponent<PhotonView>();
+
+            if (_hitObject.CompareTag("JuiceTank")) // deposit juice
             {
                 Debug.Log(PhotonNetwork.NickName + " is depositing juice.");
-                hit.collider.gameObject.GetComponent<JuiceInventory>().juiceCount += GetComponent<JuiceInventory>().juiceCount;
+                // Logic
+                _hitPhotonView.RPC("AcceptJuice", RpcTarget.All, GetComponent<JuiceInventory>().juiceCount);
                 GetComponent<JuiceInventory>().juiceCount = 0;
+                Debug.Log(PhotonNetwork.NickName + " has " + GetComponent<JuiceInventory>().juiceCount + " juice");
+                // FX
+                playerFX.PlayDepositJuice();
+                
+                playerFX.CheckJuiceAmount();
             }
-            else if (hit.collider.CompareTag("CloningMachine")) // try cloning
+            else if (_hitObject.CompareTag("CloningMachine")) // try cloning
             {
                 Debug.Log(PhotonNetwork.NickName + " is trying to clone.");
-                hit.collider.gameObject.GetComponent<CloneMachine>().TryClone();
+                // Logic
+                _hitPhotonView.RPC("TryClone", RpcTarget.All);
+                // FX
+                playerFX.PlayCloning();
+                playerFX.CheckJuiceAmount();
+
             }
-            else if (hit.collider.CompareTag("Cannon")) // get cannon component and switch to cannon map
+            else if (_hitObject.CompareTag("Cannon")) // get cannon component and switch to cannon map
             {
                 Debug.Log(PhotonNetwork.NickName + " is entering cannon.");
-                if (hit.collider.gameObject.GetComponent<Cannon>().inUse) return; // if cannon is in use, do nothing
+                // Logic
+                Cannon _hitCannon = _hitObject.GetComponent<Cannon>(); // cache cannon component
+                if (_hitCannon.inUse) return; // if cannon is in use, do nothing
+                _hitPhotonView.RPC("FlipOccupiedBool", RpcTarget.All);
                 GetComponent<PlayerInput>().SwitchCurrentActionMap("Cannon"); // switch to cannon map
-                activeCannon = hit.collider.gameObject.GetComponent<Cannon>(); // set active cannon
-                activeCannon.inUse = true; // set inUse to true
+                activeCannon = _hitCannon; // set active cannon
+                // FX
+                playerFX.PlayOperateCannon();
             }
             else if (hit.collider.CompareTag("Player")) // break player's oxygen
             {
                 Debug.Log(PhotonNetwork.NickName + " is breaking an oxygen tank.");
-                hit.collider.gameObject.GetComponent<OxygenTank>().BreakTank();
+                // break tank via RPC
+                _hitPhotonView.RPC("BreakTank", RpcTarget.All);
             }
             else Debug.Log("Hit object with tag: " + hit.collider.tag);
         }
@@ -53,15 +91,20 @@ public class Action : MonoBehaviour
     public void FireCannon()
     {
         Debug.Log(PhotonNetwork.NickName + " is firing cannon.");
-        activeCannon.Fire();
+        activeCannon.GetComponent<PhotonView>().RPC("Fire", RpcTarget.All);
+        // FX
+        playerFX.PlayFireCannon();
+        playerFX.CheckJuiceAmount();
     }
     public void ExitCannon()
     {
         // debug log the player's photon name
         Debug.Log(PhotonNetwork.NickName + " is exiting cannon.");
-        activeCannon.inUse = false; // set inUse to false
+        activeCannon.GetComponent<PhotonView>().RPC("FlipOccupiedBool", RpcTarget.All);
         activeCannon = null; // clear reference
         GetComponent<PlayerInput>().SwitchCurrentActionMap("Gameplay"); // switch back to gameplay
+        // FX
+        playerFX.PlayLeaveCannon();
     }
     #endregion
 }
