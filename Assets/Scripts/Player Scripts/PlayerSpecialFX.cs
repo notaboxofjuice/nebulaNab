@@ -168,7 +168,7 @@ public class PlayerSpecialFX : MonoBehaviourPunCallbacks
 
     public void PlayDepositJuice()
     {
-        audioPlayer.PlayOneShot(fireCannon);
+        audioPlayer.PlayOneShot(depositJuice);
     }
 
    
