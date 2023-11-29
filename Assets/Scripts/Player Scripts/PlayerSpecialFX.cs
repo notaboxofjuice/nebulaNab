@@ -72,6 +72,8 @@ public class PlayerSpecialFX : MonoBehaviourPunCallbacks
 
     private void Update()
     {
+
+
         if (movementScript.isMoving != 0)
         {
             anime.SetBool("isRunning", true);
@@ -119,6 +121,7 @@ public class PlayerSpecialFX : MonoBehaviourPunCallbacks
 
     public void CheckJuiceAmount()
     {
+       
         if (gameManager.myTeamJuiceInventory.juiceCount > gameManager.myCannon.fireCost)
         {
             view.RPC("CannonUsable", RpcTarget.All);

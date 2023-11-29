@@ -15,6 +15,7 @@ public class Action : MonoBehaviourPunCallbacks
     #region Unity Methods
     private void Start()
     {
+
         playerFX = GetComponent<PlayerSpecialFX>();
     }
     #endregion
@@ -37,6 +38,7 @@ public class Action : MonoBehaviourPunCallbacks
                 Debug.Log(PhotonNetwork.NickName + " has " + GetComponent<JuiceInventory>().juiceCount + " juice");
                 // FX
                 playerFX.PlayDepositJuice();
+                
                 playerFX.CheckJuiceAmount();
             }
             else if (_hitObject.CompareTag("CloningMachine")) // try cloning
