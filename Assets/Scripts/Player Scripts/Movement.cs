@@ -39,13 +39,24 @@ public class Movement : MonoBehaviour
     }
     private void DoMovement()
     {
-        // rotate in the direction of move, relative to Camera.main.transform
-        Vector3 _move = new Vector3(move.x, 0, move.y);
-        Vector3 _direction = Camera.main.transform.TransformDirection(_move);
-        _direction.y = 0;
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_direction), rotationSpeed * Time.deltaTime);
-        // move in the direction of move
-        cc.SimpleMove(playerSpeed * _direction);
+        // calculate velocity relative to camera, ignoring camera's pitch
+        Vector3 forward = Camera.main.transform.forward;
+        forward.y = 0;
+        forward = forward.normalized;
+        Vector3 right = new(forward.z, 0, -forward.x);
+        // calculate target velocity based on input
+        Vector3 targetVelocity = (move.x * right + move.y * forward);
+        targetVelocity.Normalize();
+        targetVelocity.y = 0;
+        // move the cc
+        //cc.Move(playerSpeed * Time.deltaTime * targetVelocity);
+        cc.SimpleMove(playerSpeed * targetVelocity); // use SimpleMove instead of Move so they go down
+        if (isMoving > 0)
+        {
+            // rotate the cc in the direction of the velocity
+            Quaternion targetRotation = Quaternion.LookRotation(targetVelocity);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        }
     }
     #endregion
     #endregion
