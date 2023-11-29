@@ -14,11 +14,7 @@ public class OxygenTank : MonoBehaviour
     private void Start()
     {
         playerFX = GetComponent<PlayerSpecialFX>();
-        #region Find friendly Cloning Machine
-        // loop through and grab the one with desired team
-        foreach (CloneMachine cm in FindObjectsOfType<CloneMachine>()) if (cm.Team == PhotonNetwork.LocalPlayer.GetTeam()) cloneMachine = cm;
-        if (cloneMachine == null) Debug.LogError("Failed to find " + PhotonNetwork.LocalPlayer.GetTeam() + " cloning machine");
-        #endregion
+        FindFriendlyCloningMachine();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -51,5 +47,19 @@ public class OxygenTank : MonoBehaviour
         Debug.Log("Restoring oxygen");
         isBroken = false; // set cut to false
         CancelInvoke(nameof(Asphyxiate)); // Cancel asphyxiation timer
+    }
+    private void FindFriendlyCloningMachine()
+    {
+        // Find all clone machines
+        CloneMachine[] cloneMachines = FindObjectsOfType<CloneMachine>();
+        // Find the one on the same team
+        foreach (CloneMachine machine in cloneMachines)
+        {
+            if (machine.Team == PhotonNetwork.LocalPlayer.GetTeam().ToString())
+            {
+                cloneMachine = machine;
+                break;
+            }
+        }
     }
 }
