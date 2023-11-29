@@ -29,8 +29,9 @@ public class Action : MonoBehaviourPunCallbacks
     }
     #endregion
     #region Gameplay Actions
-    public void GameplayAction() // called by input system
+    public void GameplayAction(InputAction.CallbackContext context) // called by input system
     { // raycast forward
+        if (!context.performed) return; // if the action isn't performed, do nothing
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, rayDistance))
         {
             Debug.DrawLine(transform.position, hit.point, Color.red);
