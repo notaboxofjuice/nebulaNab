@@ -49,7 +49,7 @@ public class Cannon : MonoBehaviour
         // logic for firing cannon
         if(shipJuiceInventory.juiceCount >= fireCost)
         {
-            Vector3 spawn = cannon.transform.position + Vector3.forward * spawnOffset;
+            Vector3 spawn = cannon.transform.position + cannon.transform.forward * spawnOffset;
             Quaternion spawnRotation = Quaternion.identity;
             if (blueTeam)
             {

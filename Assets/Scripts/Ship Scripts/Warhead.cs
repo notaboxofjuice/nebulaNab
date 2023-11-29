@@ -17,10 +17,11 @@ public class Warhead : MonoBehaviour
     }
     void Motor()
     {
-        body.AddForce(forceAcceleration * transform.forward, ForceMode.Acceleration);
+        body.AddForce(forceAcceleration * transform.up, ForceMode.Force);
     }
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Collsion with: " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Ship"))
         {
             collision.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All);
@@ -28,7 +29,7 @@ public class Warhead : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Shield"))
         {
-            transform.Rotate(0, 180, 0);
+            transform.rotation = Quaternion.Euler(-transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
         }
     }
 }
