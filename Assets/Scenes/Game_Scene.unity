@@ -1272,7 +1272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7731851455696928396, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CloningMachine
       objectReference: {fileID: 0}
     - target: {fileID: 7759893084779677621, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
       propertyPath: m_TagString
@@ -1432,7 +1432,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 1089357263}
   sceneViewId: 8
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2160,6 +2161,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3096940163615388983, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
+      propertyPath: m_TagString
+      value: CloningMachine
+      objectReference: {fileID: 0}
     - target: {fileID: 3588002885910374223, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
       propertyPath: m_TagString
       value: Cannon
@@ -2762,7 +2767,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 1589321077}
   sceneViewId: 7
   InstantiationId: 0
   isRuntimeInstantiated: 0

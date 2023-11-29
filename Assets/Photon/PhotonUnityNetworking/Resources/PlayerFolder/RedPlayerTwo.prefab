@@ -1011,7 +1011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a837f1fb0ac70294c92dc04c4d9ed0d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oxygen: 0
+  oxygen: 10
   cloneMachine: {fileID: 0}
   isBroken: 0
   playerFX: {fileID: 0}

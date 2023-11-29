@@ -29,14 +29,14 @@ public class OxygenTank : MonoBehaviour
         isBroken = true; // set broken to true
         // Start timer for asphyxiation
         Invoke(nameof(Asphyxiate), oxygen);
-
+        // FX
         playerFX.PlayTankBrokenSFX();//play sound effect
     }
     private void Asphyxiate()
     {
         Debug.Log("Player asphyxiated");
         // Try to send player to cloning machine
-        cloneMachine.GetComponent<PhotonView>().RPC("TryAcceptCorpse", RpcTarget.All, gameObject);
+        cloneMachine.GetComponent<PhotonView>().RPC("TryAcceptCorpse", RpcTarget.All, GetComponent<PhotonView>().ViewID);
         // cloneMachine will handle the rest
         // FX
         playerFX.PlayDeathSFX();//play sound effect
@@ -61,5 +61,10 @@ public class OxygenTank : MonoBehaviour
                 break;
             }
         }
+    }
+    [PunRPC]
+    public void Respawn()
+    {
+        gameObject.SetActive(true);
     }
 }
