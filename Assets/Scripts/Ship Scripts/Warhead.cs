@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Warhead : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class Warhead : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ship"))
         {
-            //damage ship
+            collision.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All);
             Destroy(gameObject);
         }
         else if (collision.gameObject.CompareTag("Shield"))

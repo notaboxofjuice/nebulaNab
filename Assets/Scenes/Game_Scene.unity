@@ -211,6 +211,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 368d5674d3a6394438b2e197efb963e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &471248472 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2704462907092699465, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+  m_PrefabInstance: {fileID: 1089357259}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &471248473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471248472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687da48110aca11459c3dfae82edf069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  team: Blue
+--- !u!114 &471248474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471248472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 11
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &472966755
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,6 +1010,12 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2704462907092699465, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 471248474}
+    - targetCorrespondingSourceObject: {fileID: 2704462907092699465, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 471248473}
     - targetCorrespondingSourceObject: {fileID: 1800072387967509686, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1089357264}
@@ -1346,6 +1393,12 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4289555190055305011, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1589321076}
+    - targetCorrespondingSourceObject: {fileID: 4289555190055305011, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1589321075}
     - targetCorrespondingSourceObject: {fileID: 5743780864414280052, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1589321072}
@@ -1392,6 +1445,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 368d5674d3a6394438b2e197efb963e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1589321074 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4289555190055305011, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
+  m_PrefabInstance: {fileID: 1589321069}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1589321075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589321074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 10
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1589321076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589321074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687da48110aca11459c3dfae82edf069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  team: Red
 --- !u!114 &1589321077 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3558502200525720450, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}

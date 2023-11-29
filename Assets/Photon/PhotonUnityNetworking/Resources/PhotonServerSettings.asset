@@ -67,6 +67,7 @@ MonoBehaviour:
   - TryClone
   - GoToCloneMachine
   - Respawn
+  - TakeDamage
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
