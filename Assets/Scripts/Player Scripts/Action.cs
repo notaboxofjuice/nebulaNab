@@ -27,9 +27,6 @@ public class Action : MonoBehaviourPunCallbacks
             Debug.Log("Juicy Boy");
         }
     }
-
-
-
     #endregion
     #region Gameplay Actions
     public void GameplayAction() // called by input system
