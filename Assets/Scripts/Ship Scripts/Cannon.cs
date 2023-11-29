@@ -59,7 +59,7 @@ public class Cannon : MonoBehaviour
             {
                 spawnRotation = Quaternion.Euler(-90, 0, 0);
             }
-            PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", laser.name), spawn, spawnRotation);
+            PhotonNetwork.Instantiate(Path.Combine("Spawn Objects", laser.name), spawn, spawnRotation);
             shipJuiceInventory.juiceCount -= fireCost;
         }
     }
