@@ -1,4 +1,5 @@
 using Photon.Pun;
+using System.Collections;
 using UnityEngine;
 /// <summary>
 /// Assigned to clone machine object. Accepts dead players and respawns them
@@ -10,6 +11,9 @@ public class CloneMachine : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField] public int cloneCost; // cost to clone player, assigned in inspector
     public GameObject currentPlayer = null; // which player is going to be cloned
     [SerializeField] Transform spawnPoint; // where to spawn player
+
+    [SerializeField] Animator anime;
+
     [PunRPC]
     public void TryClone() // Try to clone currentPlayer, called by player action
     {
@@ -33,14 +37,31 @@ public class CloneMachine : MonoBehaviourPunCallbacks, IPunObservable
         Debug.Log("Accepting corpse");
         currentPlayer = Corpse; // set currentPlayer to Corpse
         currentPlayer.transform.SetLocalPositionAndRotation(spawnPoint.position, spawnPoint.rotation); // move currentPlayer to spawnPoint
-        currentPlayer.SetActive(false); // disable currentPlayer
+        
+       
+        currentPlayer.GetComponent<CharacterController>().enabled = false;
+        currentPlayer.GetComponent<Action>().enabled = false;
+        currentPlayer.GetComponent<PlayerSpecialFX>().enabled = false;
+        currentPlayer.transform.GetChild(0).gameObject.SetActive(false);
+        //currentPlayer.SetActive(false); // disable currentPlayer
     }
     private void DoClone() // logic for respawning currentPlayer, called by TryClone
     {
         Debug.Log("Cloning player");
         shipJuice.GetComponent<PhotonView>().RPC("AcceptJuice", RpcTarget.All, -cloneCost); // subtract juice from ship
-        currentPlayer.SetActive(true); // enable currentPlayer
+        
+        //currentPlayer.SetActive(true); // enable currentPlayer
+
+        
+        currentPlayer.GetComponent<CharacterController>().enabled = true;
+        currentPlayer.GetComponent<Action>().enabled = true;
+        currentPlayer.GetComponent<PlayerSpecialFX>().enabled = true;
+        currentPlayer.transform.GetChild(0).gameObject.SetActive(true);
+
         currentPlayer = null; // clear reference to currentPlayer
+
+        anime.SetTrigger("Open");//play opening animation the machine
+        StartCoroutine(close());
     }
     // Implement the OnPhotonSerializeView() method
     // idk if this does anything but bing ai said to put it here
@@ -64,4 +85,11 @@ public class CloneMachine : MonoBehaviourPunCallbacks, IPunObservable
             }
         }
     }
+
+    IEnumerator close()
+    {
+        yield return new WaitForSeconds(2);
+        anime.SetTrigger("Close");
+    }
+
 }

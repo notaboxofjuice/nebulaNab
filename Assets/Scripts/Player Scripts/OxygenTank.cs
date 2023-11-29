@@ -34,12 +34,16 @@ public class OxygenTank : MonoBehaviour
     }
     private void Asphyxiate()
     {
+        // FX
+        playerFX.PlayDeathSFX();//play sound effect before anything else
+        playerFX.CheckJuiceAmount();
+
         Debug.Log("Player asphyxiated");
         // Try to send player to cloning machine
         cloneMachine.GetComponent<PhotonView>().RPC("TryAcceptCorpse", RpcTarget.All, GetComponent<PhotonView>().ViewID);
         // cloneMachine will handle the rest
-        // FX
-        playerFX.PlayDeathSFX();//play sound effect
+       
+        
     }
     public void Restore()
     {

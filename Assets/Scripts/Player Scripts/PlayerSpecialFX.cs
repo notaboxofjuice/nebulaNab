@@ -72,8 +72,7 @@ public class PlayerSpecialFX : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-
-
+       
         if (movementScript.isMoving != 0)
         {
             anime.SetBool("isRunning", true);

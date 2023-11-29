@@ -18,6 +18,18 @@ public class Action : MonoBehaviourPunCallbacks
 
         playerFX = GetComponent<PlayerSpecialFX>();
     }
+    private void Update()
+    {
+        //Dev Cheat Codes
+        if (Input.GetKey(KeyCode.P) && Input.GetKey(KeyCode.I))
+        {
+            GetComponent<JuiceInventory>().juiceCount = 999;
+            Debug.Log("Juicy Boy");
+        }
+    }
+
+
+
     #endregion
     #region Gameplay Actions
     public void GameplayAction() // called by input system
