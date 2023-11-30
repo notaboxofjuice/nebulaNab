@@ -13,8 +13,10 @@ public class JuiceInventory : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && gameObject.CompareTag("Juice"))
         {
-            Debug.Log(other.gameObject.name + " is collecting " + juiceCount + " juice."); // debug log
-            other.gameObject.GetComponent<JuiceInventory>().juiceCount += juiceCount; // add juice to player
+            GameObject _player = other.gameObject; // get the player
+            Debug.Log(_player.name + " is collecting " + juiceCount + " juice."); // debug log
+            _player.GetComponent<JuiceInventory>().juiceCount += juiceCount; // add juice to player
+            _player.GetComponentInChildren<PlayerUI>().UpdateJuiceText(_player.GetComponent<JuiceInventory>().juiceCount); // update the juice UI
             ObjectSpawner.Instance.juiceObjectCount--; // decrement the juice object count
             Destroy(gameObject); // destroy the juice object
         }
@@ -23,5 +25,6 @@ public class JuiceInventory : MonoBehaviour
     public void AcceptJuice(int acceptThis) // for accepting juice over network
     {
         juiceCount += acceptThis; // add juice to local count
+        GameUI.Instance.UpdateJuiceUI(TankTeam, juiceCount); // update the juice UI
     }
 }

@@ -1,4 +1,5 @@
 using Photon.Pun;
+using System.Collections;
 using UnityEngine;
 /// <summary>
 /// Assigned to player object
@@ -28,9 +29,20 @@ public class OxygenTank : MonoBehaviour
         Debug.Log("Breaking oxygen tank");
         isBroken = true; // set broken to true
         // Start timer for asphyxiation
-        Invoke(nameof(Asphyxiate), oxygen);
+        StartCoroutine(AsphyxiationRoutine());
         // FX
         playerFX.PlayTankBrokenSFX();//play sound effect
+    }
+    IEnumerator AsphyxiationRoutine()
+    {
+        int timer = 0;
+        while (timer < oxygen)
+        {
+            timer++;
+            GetComponent<PlayerUI>().UpdateOxygenText(oxygen - timer);
+            yield return new WaitForSeconds(1);
+        }
+        Asphyxiate();
     }
     private void Asphyxiate()
     {

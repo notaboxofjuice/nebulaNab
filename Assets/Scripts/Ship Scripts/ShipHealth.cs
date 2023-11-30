@@ -6,7 +6,7 @@ public class ShipHealth : MonoBehaviourPunCallbacks
 {
     private int currentHealth;
     [SerializeField] private int maxHealth = 5;
-    [SerializeField] string team;
+    public string team;
     private void Start()
     {
         currentHealth = maxHealth;
@@ -15,6 +15,7 @@ public class ShipHealth : MonoBehaviourPunCallbacks
     public void TakeDamage()
     {
         currentHealth--;
+        GameUI.Instance.UpdateHealthUI(team, currentHealth);
         if(currentHealth <= 0)
         {
             GameManager.Instance.LoseGame(team);

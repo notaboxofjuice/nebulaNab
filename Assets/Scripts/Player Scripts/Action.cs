@@ -15,7 +15,6 @@ public class Action : MonoBehaviourPunCallbacks
     #region Unity Methods
     private void Start()
     {
-
         playerFX = GetComponent<PlayerSpecialFX>();
     }
     private void Update()
@@ -45,6 +44,7 @@ public class Action : MonoBehaviourPunCallbacks
                 // Logic
                 _hitPhotonView.RPC("AcceptJuice", RpcTarget.All, GetComponent<JuiceInventory>().juiceCount);
                 GetComponent<JuiceInventory>().juiceCount = 0;
+                GetComponentInChildren<PlayerUI>().UpdateJuiceText(GetComponent<JuiceInventory>().juiceCount);
                 Debug.Log(PhotonNetwork.NickName + " has " + GetComponent<JuiceInventory>().juiceCount + " juice");
                 // FX
                 playerFX.PlayDepositJuice();
