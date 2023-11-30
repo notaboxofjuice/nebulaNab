@@ -3,12 +3,17 @@ using UnityEngine.InputSystem;
 using Photon.Pun;
 using Photon.Realtime;
 using System.IO;
+using System.Collections;
 
 public class Cannon : MonoBehaviour
 {
     PhotonView view;
     [Tooltip("The Cannon Object this control panel Moves")]
     [SerializeField] GameObject cannon;
+    [Tooltip("The Shield Object this cannon controls")]
+    [SerializeField] GameObject shields;
+    [Tooltip("Time in seconds between each intance of shields consuming juice")]
+    [SerializeField] float shieldDrainRateTime = 1f;
     [Tooltip("The Ship Juice Inventory this cannon is attached to.")]
     [SerializeField] JuiceInventory shipJuiceInventory; // assigned in inspector -Leeman
     [Tooltip("The laser prefab to be instantiated when the cannon fires.")]
@@ -60,12 +65,33 @@ public class Cannon : MonoBehaviour
                 spawnRotation = Quaternion.Euler(-90, 0, 0);
             }
             PhotonNetwork.Instantiate(Path.Combine("Spawn Objects", laser.name), spawn, spawnRotation);
-            shipJuiceInventory.juiceCount -= fireCost;
+            shipJuiceInventory.gameObject.GetComponent<PhotonView>().RPC("AcceptJuice", RpcTarget.All, -fireCost);
         }
     }
     [PunRPC]
     public void FlipOccupiedBool()
     {
         inUse = !inUse;
+        if(shipJuiceInventory.juiceCount > 0)
+        {
+            shields.SetActive(inUse);
+            StartCoroutine(ShieldDrain());
+        }
+    }
+    IEnumerator ShieldDrain()
+    { 
+        while (inUse)
+        {
+            yield return new WaitForSeconds(shieldDrainRateTime);
+            if (shipJuiceInventory.juiceCount > 0)
+            {
+                shipJuiceInventory.gameObject.GetComponent<PhotonView>().RPC("AcceptJuice", RpcTarget.All, -1);
+            }
+            else
+            {
+                StopCoroutine("ShieldDrain");
+                shields.SetActive(false);
+            }
+        }
     }
 }
