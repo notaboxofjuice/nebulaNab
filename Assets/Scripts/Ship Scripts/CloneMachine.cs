@@ -60,6 +60,7 @@ public class CloneMachine : MonoBehaviourPunCallbacks, IPunObservable
 
         currentPlayer = null; // clear reference to currentPlayer
 
+        anime.SetBool("Close", false);
         anime.SetTrigger("Open");//play opening animation the machine
         StartCoroutine(close());
     }
@@ -89,7 +90,7 @@ public class CloneMachine : MonoBehaviourPunCallbacks, IPunObservable
     IEnumerator close()
     {
         yield return new WaitForSeconds(2);
-        anime.SetTrigger("Close");
+        anime.SetBool("Close", true);
     }
 
 }
