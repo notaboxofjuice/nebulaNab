@@ -44,8 +44,7 @@ public class PlayerSpecialFX : MonoBehaviourPunCallbacks
     private AudioClip leaveCannon;
     [SerializeField]
     private AudioClip fireCannon;
-    [SerializeField]
-    private AudioClip activateClone;
+ 
     [SerializeField]
     private AudioClip depositJuice;
 
@@ -190,19 +189,6 @@ public class PlayerSpecialFX : MonoBehaviourPunCallbacks
     public void CallRecoveredRPC()
     {
         view.RPC("Recover", RpcTarget.All);//with RPC, sparks turn off for all players on now recovered player
-    }
-
-    public void PlayCloning()
-    {
-        view.RPC("Cloned", RpcTarget.All);
-    }
-
-    [PunRPC]
-    private void Cloned()
-    {
-        audioPlayer.PlayOneShot(activateClone);
-
-       
     }
 
     [PunRPC]

@@ -28,6 +28,8 @@ public class PhotonPlayer : MonoBehaviourPunCallbacks
             GetComponent<Movement>().enabled = true;
             GetComponent<PlayerInput>().enabled = true;
             GetComponent<PlayerSpecialFX>().enabled = true;
+
+            transform.GetChild(1).gameObject.SetActive(true);
         }
         
     }

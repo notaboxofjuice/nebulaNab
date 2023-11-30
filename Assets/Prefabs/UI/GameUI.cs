@@ -17,15 +17,21 @@ public class GameUI : MonoBehaviour
     #region Methods
     private void Awake()
     {
+        
+
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
     }
     private void Start()
     {
+       
+
         // update the juice UI
         UpdateJuiceUI("Blue", 0);
         UpdateJuiceUI("Red", 0);
         InitializeBars();
+
+     
     }
     private void InitializeBars()
     {
@@ -51,10 +57,21 @@ public class GameUI : MonoBehaviour
     [PunRPC]
     public void UpdateHealthUI(string _team = null, int _health = -1, bool _initializing = false)
     {
+        
+
         if (_initializing)
         {
-            if (_team == "Blue") blueHealth.maxValue = _health;
-            else if (_team == "Red") redHealth.maxValue = _health;
+            if (_team == "Blue")
+            {
+                blueHealth.maxValue = _health;
+                blueHealth.value = _health;
+                Debug.Log("Called Me Maybe " + _health);
+            }
+            else if (_team == "Red")
+            {
+                redHealth.maxValue = _health;
+                redHealth.value = _health;
+            }
             else Debug.Log("Invalid team specified for UpdateHeartUI().");
         }
         if (_health == -1) return;

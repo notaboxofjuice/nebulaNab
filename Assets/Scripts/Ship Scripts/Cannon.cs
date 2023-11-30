@@ -28,6 +28,8 @@ public class Cannon : MonoBehaviour
     [SerializeField] bool blueTeam;
     public bool inUse;
     public float moveInput;
+
+    public bool fired = false;//to play sound effect only if it actually fired
     private void Awake()
     {
         view = gameObject.GetComponent<PhotonView>();
@@ -66,8 +68,17 @@ public class Cannon : MonoBehaviour
             }
             PhotonNetwork.Instantiate(Path.Combine("Spawn Objects", laser.name), spawn, spawnRotation);
             shipJuiceInventory.gameObject.GetComponent<PhotonView>().RPC("AcceptJuice", RpcTarget.All, -fireCost);
+        
+            fired = true;
         }
+        else
+        {
+            fired = false;
+        }
+       
     }
+
+
     [PunRPC]
     public void FlipOccupiedBool()
     {

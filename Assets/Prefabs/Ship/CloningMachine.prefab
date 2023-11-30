@@ -80,6 +80,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3049587798826664677, guid: 57817fffbaaf62f4c8c2e2e5172e0a49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90.00227
+      objectReference: {fileID: 0}
+    - target: {fileID: -3049587798826664677, guid: 57817fffbaaf62f4c8c2e2e5172e0a49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -28.045921
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 57817fffbaaf62f4c8c2e2e5172e0a49, type: 3}
       propertyPath: m_Name
       value: CloningMachine3
@@ -88,6 +96,18 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 8ccb0b078d69b394b9614818d96c06eb, type: 2}
+    - target: {fileID: 8043486458590599024, guid: 57817fffbaaf62f4c8c2e2e5172e0a49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 1.6044106
+      objectReference: {fileID: 0}
+    - target: {fileID: 8043486458590599024, guid: 57817fffbaaf62f4c8c2e2e5172e0a49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 112.99491
+      objectReference: {fileID: 0}
+    - target: {fileID: 8043486458590599024, guid: 57817fffbaaf62f4c8c2e2e5172e0a49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -94.20661
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

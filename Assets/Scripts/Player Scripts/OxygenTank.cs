@@ -1,5 +1,6 @@
 using Photon.Pun;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 /// <summary>
 /// Assigned to player object
@@ -39,7 +40,7 @@ public class OxygenTank : MonoBehaviour
         while (timer < oxygen)
         {
             timer++;
-            GetComponent<PlayerUI>().UpdateOxygenText(oxygen - timer);
+            transform.GetComponentInChildren<PlayerUI>().UpdateOxygenText(oxygen - timer);
             yield return new WaitForSeconds(1);
         }
         Asphyxiate();

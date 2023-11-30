@@ -1653,6 +1653,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2484768730231032615, guid: 1d807e479d97e514abbfc9063012e434, type: 3}
+      propertyPath: m_FillAmount
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5509529607740336605, guid: 1d807e479d97e514abbfc9063012e434, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1732,6 +1736,18 @@ PrefabInstance:
     - target: {fileID: 5509529607740336605, guid: 1d807e479d97e514abbfc9063012e434, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6005104472605411925, guid: 1d807e479d97e514abbfc9063012e434, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6005104472605411925, guid: 1d807e479d97e514abbfc9063012e434, type: 3}
+      propertyPath: m_MaxValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6005104472605411925, guid: 1d807e479d97e514abbfc9063012e434, type: 3}
+      propertyPath: m_WholeNumbers
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6622718876954390258, guid: 1d807e479d97e514abbfc9063012e434, type: 3}
       propertyPath: m_Name
@@ -1960,6 +1976,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueHP_Slider
       objectReference: {fileID: 0}
+    - target: {fileID: 7847058516964220627, guid: b039f1e32a462d04092717cd3404c4f5, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7847058516964220627, guid: b039f1e32a462d04092717cd3404c4f5, type: 3}
+      propertyPath: m_MaxValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7847058516964220627, guid: b039f1e32a462d04092717cd3404c4f5, type: 3}
+      propertyPath: m_WholeNumbers
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8690271033988228256, guid: b039f1e32a462d04092717cd3404c4f5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1967,6 +1995,10 @@ PrefabInstance:
     - target: {fileID: 8690271033988228256, guid: b039f1e32a462d04092717cd3404c4f5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727567286182362771, guid: b039f1e32a462d04092717cd3404c4f5, type: 3}
+      propertyPath: m_FillAmount
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

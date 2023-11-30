@@ -4,7 +4,7 @@ using Photon.Pun;
 
 public class ShipHealth : MonoBehaviourPunCallbacks
 {
-    private int currentHealth;
+    private int currentHealth = 5;
     [SerializeField] private int maxHealth = 5;
     public string team;
     private void Start()

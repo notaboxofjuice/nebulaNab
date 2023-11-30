@@ -1031,7 +1031,6 @@ MonoBehaviour:
   useCannon: {fileID: 8300000, guid: 64ba684f93e789a4b999c55c17ff5395, type: 3}
   leaveCannon: {fileID: 8300000, guid: 1958df7b2bdfc514aa786ba53c4ff7bc, type: 3}
   fireCannon: {fileID: 8300000, guid: 281e15cc92254794eaf05caf4d044b76, type: 3}
-  activateClone: {fileID: 8300000, guid: a474281f64a281a4c83c25b768c11215, type: 3}
   depositJuice: {fileID: 8300000, guid: 26c46cdf9024844e8962195497fb6c5e, type: 3}
   audioPlayer: {fileID: 0}
 --- !u!114 &-5212887082197400781
@@ -2128,6 +2127,10 @@ PrefabInstance:
     - target: {fileID: 3071016269583546294, guid: 9f62ff51adeaa6340ab024cbcaff803c, type: 3}
       propertyPath: m_Name
       value: PlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3071016269583546294, guid: 9f62ff51adeaa6340ab024cbcaff803c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -57,7 +57,7 @@ public class Action : MonoBehaviourPunCallbacks
                 // Logic
                 _hitPhotonView.RPC("TryClone", RpcTarget.All);
                 // FX
-                playerFX.PlayCloning();
+                //playerFX.PlayCloning(); // dont want the sound to play if no clonning can be done
                 playerFX.CheckJuiceAmount();
 
             }
@@ -94,8 +94,12 @@ public class Action : MonoBehaviourPunCallbacks
         Debug.Log(PhotonNetwork.NickName + " is firing cannon.");
         activeCannon.GetComponent<PhotonView>().RPC("Fire", RpcTarget.All);
         // FX
-        playerFX.PlayFireCannon();
-        playerFX.CheckJuiceAmount();
+        if (activeCannon.fired)
+        {
+            playerFX.CheckJuiceAmount();
+            playerFX.PlayFireCannon();
+        }
+       
     }
     public void ExitCannon()
     {
