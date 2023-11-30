@@ -1397,6 +1397,10 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 4049626930288634926, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
+      propertyPath: sceneViewId
+      value: 21
+      objectReference: {fileID: 0}
     - target: {fileID: 5049983569404562176, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
       propertyPath: m_Name
       value: BluePlayerOne (1)
@@ -1440,6 +1444,10 @@ PrefabInstance:
     - target: {fileID: 6824481260190681922, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843593480856926866, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
+      propertyPath: sceneViewId
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2087,6 +2095,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 279243510034242007, guid: 7b13457b7a76ced4ab83912ec38b8265, type: 3}
+      propertyPath: sceneViewId
+      value: 23
+      objectReference: {fileID: 0}
     - target: {fileID: 470282793777171227, guid: 7b13457b7a76ced4ab83912ec38b8265, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 6.985641
@@ -2358,6 +2370,10 @@ PrefabInstance:
     - target: {fileID: 4324897573820436314, guid: 7b13457b7a76ced4ab83912ec38b8265, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.7347891
+      objectReference: {fileID: 0}
+    - target: {fileID: 4713572438665252715, guid: 7b13457b7a76ced4ab83912ec38b8265, type: 3}
+      propertyPath: sceneViewId
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 4773655837934084638, guid: 7b13457b7a76ced4ab83912ec38b8265, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2783,6 +2799,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2650339808881912466, guid: 4fadd62a00c08c3499d9d53390aa0724, type: 3}
+      propertyPath: sceneViewId
+      value: 24
+      objectReference: {fileID: 0}
     - target: {fileID: 2702483048035075211, guid: 4fadd62a00c08c3499d9d53390aa0724, type: 3}
       propertyPath: m_Name
       value: BluePlayerTwo
@@ -2826,6 +2846,10 @@ PrefabInstance:
     - target: {fileID: 4404923694472201417, guid: 4fadd62a00c08c3499d9d53390aa0724, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7371844300832898094, guid: 4fadd62a00c08c3499d9d53390aa0724, type: 3}
+      propertyPath: sceneViewId
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 9169365836206311503, guid: 4fadd62a00c08c3499d9d53390aa0724, type: 3}
       propertyPath: sceneViewId
@@ -2970,6 +2994,10 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4049626930288634926, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
+      propertyPath: sceneViewId
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5049983569404562176, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
       propertyPath: m_Name
       value: BluePlayerOne
@@ -3013,6 +3041,10 @@ PrefabInstance:
     - target: {fileID: 6824481260190681922, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843593480856926866, guid: 8c0b565fa4f442f439a3db76b0bcb3f0, type: 3}
+      propertyPath: sceneViewId
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3088,9 +3120,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2344933620641984562, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: sceneViewId
+      value: 28
+      objectReference: {fileID: 0}
     - target: {fileID: 2752396937134319542, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
       propertyPath: m_Name
       value: BlueShipCollection
+      objectReference: {fileID: 0}
+    - target: {fileID: 2840896882577629395, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: sceneViewId
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075419425482519667, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: sceneViewId
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006424361321845421, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: sceneViewId
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 7759339200260124798, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
+      propertyPath: sceneViewId
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 7910936534774040608, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
       propertyPath: sceneViewId
@@ -3368,6 +3420,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2543567072476142390, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
+      propertyPath: sceneViewId
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114185866589844211, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
+      propertyPath: sceneViewId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 3209183078239695673, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
+      propertyPath: sceneViewId
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087456213098969930, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
+      propertyPath: sceneViewId
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 7990601563409530779, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
       propertyPath: m_Name
       value: RedShipCollection
@@ -3504,6 +3572,10 @@ PrefabInstance:
     - target: {fileID: 2415784408157096249, guid: 232f395a7f96180418b94bcd05d9258d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.7245324e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018397565509370504, guid: 232f395a7f96180418b94bcd05d9258d, type: 3}
+      propertyPath: sceneViewId
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 3248850608712529728, guid: 232f395a7f96180418b94bcd05d9258d, type: 3}
       propertyPath: sceneViewId
@@ -3740,6 +3812,10 @@ PrefabInstance:
     - target: {fileID: 7061364896138090534, guid: 232f395a7f96180418b94bcd05d9258d, type: 3}
       propertyPath: m_LocalRotation.y
       value: -4.4323638e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7740117386728920116, guid: 232f395a7f96180418b94bcd05d9258d, type: 3}
+      propertyPath: sceneViewId
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 8032014959330638790, guid: 232f395a7f96180418b94bcd05d9258d, type: 3}
       propertyPath: m_LocalPosition.x
