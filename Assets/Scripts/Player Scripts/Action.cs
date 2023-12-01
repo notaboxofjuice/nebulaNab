@@ -1,6 +1,7 @@
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class Action : MonoBehaviourPunCallbacks
 {
     #region Variables
@@ -86,13 +87,19 @@ public class Action : MonoBehaviourPunCallbacks
     #region Cannon Actions
     public void AimCannon(InputAction.CallbackContext context)
     {
+        
         Debug.Log(PhotonNetwork.NickName + " is aiming cannon.");
         activeCannon.moveInput = context.ReadValue<float>(); // read and send the input to the cannon
     }
-    public void FireCannon()
+
+    
+
+    public void FireCannon(InputAction.CallbackContext context)
     {
+        if (!context.performed) return;
+
         Debug.Log(PhotonNetwork.NickName + " is firing cannon.");
-        activeCannon.GetComponent<PhotonView>().RPC("Fire", RpcTarget.All);
+        activeCannon.Fire();
         // FX
         if (activeCannon.fired)
         {
@@ -101,8 +108,10 @@ public class Action : MonoBehaviourPunCallbacks
         }
        
     }
-    public void ExitCannon()
+    public void ExitCannon(InputAction.CallbackContext context)
     {
+        if (!context.performed) return;
+
         // debug log the player's photon name
         Debug.Log(PhotonNetwork.NickName + " is exiting cannon.");
         activeCannon.GetComponent<PhotonView>().RPC("FlipOccupiedBool", RpcTarget.All);

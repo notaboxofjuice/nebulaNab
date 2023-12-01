@@ -50,7 +50,6 @@ public class Cannon : MonoBehaviour
     { // accepts moveInput as a float between -1 and 1
         cannon.transform.position = new Vector3(Mathf.Clamp(cannon.transform.position.x + (moveInput * movementSpeed * Time.deltaTime), -movementRange, movementRange), cannon.transform.position.y, cannon.transform.position.z);
     }
-    [PunRPC]
     public void Fire() // fire cannon, called by player input
     {
         // logic for firing cannon

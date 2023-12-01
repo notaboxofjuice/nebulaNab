@@ -1561,7 +1561,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 4
-  m_Radius: 1.5
+  m_Radius: 1
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -1672,7 +1672,7 @@ MonoBehaviour:
       - m_Target: {fileID: 6829643161677308469}
         m_TargetAssemblyTypeName: Action, Assembly-CSharp
         m_MethodName: FireCannon
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1688,7 +1688,7 @@ MonoBehaviour:
       - m_Target: {fileID: 6829643161677308469}
         m_TargetAssemblyTypeName: Action, Assembly-CSharp
         m_MethodName: ExitCannon
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1716,7 +1716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b14e74dfadc2545b22685b187e1e66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 5
+  playerSpeed: 8
   rotationSpeed: 45
   isMoving: 0
 --- !u!114 &6829643161677308469

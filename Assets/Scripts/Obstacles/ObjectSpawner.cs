@@ -73,13 +73,13 @@ public class ObjectSpawner : MonoBehaviour
         if(juiceObjectCount < maxJuiceObjects)
         {
             Vector3 spawnCoords;
-            do
+            int attempts = 0;
+            do//runs once to check
             {
                 spawnCoords = CoordGenerator();
-                
-                objectNearby = Physics.CheckSphere(spawnCoords, spawnRadius, spawnables);
-            
-            } while (objectNearby);
+                objectNearby = Physics.CheckSphere(spawnCoords, spawnRadius, spawnables);//bool to check for open spaces
+                attempts++;
+            } while (objectNearby && attempts < 5);// :/
             int randID = Random.Range(0, juiceObjects.Length);
             PhotonNetwork.Instantiate(Path.Combine("Spawn Objects", juiceObjects[randID].name), spawnCoords, Quaternion.identity);
             juiceObjectCount++;
