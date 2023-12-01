@@ -56,7 +56,6 @@ public class OxygenTank : MonoBehaviour
         cloneMachine.GetComponent<PhotonView>().RPC("TryAcceptCorpse", RpcTarget.All, GetComponent<PhotonView>().ViewID);
         // cloneMachine will handle the rest
        
-        
     }
     public void Restore()
     {

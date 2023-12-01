@@ -16,7 +16,10 @@ public class JuiceInventory : MonoBehaviour
             GameObject _player = other.gameObject; // get the player
             Debug.Log(_player.name + " is collecting " + juiceCount + " juice."); // debug log
             _player.GetComponent<JuiceInventory>().juiceCount += juiceCount; // add juice to player
-            _player.GetComponentInChildren<PlayerUI>().UpdateJuiceText(_player.GetComponent<JuiceInventory>().juiceCount); // update the juice UI
+            
+            if(_player.GetComponentInChildren<PlayerUI>() != null)
+                _player.GetComponentInChildren<PlayerUI>().UpdateJuiceText(_player.GetComponent<JuiceInventory>().juiceCount); // update the juice UI
+            
             ObjectSpawner.Instance.juiceObjectCount--; // decrement the juice object count
             Destroy(gameObject); // destroy the juice object
         }
