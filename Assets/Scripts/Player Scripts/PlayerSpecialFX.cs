@@ -158,11 +158,13 @@ public class PlayerSpecialFX : MonoBehaviourPunCallbacks
     public void PlayOperateCannon()
     {
         audioPlayer.PlayOneShot(useCannon);
+        anime.SetBool("isUsingCannon", true);
     }
 
     public void PlayLeaveCannon()
     {
         audioPlayer.PlayOneShot(leaveCannon);
+        anime.SetBool("isUsingCannon", false);
     }
 
     public void PlayFireCannon()

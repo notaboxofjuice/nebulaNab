@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
-    [Header("UI Refrences")]
+    [Header("UI References")]
     [SerializeField]
     private TMP_Text roomIDText;
     [SerializeField]
@@ -23,7 +23,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     private int playerCount = 0;
 
-    [Header("Object Refrences")]
+    [Header("Object References")]
     [SerializeField]
     private Transform blueSpawnPoint;
     [SerializeField]
@@ -41,12 +41,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public int currentRedPlayers = 0;
     public int currentBluePlayers = 0;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
-        PhotonNetwork.AutomaticallySyncScene = true;//all players stay on the smae scene
+        PhotonNetwork.AutomaticallySyncScene = true;//all players stay on the same scene
         roomIDText.text = PhotonNetwork.CurrentRoom.Name;//displays room ID on title text
 
         view = GetComponent<PhotonView>();
@@ -57,17 +55,22 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I) && Input.GetKey(KeyCode.H)) StartGame();
+        //shortcut for Devs
+        if (Input.GetKeyDown(KeyCode.I) && Input.GetKey(KeyCode.H)) 
+            StartGame();
 
-        if(joinedBlueTeam && currentBluePlayers < 2) PhotonNetwork.LocalPlayer.SetPlayerIndex(1);
-        if (joinedRedTeam && currentRedPlayers < 2) PhotonNetwork.LocalPlayer.SetPlayerIndex(1);
+        //in case a player leaves, set player index for team to one
+        if(joinedBlueTeam && currentBluePlayers < 2) 
+            PhotonNetwork.LocalPlayer.SetPlayerIndex(1);
+        if (joinedRedTeam && currentRedPlayers < 2) 
+            PhotonNetwork.LocalPlayer.SetPlayerIndex(1);
     }
 
 
     public void JoinBlueTeam()
     {
         if(!joinedBlueTeam && !joinedRedTeam)
-        {
+        {//if player has not joined any team yet spawn them a GodCube
 
             var player = PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "GODCUBE"), blueSpawnPoint.position, blueSpawnPoint.rotation);
             localPlayer = player;
@@ -112,47 +115,37 @@ public class RoomManager : MonoBehaviourPunCallbacks
         }
         PlayerTracker();
 
-        Debug.Log(PhotonNetwork.LocalPlayer.GetPlayerIndex() + " Index");
+        //Debug.Log(PhotonNetwork.LocalPlayer.GetPlayerIndex() + " Index");
         view.RPC("CheckIfCanStartRPC", RpcTarget.AllBuffered);
     }
-
     public void JoinRedTeam()
     {
         if(!joinedRedTeam && !joinedBlueTeam)
         {
-           
-
            var player = PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "GODCUBE"), redSpawnPoint.position, redSpawnPoint.rotation);//gives each player their own floaty cube
 
-            localPlayer = player;
-            joinedRedTeam = true;
+           localPlayer = player;
+           joinedRedTeam = true;
 
-
-            PhotonNetwork.LocalPlayer.SetTeam("Red");
-            if (currentRedPlayers < 1)
+           PhotonNetwork.LocalPlayer.SetTeam("Red");
+           if (currentRedPlayers < 1)
             {
-                PhotonNetwork.LocalPlayer.SetPlayerIndex(1);
-
-               
+              PhotonNetwork.LocalPlayer.SetPlayerIndex(1);
             }
-            else
-            {
-                PhotonNetwork.LocalPlayer.SetPlayerIndex(2);
-
-               
-            }
+           else
+           {
+             PhotonNetwork.LocalPlayer.SetPlayerIndex(2);
+           }
 
             view.RPC("AddRedTeam", RpcTarget.AllBuffered);
         }
         else if (joinedBlueTeam)
         {
-            
             if(localPlayer != null)
                 localPlayer.transform.position = redSpawnPoint.position;
 
             joinedRedTeam = true;
             joinedBlueTeam = false;
-
 
             PhotonNetwork.LocalPlayer.SetTeam("Red");
             if (currentRedPlayers < 1)
@@ -169,48 +162,27 @@ public class RoomManager : MonoBehaviourPunCallbacks
         }
         PlayerTracker();
 
-        Debug.Log(PhotonNetwork.LocalPlayer.GetPlayerIndex() + " Index");
+        //Debug.Log(PhotonNetwork.LocalPlayer.GetPlayerIndex() + " Index");
         view.RPC("CheckIfCanStartRPC", RpcTarget.AllBuffered);
     }
-
     private void PlayerTracker()
     {//will update display info whenever a player joins or leaves
-        
         playerCount = PhotonNetwork.PlayerList.Length;
 
         currentPlayersText.text = "";
 
         for (int x = 0; x < playerCount; x++)
         {
-
-          /* if(PhotonNetwork.PlayerList[x].GetTeam() == "Blue")
-            {
-                currentPlayersText.text += "<color=blue>"+ PhotonNetwork.PlayerList[x].NickName + "</color>" + "\n";
-            }else if (PhotonNetwork.PlayerList[x].GetTeam() == "Red")
-            {
-                currentPlayersText.text += "<color=red>" + PhotonNetwork.PlayerList[x].NickName + "</color>" + "\n";
-            }
-            else
-            {
-                currentPlayersText.text += "<color=white>" + PhotonNetwork.PlayerList[x].NickName + "</color>" + "\n";
-            }*/
-
             currentPlayersText.text += "<color=white>" + PhotonNetwork.PlayerList[x].NickName + "</color>" + "\n";
         }
-
-       
     }
-
     void CheckIfCanStartGame()
     {//checks if the room has been filled, and players can start game
-        
         if (playerCount == MaxPlayers)
         {
             if (currentBluePlayers == MaxPlayers / 2 && currentRedPlayers == MaxPlayers / 2)
-            {
-               
+            {               
                startButton.SetActive(true);//show start game button
-                
             }
             PhotonNetwork.CurrentRoom.IsOpen = false;//close room, prevents other players from joining
         }
@@ -221,51 +193,43 @@ public class RoomManager : MonoBehaviourPunCallbacks
         }
 
     }
-
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         base.OnPlayerEnteredRoom(newPlayer);
 
-       
         PlayerTracker();
         view.RPC("CheckIfCanStartRPC", RpcTarget.AllBuffered);
     }
-
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         base.OnPlayerLeftRoom(otherPlayer);
 
         PlayerTracker();
     }
-
     public void StartGame()
     {
-
         if (!PhotonNetwork.IsMasterClient)
             return;
 
         startButton.SetActive(false);
         PhotonNetwork.LoadLevel(3);
     }
-
     public void LeaveRoom()
     {
         PhotonNetwork.LeaveRoom();
-      
     }
-
     public override void OnLeftRoom()
     {
         base.OnLeftRoom();
         SceneManager.LoadScene(0);
     }
 
+    #region RPCS for Team Count
     [PunRPC]
     void CheckIfCanStartRPC()
     {
         CheckIfCanStartGame();
     }
-
     [PunRPC]
     void AddBlueTeam()
     {
@@ -287,4 +251,5 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         currentRedPlayers--;
     }
+    #endregion
 }
