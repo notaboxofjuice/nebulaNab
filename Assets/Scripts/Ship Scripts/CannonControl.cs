@@ -5,11 +5,11 @@ using Photon.Realtime;
 using System.IO;
 using System.Collections;
 
-public class Cannon : MonoBehaviour
+public class CannonControl : MonoBehaviour
 {
-    PhotonView view;
+    public PhotonView view;
     [Tooltip("The Cannon Object this control panel Moves")]
-    [SerializeField] GameObject cannon;
+    [SerializeField] public GameObject cannon;
     [Tooltip("The Shield Object this cannon controls")]
     [SerializeField] GameObject shields;
     [Tooltip("Time in seconds between each intance of shields consuming juice")]

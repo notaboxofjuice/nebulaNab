@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,7 +10,7 @@ public class Action : MonoBehaviourPunCallbacks
     [Header("Gameplay Vars")]
     [SerializeField] float rayDistance;
     [Header("Cannon Vars")]
-    [SerializeField] Cannon activeCannon;
+    [SerializeField] CannonControl activeCannon;
     [Header("FX")]
     [SerializeField] PlayerSpecialFX playerFX;
     #endregion
@@ -26,6 +27,8 @@ public class Action : MonoBehaviourPunCallbacks
             GetComponent<JuiceInventory>().juiceCount = 999;
             Debug.Log("Juicy Boy");
         }
+
+
     }
     #endregion
     #region Gameplay Actions
@@ -66,7 +69,7 @@ public class Action : MonoBehaviourPunCallbacks
             {
                 Debug.Log(PhotonNetwork.NickName + " is entering cannon.");
                 // Logic
-                Cannon _hitCannon = _hitObject.GetComponent<Cannon>(); // cache cannon component
+                CannonControl _hitCannon = _hitObject.GetComponent<CannonControl>(); // cache cannon component
                 if (_hitCannon.inUse) return; // if cannon is in use, do nothing
                 _hitPhotonView.RPC("FlipOccupiedBool", RpcTarget.All);
                 GetComponent<PlayerInput>().SwitchCurrentActionMap("Cannon"); // switch to cannon map
@@ -87,12 +90,15 @@ public class Action : MonoBehaviourPunCallbacks
     #region Cannon Actions
     public void AimCannon(InputAction.CallbackContext context)
     {
+        if (!activeCannon.view.IsMine)
+        {
+            activeCannon.cannon.GetComponent<PhotonView>().RequestOwnership();
         
-        Debug.Log(PhotonNetwork.NickName + " is aiming cannon.");
+            Debug.Log("Requesting OwnerShip");
+        }
+        //Debug.Log(PhotonNetwork.NickName + " is aiming cannon.");
         activeCannon.moveInput = context.ReadValue<float>(); // read and send the input to the cannon
-    }
-
-    
+    }    
 
     public void FireCannon(InputAction.CallbackContext context)
     {

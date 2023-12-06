@@ -318,7 +318,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 905744189294288186}
         m_TargetAssemblyTypeName: Action, Assembly-CSharp
-        m_MethodName: FireCannon
+        m_MethodName: ExitCannon
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private CloneMachine redCloneM;
     [SerializeField]
-    private Cannon redCannon;
+    private CannonControl redCannon;
     [SerializeField]
     GameObject redCannonShimmerEffect;//lets players know that cannon is usable
     [SerializeField]
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField]
     JuiceInventory blueJuiceInventory;
     [SerializeField]
-    private Cannon blueCannon;
+    private CannonControl blueCannon;
     [SerializeField]
     private CloneMachine blueCloneM;
     [SerializeField]
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     [Space(5)]
     [Header("Player Components- Assigned on Start Up")]
-    [SerializeField] public Cannon myCannon;//quick access for other scripts
+    [SerializeField] public CannonControl myCannon;//quick access for other scripts
     [SerializeField] public JuiceInventory myTeamJuiceInventory;
     [SerializeField] public CloneMachine myCloneMachine;//quick access for other scripts
     [SerializeField] public GameObject myCannonShimmer;
