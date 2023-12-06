@@ -18,7 +18,8 @@ public class ShipHealth : MonoBehaviourPunCallbacks
         GameUI.Instance.UpdateHealthUI(team, currentHealth);
         if(currentHealth <= 0)
         {
-            GameManager.Instance.LoseGame(team);
+            PhotonView view = GameManager.Instance.GetComponent<PhotonView>();
+            view.RPC("LoseGame", RpcTarget.All, team);
         }
     }
     public int GetHealth() 

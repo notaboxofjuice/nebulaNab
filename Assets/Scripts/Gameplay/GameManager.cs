@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 {
     #region Variables
     public static GameManager Instance { get; private set; } // allows referring to as GameManager.Instance
+    [SerializeField] SceneLoader sceneLoader;
     #region Player Vars
     [Header("Spawn Points")]
     [SerializeField]
@@ -81,6 +82,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         myCannon = PhotonNetwork.LocalPlayer.GetTeam() == "Red" ? redCannon : blueCannon;
         myCloneShimmer = PhotonNetwork.LocalPlayer.GetTeam() == "Red" ? redCloneShimmerEffect : blueCloneShimmerEffect;
         myCannonShimmer = PhotonNetwork.LocalPlayer.GetTeam() == "Red" ? redCannonShimmerEffect : blueCannonShimmerEffect;
+        PhotonNetwork.AutomaticallySyncScene = false;
     }
     #endregion
     #region Spawning Methods
@@ -126,6 +128,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
     #endregion
     #region Win/Lose Methods
+    [PunRPC]
     public void LoseGame(string LosingTeam) // called when a team loses
     {
         Debug.Log("Losing team: " + LosingTeam);
@@ -135,11 +138,11 @@ public class GameManager : MonoBehaviourPunCallbacks
             // If player is on losing team
             if (player.GetTeam() == LosingTeam)
             {
-                // Show them the lose screen
+                sceneLoader.SceneLoad(5);
             }
             else
             {
-                // Show them the win screen
+                sceneLoader.SceneLoad(4);
             }
         }
     }

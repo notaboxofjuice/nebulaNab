@@ -29,7 +29,7 @@ public class CannonControl : MonoBehaviour
     public bool inUse;
     public float moveInput;
     [SerializeField] float cannonCooldownTime = 1f;
-    bool canFire;
+    bool canFire = true;
     public bool fired = false;//to play sound effect only if it actually fired
     private void Awake()
     {

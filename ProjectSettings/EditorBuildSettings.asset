@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game_Scene.unity
     guid: e73eb7ec8eaa1da4da5e19348402a01c
+  - enabled: 1
+    path: Assets/Scenes/Win_Scene.unity
+    guid: ffc16601c4437e24389acf856e966203
+  - enabled: 1
+    path: Assets/Scenes/Lose_Scene.unity
+    guid: d392a388ce947da4eb7acb2495840c0a
   m_configObjects: {}
