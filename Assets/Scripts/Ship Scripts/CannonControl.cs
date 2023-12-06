@@ -28,7 +28,8 @@ public class CannonControl : MonoBehaviour
     [SerializeField] bool blueTeam;
     public bool inUse;
     public float moveInput;
-
+    [SerializeField] float cannonCooldownTime = 1f;
+    bool canFire;
     public bool fired = false;//to play sound effect only if it actually fired
     private void Awake()
     {
@@ -52,32 +53,36 @@ public class CannonControl : MonoBehaviour
     }
     public void Fire() // fire cannon, called by player input
     {
-        // logic for firing cannon
-        if(shipJuiceInventory.juiceCount >= fireCost)
+        if(canFire)// logic for firing cannon
         {
-            Vector3 spawn = cannon.transform.position + cannon.transform.forward * spawnOffset;
-            Quaternion spawnRotation = Quaternion.identity;
-            if (blueTeam)
+            if (shipJuiceInventory.juiceCount >= fireCost)
             {
-                spawnRotation = Quaternion.Euler(90, 0, 0);
+                Vector3 spawn = cannon.transform.position + cannon.transform.forward * spawnOffset;
+                Quaternion spawnRotation = Quaternion.identity;
+                if (blueTeam)
+                {
+                    spawnRotation = Quaternion.Euler(90, 0, 0);
+                }
+                else
+                {
+                    spawnRotation = Quaternion.Euler(-90, 0, 0);
+                }
+                PhotonNetwork.Instantiate(Path.Combine("Spawn Objects", laser.name), spawn, spawnRotation);
+                shipJuiceInventory.gameObject.GetComponent<PhotonView>().RPC("AcceptJuice", RpcTarget.All, -fireCost);
+                fired = true;
+                canFire = false;
+                StartCoroutine(CannonCooldown());
             }
             else
             {
-                spawnRotation = Quaternion.Euler(-90, 0, 0);
+                fired = false;
             }
-            PhotonNetwork.Instantiate(Path.Combine("Spawn Objects", laser.name), spawn, spawnRotation);
-            shipJuiceInventory.gameObject.GetComponent<PhotonView>().RPC("AcceptJuice", RpcTarget.All, -fireCost);
-        
-            fired = true;
         }
         else
         {
             fired = false;
         }
-       
     }
-
-
     [PunRPC]
     public void FlipOccupiedBool()
     {
@@ -103,5 +108,10 @@ public class CannonControl : MonoBehaviour
                 shields.SetActive(false);
             }
         }
+    }
+    IEnumerator CannonCooldown()
+    {
+        yield return new WaitForSeconds(cannonCooldownTime);
+        canFire = true;
     }
 }
