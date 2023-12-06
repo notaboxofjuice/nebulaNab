@@ -90,12 +90,8 @@ public class Action : MonoBehaviourPunCallbacks
     #region Cannon Actions
     public void AimCannon(InputAction.CallbackContext context)
     {
-        if (!activeCannon.view.IsMine)
-        {
-            activeCannon.cannon.GetComponent<PhotonView>().RequestOwnership();
-        
-            Debug.Log("Requesting OwnerShip");
-        }
+        activeCannon.cannon.GetComponent<PhotonView>().RequestOwnership();
+       
         //Debug.Log(PhotonNetwork.NickName + " is aiming cannon.");
         activeCannon.moveInput = context.ReadValue<float>(); // read and send the input to the cannon
     }    
