@@ -20,7 +20,7 @@ public class Asteroid : MonoBehaviour
     }
     void Start()
     {
-        StartCoroutine(Grow());
+        //StartCoroutine(Grow());
         Destroy(gameObject, killTime);
     }
     // Update is called once per frame
@@ -37,7 +37,7 @@ public class Asteroid : MonoBehaviour
         spawner.obstacleCount--;
         // PLAY EXPLODEY ANIMATION YEFERSON PLEASE FOR THE LOVE OF GOD DO SOMETHING
     }
-    IEnumerator Grow()
+    /*IEnumerator Grow()
     {
         float lerpPos = 0;
         float timer = 0;
@@ -48,5 +48,5 @@ public class Asteroid : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-    }
+    }*/
 }
