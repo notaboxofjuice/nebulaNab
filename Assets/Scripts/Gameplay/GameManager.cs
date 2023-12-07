@@ -128,23 +128,23 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
     #endregion
     #region Win/Lose Methods
+    
     [PunRPC]
     public void LoseGame(string LosingTeam) // called when a team loses
     {
         Debug.Log("Losing team: " + LosingTeam);
         // Loop through players in lobby
-        foreach (Player player in PhotonNetwork.PlayerList)
+      
+        // If player is on losing team
+        if (PhotonNetwork.LocalPlayer.GetTeam() == LosingTeam)
         {
-            // If player is on losing team
-            if (player.GetTeam() == LosingTeam)
-            {
                 sceneLoader.SceneLoad(5);
-            }
-            else
-            {
-                sceneLoader.SceneLoad(4);
-            }
         }
+        else
+        {
+                sceneLoader.SceneLoad(4);
+        }
+        
     }
     #endregion
     #endregion
