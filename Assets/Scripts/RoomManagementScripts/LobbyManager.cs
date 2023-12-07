@@ -131,14 +131,14 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         if (!sfxMuted)
         {
             sfxMuted = true;
-            sfxMutedText.text = "SFX- muted";
+            sfxMutedText.text = "sfx- muted";
 
             PhotonNetwork.LocalPlayer.SetSFXVolume(sfxMuted);
         }
         else
         {
             sfxMuted = false;
-            sfxMutedText.text = "SFX-on";
+            sfxMutedText.text = "sfx-on";
 
             PhotonNetwork.LocalPlayer.SetSFXVolume(sfxMuted);
         }
