@@ -19,7 +19,7 @@ public class Warhead : MonoBehaviour
     {
         body.AddForce(forceAcceleration * transform.up, ForceMode.Force);
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         Debug.Log("Collsion with: " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Ship"))
