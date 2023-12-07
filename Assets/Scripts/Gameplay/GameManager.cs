@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 var player = PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "BluePlayerTwo"), blueSpawnPoint[1].position, blueSpawnPoint[1].rotation);
                 blueCam.player = player;
             }
-            //enalble blue camera, disable red, incase it was enabled
+            //enable blue camera, disable red, incase it was enabled
             blueCam.gameObject.SetActive(true);
 
             redCam.gameObject.SetActive(false);

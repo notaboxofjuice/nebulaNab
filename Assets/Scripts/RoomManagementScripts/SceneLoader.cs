@@ -1,8 +1,9 @@
 
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+public class SceneLoader : MonoBehaviourPunCallbacks
 {
     public void SceneLoad(int sceneId)
     {
