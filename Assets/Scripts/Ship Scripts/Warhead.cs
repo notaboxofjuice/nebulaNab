@@ -27,7 +27,10 @@ public class Warhead : MonoBehaviour
             collision.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All);
             Destroy(gameObject);
         }
-        else if (collision.gameObject.CompareTag("Shield"))
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Shield"))
         {
             transform.rotation = Quaternion.Euler(-transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
         }
