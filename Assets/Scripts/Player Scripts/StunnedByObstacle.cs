@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 /// <summary>
-/// To be assigned to player object
-/// Stuns player and disables playerInput
+/// To be assigned to Target object
+/// Stuns Target and disables playerInput
 /// when hit by an obstacle
 /// </summary>
 public class StunnedByObstacle : MonoBehaviour
 {
     PlayerInput playerInput; // Movement script
-    [SerializeField] float stunTime; // Time the player is stunned for
+    [SerializeField] float stunTime; // Time the Target is stunned for
 
     [SerializeField] PlayerSpecialFX playerAnimations;
 
@@ -19,10 +19,10 @@ public class StunnedByObstacle : MonoBehaviour
         if (playerInput == null) Debug.LogError("PlayerInput not found");
     }
 
-    private void OnTriggerEnter(Collider other)//trigger seemed to work without moving the player
+    private void OnTriggerEnter(Collider other)//trigger seemed to work without moving the Target
     {
         Debug.Log("trigger detected");
-        if (other.gameObject.CompareTag("Obstacle")) // If the player collides with an obstacle
+        if (other.gameObject.CompareTag("Obstacle")) // If the Target collides with an obstacle
         {
             Destroy(other.gameObject); // destroy the obstacle
             Debug.Log("Player is stunned");

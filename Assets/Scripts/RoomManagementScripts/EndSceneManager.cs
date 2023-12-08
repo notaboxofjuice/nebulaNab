@@ -15,10 +15,10 @@ public class EndSceneManager : MonoBehaviourPunCallbacks
 
     public void LeaveRoom()
     {
-        PhotonNetwork.LeaveRoom(this);//player leaves current room 
+        PhotonNetwork.LeaveRoom(this);//Target leaves current room 
     }
 
-    public override void OnLeftRoom()//once player has left room, return to lobby
+    public override void OnLeftRoom()//once Target has left room, return to lobby
     {
         base.OnLeftRoom();
 

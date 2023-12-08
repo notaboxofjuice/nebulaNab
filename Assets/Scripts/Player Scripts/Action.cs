@@ -1,5 +1,4 @@
 using Photon.Pun;
-using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +12,8 @@ public class Action : MonoBehaviourPunCallbacks
     [SerializeField] CannonControl activeCannon;
     [Header("FX")]
     [SerializeField] PlayerSpecialFX playerFX;
+
+    GameObject Origin => GameObject.FindWithTag("Finish");
     #endregion
     #region Unity Methods
     private void Start()
@@ -78,7 +79,7 @@ public class Action : MonoBehaviourPunCallbacks
                 playerFX.PlayOperateCannon();
                 CameraTweak(true);
             }
-            else if (hit.collider.CompareTag("Player")) // break player's oxygen
+            else if (hit.collider.CompareTag("Player")) // break Target's oxygen
             {
                 Debug.Log(PhotonNetwork.NickName + " is breaking an oxygen tank.");
                 // break tank via RPC
@@ -115,7 +116,7 @@ public class Action : MonoBehaviourPunCallbacks
     {
         if (!context.performed) return;
 
-        // debug log the player's photon name
+        // debug log the Target's photon name
         Debug.Log(PhotonNetwork.NickName + " is exiting cannon.");
         activeCannon.GetComponent<PhotonView>().RPC("FlipOccupiedBool", RpcTarget.All);
         activeCannon = null; // clear reference
@@ -129,13 +130,14 @@ public class Action : MonoBehaviourPunCallbacks
         CameraOffset _cameraOffset = Camera.main.GetComponent<CameraOffset>();
         if (_inCannon)
         {
-            _cameraOffset.minFollowDist = 5;
             _cameraOffset.minHeight = 64;
+            _cameraOffset.Target = Origin;
         }
         else
         {
-            _cameraOffset.minFollowDist = 15;
             _cameraOffset.minHeight = 16;
+            _cameraOffset.Target = gameObject;
+            _cameraOffset.gameObject.transform.position = gameObject.transform.position;
         }
     }
     #endregion

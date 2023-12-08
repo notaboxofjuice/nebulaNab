@@ -12,7 +12,7 @@ public class PlayerSpecialFX : MonoBehaviourPunCallbacks
     [SerializeField]
     private Animator anime;
     [SerializeField]
-    private Movement movementScript;//refrence to know when player is moving
+    private Movement movementScript;//refrence to know when Target is moving
     
     private GameManager gameManager;
 
@@ -56,7 +56,7 @@ public class PlayerSpecialFX : MonoBehaviourPunCallbacks
         audioPlayer = GetComponent<AudioSource>();
         view = GetComponent<PhotonView>();
 
-        audioPlayer.mute = PhotonNetwork.LocalPlayer.GetSFXVolume();//if player doesnt want sound, then they dont get sound, and thats that
+        audioPlayer.mute = PhotonNetwork.LocalPlayer.GetSFXVolume();//if Target doesnt want sound, then they dont get sound, and thats that
 
     }
 
@@ -110,7 +110,7 @@ public class PlayerSpecialFX : MonoBehaviourPunCallbacks
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Door"))
-        {//when the player is inside the ship
+        {//when the Target is inside the ship
             anime.SetBool("inSpace", false);
 
             flameEmmiter.SetActive(false);
@@ -185,12 +185,12 @@ public class PlayerSpecialFX : MonoBehaviourPunCallbacks
 
     public void CallStunnedRPC()
     {//other methods can call this non RPC mehtod, to call a RPC method, this way only this one needs a photon view refrence
-        view.RPC("Stunned", RpcTarget.All);//Had to Rpc it, now all players see sparks on stunned player
+        view.RPC("Stunned", RpcTarget.All);//Had to Rpc it, now all players see sparks on stunned Target
     }
 
     public void CallRecoveredRPC()
     {
-        view.RPC("Recover", RpcTarget.All);//with RPC, sparks turn off for all players on now recovered player
+        view.RPC("Recover", RpcTarget.All);//with RPC, sparks turn off for all players on now recovered Target
     }
 
     [PunRPC]
@@ -219,7 +219,7 @@ public class PlayerSpecialFX : MonoBehaviourPunCallbacks
 
     [PunRPC]
     private void Stunned()
-    {//by RPCing it, all players will be able to see when a player is stunned
+    {//by RPCing it, all players will be able to see when a Target is stunned
         //disable booster fire and enbale sparks and play panic animation
         flameEmmiter.SetActive(false);
         flameEmmiterTwo.SetActive(false);
@@ -233,7 +233,7 @@ public class PlayerSpecialFX : MonoBehaviourPunCallbacks
 
     [PunRPC]
     private void Recover()
-    {//for when the player stunned finishes
+    {//for when the Target stunned finishes
         flameEmmiter.SetActive(true);
         flameEmmiterTwo.SetActive(true);
 

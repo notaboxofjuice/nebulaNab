@@ -30,11 +30,11 @@ public class RoomTabManager : MonoBehaviourPunCallbacks
         if (_roomId != null || _roomId != "")
             PhotonNetwork.JoinRoom(_roomId);
         else
-            Destroy(gameObject);//if Room Id is missing destroy this object so that player cannot try joining again
+            Destroy(gameObject);//if Room Id is missing destroy this object so that Target cannot try joining again
     }
 
     public override void OnJoinedRoom()
-    {//load room scene once player has succeeded in joining a room
+    {//load room scene once Target has succeeded in joining a room
         base.OnJoinedRoom();
         PhotonNetwork.LoadLevel(2);
     }

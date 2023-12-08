@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField]
     GameObject redCannonShimmerEffect;//lets players know that cannon is usable
     [SerializeField]
-    GameObject redCloneShimmerEffect;//lets players know that clone is usable//only if a player is dead??
+    GameObject redCloneShimmerEffect;//lets players know that clone is usable//only if a Target is dead??
 
     [Space(5)]
     [Header("Blue Team Components")]
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField]
     GameObject blueCannonShimmerEffect;//lets players know that cannon is usable
     [SerializeField]
-    GameObject blueCloneShimmerEffect;//lets players know that clone is usable//only if a player is dead??
+    GameObject blueCloneShimmerEffect;//lets players know that clone is usable//only if a Target is dead??
 
     [Space(5)]
     [Header("Player Components- Assigned on Start Up")]
@@ -89,18 +89,18 @@ public class GameManager : MonoBehaviourPunCallbacks
     private void SpawnPlayers()
     {
         if (PhotonNetwork.LocalPlayer.GetTeam() == "Blue")
-        {//if the player is in blue team spawn them in blue area
+        {//if the Target is in blue team spawn them in blue area
 
-            if (PhotonNetwork.LocalPlayer.GetPlayerIndex() == 1)//player index assgined in room is used to decide which character they get
+            if (PhotonNetwork.LocalPlayer.GetPlayerIndex() == 1)//Target index assgined in room is used to decide which character they get
             {
                 var player = PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "BluePlayerOne"), blueSpawnPoint[0].position, blueSpawnPoint[0].rotation);
-                blueCam.player = player;
+                blueCam.Target = player;
 
             }
             else
             {
                 var player = PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "BluePlayerTwo"), blueSpawnPoint[1].position, blueSpawnPoint[1].rotation);
-                blueCam.player = player;
+                blueCam.Target = player;
             }
             //enable blue camera, disable red, incase it was enabled
             blueCam.gameObject.SetActive(true);
@@ -109,17 +109,17 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         }
         else if (PhotonNetwork.LocalPlayer.GetTeam() == "Red")
-        {//if the player is in red team spawn them in red area
+        {//if the Target is in red team spawn them in red area
             
-            if(PhotonNetwork.LocalPlayer.GetPlayerIndex() == 1)//player index assgined in room is used to decide which character they get
+            if(PhotonNetwork.LocalPlayer.GetPlayerIndex() == 1)//Target index assgined in room is used to decide which character they get
             {
                 var player = PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "RedPlayerOne"), redSpawnPoint[0].position, redSpawnPoint[0].rotation);
-               redCam.player = player;
+               redCam.Target = player;
             }
             else
             {
                 var player = PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "RedPlayerTwo"), redSpawnPoint[1].position, redSpawnPoint[1].rotation);
-                redCam.player = player;
+                redCam.Target = player;
             }
             //enalble red camera, disable blue, incase it was enabled
             redCam.gameObject.SetActive(true);
@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         Debug.Log("Losing team: " + LosingTeam);
         // Loop through players in lobby
       
-        // If player is on losing team
+        // If Target is on losing team
         if (PhotonNetwork.LocalPlayer.GetTeam() == LosingTeam)
         {
                 sceneLoader.SceneLoad(5);

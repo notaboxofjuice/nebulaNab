@@ -8,14 +8,14 @@ public class CloneMachine : MonoBehaviourPunCallbacks, IPunObservable
 {
     public string Team; // team of this clone machine
     [SerializeField] JuiceInventory shipJuice; // ship's juice inventory
-    [SerializeField] public int cloneCost; // cost to clone player, assigned in inspector
-    public GameObject currentPlayer = null; // which player is going to be cloned
-    [SerializeField] Transform spawnPoint; // where to spawn player
+    [SerializeField] public int cloneCost; // cost to clone Target, assigned in inspector
+    public GameObject currentPlayer = null; // which Target is going to be cloned
+    [SerializeField] Transform spawnPoint; // where to spawn Target
 
     [SerializeField] Animator anime;
 
     [PunRPC]
-    public void TryClone() // Try to clone currentPlayer, called by player action
+    public void TryClone() // Try to clone currentPlayer, called by Target action
     {
         if (currentPlayer == null) return; // if no currentPlayer, do nothing
         Debug.Log("Trying to clone...");

@@ -19,7 +19,7 @@ public class JukeBox : MonoBehaviour
 
         if (!inLobby)//since volume is set in lobby, lobby manager handls volume control
         {
-            float volume = PhotonNetwork.LocalPlayer.GetVolume();//get volume player set in lobby
+            float volume = PhotonNetwork.LocalPlayer.GetVolume();//get volume Target set in lobby
             jukebox.volume = volume;//set the volume
             if (volume == 0) gameObject.SetActive(false);//if the volume is zero, diasble to the object, so that it isnt running needlessly
 

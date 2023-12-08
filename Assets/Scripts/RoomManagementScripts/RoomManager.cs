@@ -59,7 +59,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         if (Input.GetKeyDown(KeyCode.I) && Input.GetKey(KeyCode.H)) 
             StartGame();
 
-        //in case a player leaves, set player index for team to one
+        //in case a Target leaves, set Target index for team to one
         if(joinedBlueTeam && currentBluePlayers < 2) 
             PhotonNetwork.LocalPlayer.SetPlayerIndex(1);
         if (joinedRedTeam && currentRedPlayers < 2) 
@@ -70,7 +70,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public void JoinBlueTeam()
     {
         if(!joinedBlueTeam && !joinedRedTeam)
-        {//if player has not joined any team yet spawn them a GodCube
+        {//if Target has not joined any team yet spawn them a GodCube
 
             var player = PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "GODCUBE"), blueSpawnPoint.position, blueSpawnPoint.rotation);
             localPlayer = player;
@@ -122,7 +122,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         if(!joinedRedTeam && !joinedBlueTeam)
         {
-           var player = PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "GODCUBE"), redSpawnPoint.position, redSpawnPoint.rotation);//gives each player their own floaty cube
+           var player = PhotonNetwork.Instantiate(Path.Combine("PlayerFolder", "GODCUBE"), redSpawnPoint.position, redSpawnPoint.rotation);//gives each Target their own floaty cube
 
            localPlayer = player;
            joinedRedTeam = true;
@@ -166,7 +166,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         view.RPC("CheckIfCanStartRPC", RpcTarget.AllBuffered);
     }
     private void PlayerTracker()
-    {//will update display info whenever a player joins or leaves
+    {//will update display info whenever a Target joins or leaves
         playerCount = PhotonNetwork.PlayerList.Length;
 
         currentPlayersText.text = "";

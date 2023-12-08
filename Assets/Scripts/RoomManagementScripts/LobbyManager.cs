@@ -111,9 +111,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         inputedRoomID = iDInputField.text;
     }
 
-    public void SetVolume()//player uses slider to adjust the volume
+    public void SetVolume()//Target uses slider to adjust the volume
     {
-        PhotonNetwork.LocalPlayer.SetVolume(volumeSlider.value);//what the player sets will carry over
+        PhotonNetwork.LocalPlayer.SetVolume(volumeSlider.value);//what the Target sets will carry over
         audioPlayer.volume = volumeSlider.value;
 
         if(audioPlayer.volume <= 0)//change icon if muted
@@ -165,7 +165,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
                     _currentListings.RemoveAt(index);
                 }
             }
-            else//if no room has been removed it means that some changed has occured, either a new room has been created, or a player has left or joined a room
+            else//if no room has been removed it means that some changed has occured, either a new room has been created, or a Target has left or joined a room
             {
                 int index = _currentListings.FindIndex(x => x._roomInfo.Name == roomInfo.Name);//returns -1 if no room of that name found
 
@@ -180,7 +180,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
                         _currentListings.Add(room);
                     }
                 }
-                else if(index != -1)//if room tab does exist update its information displayed//this mean a player has either joined or left a room
+                else if(index != -1)//if room tab does exist update its information displayed//this mean a Target has either joined or left a room
                 {
                     _currentListings[index].SetRoomInfo(roomInfo);
                 }
@@ -192,21 +192,21 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             
         }
     }
-    //when the player is trying to join a room and it fails join a random room
+    //when the Target is trying to join a room and it fails join a random room
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         base.OnJoinRandomFailed(returnCode, message);
 
         CreateRoom();
     }
-    //when a player is able to join a room, load the room scene
+    //when a Target is able to join a room, load the room scene
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
 
         SceneManager.LoadScene(2);
     }
-    //when a player is able to create a room, load the room scene
+    //when a Target is able to create a room, load the room scene
     public override void OnCreatedRoom()
     {
         base.OnCreatedRoom();

@@ -843,6 +843,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4466813786999560928, guid: daf60a7f66456784b82a6919bfb866d3, type: 3}
   m_PrefabInstance: {fileID: 1589321069}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &958984163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 958984164}
+  m_Layer: 0
+  m_Name: idk middle
+  m_TagString: Finish
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &958984164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958984163}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &995182713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7686028337598929526, guid: 9dbad6fb8cae61d43a2e26554b11ac13, type: 3}
@@ -881,11 +912,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be3b4e144f1f6fa45937985bb9c03069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  Target: {fileID: 0}
   minFollowDist: 15
   maxHeight: 64
   minHeight: 32
-  smoothTime: 2
+  smoothTime: 0.5
   inverted: 1
 --- !u!81 &995815107
 AudioListener:
@@ -1814,11 +1845,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be3b4e144f1f6fa45937985bb9c03069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  Target: {fileID: 0}
   minFollowDist: 15
   maxHeight: 64
   minHeight: 32
-  smoothTime: 2
+  smoothTime: 0.5
   inverted: 0
 --- !u!1 &1435078090 stripped
 GameObject:
@@ -2650,3 +2681,4 @@ SceneRoots:
   - {fileID: 5304702128418145814}
   - {fileID: 1842912233}
   - {fileID: 150761083}
+  - {fileID: 958984164}

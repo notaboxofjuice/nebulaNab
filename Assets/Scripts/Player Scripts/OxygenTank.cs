@@ -3,11 +3,11 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 /// <summary>
-/// Assigned to player object
+/// Assigned to Target object
 /// </summary>
 public class OxygenTank : MonoBehaviour
 {
-    [SerializeField] int oxygen = 10; // how long player can survive on broken tank
+    [SerializeField] int oxygen = 10; // how long Target can survive on broken tank
     [SerializeField] CloneMachine cloneMachine; 
     [SerializeField] bool isBroken;
     
@@ -24,7 +24,7 @@ public class OxygenTank : MonoBehaviour
         else Restore(); // restore oxygen
     }
     [PunRPC]
-    public void BreakTank() // called when another player actions this player
+    public void BreakTank() // called when another Target actions this Target
     {
         if (isBroken) return; // if already broken, do nothing
         Debug.Log("Breaking oxygen tank");
@@ -52,7 +52,7 @@ public class OxygenTank : MonoBehaviour
         playerFX.CheckJuiceAmount();
 
         Debug.Log("Player asphyxiated");
-        // Try to send player to cloning machine
+        // Try to send Target to cloning machine
         cloneMachine.GetComponent<PhotonView>().RPC("TryAcceptCorpse", RpcTarget.All, GetComponent<PhotonView>().ViewID);
         // cloneMachine will handle the rest
        

@@ -13,9 +13,9 @@ public class JuiceInventory : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && gameObject.CompareTag("Juice"))
         {
-            GameObject _player = other.gameObject; // get the player
+            GameObject _player = other.gameObject; // get the Target
             Debug.Log(_player.name + " is collecting " + juiceCount + " juice."); // debug log
-            _player.GetComponent<JuiceInventory>().juiceCount += juiceCount; // add juice to player
+            _player.GetComponent<JuiceInventory>().juiceCount += juiceCount; // add juice to Target
             
             if(_player.GetComponentInChildren<PlayerUI>() != null)
                 _player.GetComponentInChildren<PlayerUI>().UpdateJuiceText(_player.GetComponent<JuiceInventory>().juiceCount); // update the juice UI

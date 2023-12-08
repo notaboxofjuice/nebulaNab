@@ -3,7 +3,7 @@ using Photon.Realtime;
 public static class PlayerExtensions
 {
 
-    private const string TeamKey = "Team";//used in get method to check player team assgined
+    private const string TeamKey = "Team";//used in get method to check Target team assgined
     private const int PlayerIndex = 0;
     public const float SoundLevel = 0.05f;
     public const bool muteSFX = false;
@@ -18,7 +18,7 @@ public static class PlayerExtensions
         return player.CustomProperties.ContainsKey(TeamKey) ? (string)player.CustomProperties[TeamKey] : null ;
     }
 
-    public static void SetPlayerIndex(this Player player, int index)//set in room scene, when player joins a Team
+    public static void SetPlayerIndex(this Player player, int index)//set in room scene, when Target joins a Team
     {
         player.CustomProperties[PlayerIndex] = index;
     }
@@ -28,7 +28,7 @@ public static class PlayerExtensions
         return player.CustomProperties.ContainsKey(PlayerIndex) ? (int)player.CustomProperties[PlayerIndex] : 0;
     }
 
-    public static void SetVolume(this Player player, float soundLevel)//player set volume carryes over
+    public static void SetVolume(this Player player, float soundLevel)//Target set volume carryes over
     {
         player.CustomProperties[SoundLevel] = soundLevel;
     }
