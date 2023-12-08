@@ -3,9 +3,9 @@ public class CameraOffset : MonoBehaviour
 {
     public GameObject player; // Player object
     Vector3 startingPos; // Starting position of the camera
-    [SerializeField] float minFollowDist; // Minimum distance the camera can be from the player
+    public float minFollowDist; // Minimum distance the camera can be from the player
     [SerializeField] float maxHeight; // Maximum height of the camera
-    [SerializeField] float minHeight; // Height of the camera
+    public float minHeight; // Height of the camera
     [SerializeField] float smoothTime; // Time it takes for the camera to move to the player
     Vector3 velocity; // Velocity of the camera
 
@@ -24,6 +24,6 @@ public class CameraOffset : MonoBehaviour
         Vector3 targetPos = player.transform.position + (Vector3.up * distance) - (Vector3.forward * minFollowDist);
         targetPos.y = Mathf.Clamp(targetPos.y, minHeight, maxHeight);
         // move and rotate
-        transform.SetPositionAndRotation(Vector3.SmoothDamp(transform.position, targetPos, ref velocity, smoothTime / 2), Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.transform.position - transform.position), smoothTime));
+        transform.SetPositionAndRotation(Vector3.SmoothDamp(transform.position, targetPos, ref velocity, smoothTime), Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.transform.position - transform.position), smoothTime));
     }
 }

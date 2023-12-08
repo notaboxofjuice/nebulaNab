@@ -76,6 +76,7 @@ public class Action : MonoBehaviourPunCallbacks
                 activeCannon = _hitCannon; // set active cannon
                 // FX
                 playerFX.PlayOperateCannon();
+                CameraTweak(true);
             }
             else if (hit.collider.CompareTag("Player")) // break player's oxygen
             {
@@ -121,6 +122,21 @@ public class Action : MonoBehaviourPunCallbacks
         GetComponent<PlayerInput>().SwitchCurrentActionMap("Gameplay"); // switch back to gameplay
         // FX
         playerFX.PlayLeaveCannon();
+        CameraTweak(false);
+    }
+    private void CameraTweak(bool _inCannon)
+    {
+        CameraOffset _cameraOffset = Camera.main.GetComponent<CameraOffset>();
+        if (_inCannon)
+        {
+            _cameraOffset.minFollowDist = 5;
+            _cameraOffset.minHeight = 64;
+        }
+        else
+        {
+            _cameraOffset.minFollowDist = 15;
+            _cameraOffset.minHeight = 16;
+        }
     }
     #endregion
 }

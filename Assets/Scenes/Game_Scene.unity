@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1011539296}
-  m_IndirectSpecularColor: {r: 0.03145402, g: 0.118093155, b: 0.056809913, a: 1}
+  m_IndirectSpecularColor: {r: 0.031453934, g: 0.1181007, b: 0.056809172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -883,8 +883,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   minFollowDist: 15
-  maxHeight: 32
-  minHeight: 8
+  maxHeight: 64
+  minHeight: 32
   smoothTime: 2
   inverted: 1
 --- !u!81 &995815107
@@ -1816,8 +1816,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   minFollowDist: 15
-  maxHeight: 32
-  minHeight: 8
+  maxHeight: 64
+  minHeight: 32
   smoothTime: 2
   inverted: 0
 --- !u!1 &1435078090 stripped
